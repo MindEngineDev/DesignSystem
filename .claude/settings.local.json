@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvm list:*)",
+      "Bash(nvm install:*)",
+      "Bash(nvm use:*)",
+      "Bash(nvm alias:*)",
+      "Bash(nvm uninstall:*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(where node)",
+      "Bash(nvm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,35 +1,28 @@
 {
-  "name": "@jouworg/tokens",
+  "name": "@mindengine/design-system",
   "version": "1.0.0",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "style-dictionary build",
-    "dev": "npx http-server ./site -c-1 -p 5173",
-    "postinstall": "npm run build",
-    "serve": "node server.mjs"
+    "dev": "concurrently \"npm:dev:*\"",
+    "dev:tokens": "node scripts/sync-tokens.js --watch",
+    "dev:server": "node server.mjs",
+    "build": "npm run build:tokens",
+    "build:tokens": "style-dictionary build",
+    "new": "node scripts/create-component.js",
+    "sync": "node scripts/sync-tokens.js",
+    "serve": "node server.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "design tokens",
-    "css variables",
-    "style dictionary"
-  ],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
+    "concurrently": "^8.2.2",
+    "chokidar": "^3.6.0",
+    "inquirer": "^9.2.0",
+    "vite": "^5.0.0",
+    "@web/test-runner": "^0.18.0",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.0",
     "express": "^5.1.0",
     "http-server": "^14.1.1",
     "style-dictionary": "^4.4.0"
-  },
-  "private": false,
-  "files": [
-    "site/dist"
-  ],
-  "exports": {
-    ".": "./site/dist/tokens.css",
-    "./css": "./site/dist/tokens.css",
-    "./css/dark": "./site/dist/tokens.dark.css",
-    "./json": "./site/dist/tokens.json"
   }
 }

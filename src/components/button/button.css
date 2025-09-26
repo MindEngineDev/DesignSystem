@@ -1,0 +1,6 @@
+.button {
+  background: var(--semantic-surface);
+  border: 1px solid var(--semantic-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
