@@ -1,0 +1,33 @@
+/* packages/css/base.css */
+/* Geen Pico import hier; Pico komt via CDN in index.html */
+
+/* Basis body styles zodat tokens zichtbaar effect hebben */
+:root {
+  color-scheme: light dark;
+}
+
+html[data-theme="dark"] {
+  /* tijdelijke donkere demo tot theming via Tokens Studio live is */
+  --color-brand-primary: #7aa2ff;
+  background: #0f1220;
+  color: #e6e9f2;
+}
+
+body {
+  background: inherit;
+  color: inherit;
+}
+
+/* Kleine utility; container-naam volgt Pico (classless) */
+.container {
+  max-width: var(--size-container, 72rem);
+}
+
+/* Quick demo utility */
+.token-chip {
+  display: inline-block;
+  padding: var(--space-3, .75rem) var(--space-4, 1rem);
+  border-radius: var(--radius-md, 8px);
+  background: var(--color-brand-primary, #4a7cff);
+  color: #fff;
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mind Engine — Design System Playground</title>
+
+    <!-- Pico via CDN (zorgt direct voor styling) -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css" />
+
+    <!-- Jouw DS CSS (tokens + util) -->
+    <link rel="stylesheet" href="../packages/css/base.min.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header style="margin-block: var(--space-4, 1rem);">
+        <h1>Design System Playground</h1>
+        <p>
+          Tokens → <code>packages/css/tokens.css</code> → <code>base.min.css</code> (dit bestand).
+        </p>
+      </header>
+
+      <section style="margin-block: var(--space-4, 1rem);">
+        <h2>Theme</h2>
+        <p>Toggle de <code>data-theme</code> op &lt;html&gt;:</p>
+        <button id="theme-light" class="contrast">Light</button>
+        <button id="theme-dark">Dark</button>
+      </section>
+
+      <section style="margin-block: var(--space-4, 1rem);">
+        <h2>Alpine.js</h2>
+        <div x-data="{ count: 0 }" style="display:flex; gap: var(--space-4, 1rem); align-items:center;">
+          <button @click="count--" class="secondary">−</button>
+          <strong x-text="count" style="min-width: 2ch; text-align:center;"></strong>
+          <button @click="count++">+</button>
+        </div>
+      </section>
+
+      <section style="margin-block: var(--space-4, 1rem);">
+        <h2>Shoelace Button</h2>
+        <sl-button variant="primary" size="medium">Primary</sl-button>
+        <sl-button variant="neutral" size="small">Neutral small</sl-button>
+        <sl-button variant="default" size="large" outline>Pill outline</sl-button>
+      </section>
+
+      <section style="margin-block: var(--space-4, 1rem);">
+        <h2>Tokens demo</h2>
+        <p>Blokken gebruiken CSS variabelen uit je tokens.</p>
+        <div style="display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-4,1rem);">
+          <div style="background: var(--color-brand-primary, #4a7cff); color: white; padding: var(--space-4,1rem); border-radius: var(--radius-md,8px);">brand.primary</div>
+          <div style="border: 2px dashed var(--color-brand-primary, #4a7cff); padding: var(--space-4,1rem); border-radius: var(--radius-md,8px);">radius.md + space.4</div>
+          <div style="padding: var(--space-4,1rem);">container width: <code>var(--size-container,72rem)</code></div>
+        </div>
+      </section>
+
+      <section style="margin-block: var(--space-4, 1rem);">
+        <h2>HTMX demo</h2>
+        <button hx-get="https://httpbin.org/uuid" hx-swap="outerHTML" class="secondary">Fetch UUID</button>
+      </section>
+
+      <footer style="margin-block: var(--space-6, 2rem); opacity:.7;">
+        <small>Mind Engine • tokens are the source of truth</small>
+      </footer>
+    </main>
+
+    <script type="module">
+      // theme toggles (demo)
+      document.getElementById('theme-light')?.addEventListener('click', () => {
+        document.documentElement.setAttribute('data-theme', 'light');
+      });
+      document.getElementById('theme-dark')?.addEventListener('click', () => {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      });
+    </script>
+
+    <!-- Runtimes (CDN voor playground; productie kan via node_modules) -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.14.7/dist/cdn.min.js"></script>
+    <script type="module">
+      import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/components/button/button.js';
+    </script>
+  </body>
+</html>
