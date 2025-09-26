@@ -2,7 +2,7 @@ name: Auto-sync Figma Tokens
 
 on:
   repository_dispatch:
-    types: [figma-tokens-update, tokens-updated]
+    types: [figma-tokens-update]
   push:
     paths:
       - 'packages/tokens/**/*.json'
@@ -22,7 +22,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -44,10 +43,10 @@ jobs:
       - name: Commit and push changes
         if: steps.changes.outputs.changed == 'true'
         run: |
-          git config --local user.email "figma-tokens@mindengine.dev"
-          git config --local user.name "Figma Token Sync"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add site/dist/
-          git commit -m "ðŸŽ¨ Auto-update design tokens from Figma [skip ci]"
+          git commit -m "í¾¨ Auto-update design tokens from Figma"
           git push
 
       - name: Deploy to GitHub Pages

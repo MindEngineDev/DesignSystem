@@ -27,7 +27,7 @@ export default {
         },
         {
           destination: 'tokens.module.js',
-          format: 'javascript/es6'
+          format: 'json/flat'
         }
       ]
     }

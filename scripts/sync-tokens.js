@@ -1,13 +1,5 @@
-#!/usr/bin/env   async syncFromFigma() {
-    console.log('ğŸ¨ Syncing tokens from Figma...');
-    try {
-      await execAsync('git pull origin production');
-      await this.buildTokens();
-      console.log('âœ… Tokens synced successfully');
-    } catch (error) {
-      console.error('âŒ Sync failed:', error);
-    }
-  }t { exec } from 'child_process';
+#!/usr/bin/env node
+import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs/promises';
 import path from 'path';
@@ -22,9 +14,9 @@ class TokenSync {
   }
 
   async syncFromFigma() {
-    console.log('ï¿½ï¿½ï¿½ Syncing tokens from Figma...');
+    console.log('í¾¨ Syncing tokens from Figma...');
     try {
-      await execAsync('git pull origin main');
+      await execAsync('git pull origin production');
       await this.buildTokens();
       console.log('âœ… Tokens synced successfully');
     } catch (error) {
@@ -33,12 +25,12 @@ class TokenSync {
   }
 
   async buildTokens() {
-    console.log('ï¿½ï¿½ï¿½ Building tokens...');
-    await execAsync('npm run build:tokens');
+    console.log('í´¨ Building tokens...');
+    await execAsync('npx style-dictionary build --config sd.config.mjs');
   }
 
   watch() {
-    console.log('ï¿½ï¿½ï¿½ï¸ Watching for token changes...');
+    console.log('í±ï¸ Watching for token changes...');
     const watcher = chokidar.watch([
       path.join(this.tokensPath, '*.json'),
       './sd.config.mjs'
@@ -48,7 +40,7 @@ class TokenSync {
     });
 
     watcher.on('change', async (filepath) => {
-      console.log(`ï¿½ï¿½ï¿½ ${filepath} changed`);
+      console.log(`í³ ${filepath} changed`);
       await this.buildTokens();
     });
   }
