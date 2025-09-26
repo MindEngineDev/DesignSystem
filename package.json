@@ -1,29 +1,25 @@
 {
-  "name": "@mindengine/design-system",
+  "name": "@mindengine/design-system-core",
   "version": "1.0.0",
+  "private": false,
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm:dev:*\"",
-    "dev:tokens": "node scripts/sync-tokens.js --watch",
-    "dev:server": "node server.mjs",
-    "build": "npm run build:tokens",
-    "build:tokens": "style-dictionary build",
-    "new": "node scripts/create-component.js",
-    "sync": "node scripts/sync-tokens.js",
-    "serve": "node server.mjs",
-    "setup:figma": "node scripts/setup-figma-webhook.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "tokens:build": "style-dictionary build --config tools/style-dictionary.config.cjs",
+    "css:build": "postcss packages/css/base.css -o packages/css/base.min.css",
+    "build": "npm run tokens:build && npm run css:build"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "chokidar": "^3.6.0",
-    "inquirer": "^9.2.0",
-    "vite": "^5.0.0",
-    "@web/test-runner": "^0.18.0",
-    "eslint": "^8.50.0",
-    "prettier": "^3.0.0",
-    "express": "^5.1.0",
-    "http-server": "^14.1.1",
-    "style-dictionary": "^4.4.0"
+    "@tokens-studio/sd-transforms": "^0.14.4",
+    "autoprefixer": "^10.4.19",
+    "cssnano": "^6.1.2",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "style-dictionary": "^3.9.2"
+  },
+  "dependencies": {
+    "@shoelace-style/shoelace": "^2.16.0",
+    "alpinejs": "^3.14.7",
+    "htmx.org": "^1.9.12",
+    "pico-css": "^2.0.6"
   }
 }

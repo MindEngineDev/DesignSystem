@@ -16,19 +16,17 @@
 1. Open **Figma Token Studio**
 2. Ga naar **Settings → Storage → GitHub**
 3. Voeg deze webhook URL toe:
-   ```
-   https://api.github.com/repos/MindEngineDev/DesignSystem/dispatches
-   ```
+
+   <https://api.github.com/repos/MindEngineDev/DesignSystem/dispatches>
 
 4. Headers instellen:
-   ```
+
    Authorization: Bearer JE_GITHUB_TOKEN_HIER
    Content-Type: application/json
    Accept: application/vnd.github.v3+json
-   ```
 
 5. JSON Payload:
-   ```json
+json
    {
      "event_type": "figma-tokens-update",
      "client_payload": {
@@ -36,16 +34,17 @@
        "timestamp": "2025-09-27T10:00:00Z"
      }
    }
-   ```
 
 ### Stap 3: Test de Sync
 
 Run het setup script voor details:
+
 ```bash
 npm run setup:figma
 ```
 
 Handmatig testen:
+
 ```bash
 npm run sync
 ```
@@ -77,21 +76,24 @@ npm run setup:figma
 ## Troubleshooting
 
 **Token sync faalt?**
+
 - Check GitHub token permissions
 - Verificeer webhook URL in Figma Token Studio
 - Bekijk GitHub Actions logs in je repo
 
 **Tokens niet bijgewerkt?**
+
 - Run `npm run sync` handmatig
 - Check of `packages/tokens/` files zijn gewijzigd
 - Kijk naar `site/dist/` output files
 
 **Development server problemen?**
+
 - Stop alle terminals (`Ctrl+C`)
 - Run `npm run dev` opnieuw
-- Check http://localhost:5173
+- Check <http://localhost:5173>
 
 ---
 
-✅ **Je Design System is nu volledig geautomatiseerd!** 
+✅ **Je Design System is nu volledig geautomatiseerd!**
 Figma wijzigingen verschijnen automatisch in je repo en op je website.
