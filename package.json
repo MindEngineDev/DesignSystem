@@ -1,0 +1,35 @@
+{
+  "name": "@jouworg/tokens",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "style-dictionary build",
+    "dev": "npx http-server ./site -c-1 -p 5173",
+    "postinstall": "npm run build",
+    "serve": "node server.mjs"
+  },
+  "keywords": [
+    "design tokens",
+    "css variables",
+    "style dictionary"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "express": "^5.1.0",
+    "http-server": "^14.1.1",
+    "style-dictionary": "^4.4.0"
+  },
+  "private": false,
+  "files": [
+    "site/dist"
+  ],
+  "exports": {
+    ".": "./site/dist/tokens.css",
+    "./css": "./site/dist/tokens.css",
+    "./css/dark": "./site/dist/tokens.dark.css",
+    "./json": "./site/dist/tokens.json"
+  }
+}

@@ -1,0 +1,16 @@
+@import "./dist/tokens.css";
+@import "./dist/tokens.dark.css";
+
+:root { color-scheme: light; --card-radius: var(--radius-lg); }
+:root[data-theme="dark"] { color-scheme: dark; }
+
+.card {
+  background: var(--semantic-surface);
+  border: 1px solid var(--semantic-border);
+  color: var(--semantic-text);
+  border-radius: var(--card-radius);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+@import "./maps/shoelace.css";

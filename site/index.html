@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="nl" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design System – Minimal</title>
+
+  <!-- Pico CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@2.0.6/css/pico.min.css">
+
+  <!-- Design tokens -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- Shoelace (web components) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/button/button.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/input/input.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/dialog/dialog.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/components/alert/alert.js"></script>
+
+  <!-- htmx + Alpine -->
+  <script src="https://unpkg.com/htmx.org@1.9.12" defer></script>
+  <script src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <style>
+    main { max-width: min(100%, 1100px); margin-inline: auto; }
+    header { margin: var(--space-xl) 0 var(--space-lg); display: flex; gap: var(--space-md); align-items: center; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Design System</h1>
+      <sl-button onclick="
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      ">Theme toggle</sl-button>
+    </header>
+
+    <article class="card">
+      <h2>Alpine micro-interactie</h2>
+      <div x-data="counter" class="grid">
+        <sl-button variant="primary" @click="dec()">-</sl-button>
+        <strong x-text="n" style="font-size: var(--font-size-xl)"></strong>
+        <sl-button variant="primary" @click="inc()">+</sl-button>
+      </div>
+    </article>
+
+    <article class="card">
+      <h2>htmx demo (POST)</h2>
+      <form
+        hx-post="/api/echo"
+        hx-trigger="submit"
+        hx-target="#echo"
+        hx-swap="innerHTML">
+        <sl-input name="q" placeholder="Typ iets..." clearable></sl-input>
+        <sl-button type="submit" variant="primary">Verstuur</sl-button>
+      </form>
+      <div id="echo" style="margin-top: var(--space-md); color: var(--semantic-muted)">Tip: voeg later een mini API toe.</div>
+    </article>
+
+    <article class="card">
+      <h2>Shoelace dialog</h2>
+      <sl-button onclick="dialog.show()">Open dialog</sl-button>
+      <sl-dialog label="Voorbeeld" id="dialog">
+        <p>Tokens werken ���</p>
+        <sl-button slot="footer" variant="primary" onclick="dialog.hide()">OK</sl-button>
+      </sl-dialog>
+    </article>
+
+<!-- Zet dit blok in index.html, bv. als extra card -->
+<article class="card">
+  <h2>Kleur & contrast</h2>
+  <div class="grid">
+    <div class="card" style="background: var(--semantic-bg);">BG</div>
+    <div class="card" style="background: var(--semantic-surface);">Surface</div>
+    <div class="card" style="background: var(--color-primary-500); color: white;">Primary 500</div>
+    <div class="card" style="background: var(--color-secondary-500); color: white;">Secondary 500</div>
+  </div>
+</article>
+
+  </main>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>
