@@ -21,12 +21,16 @@
   --text-small: clamp(0.8rem, 0.76rem + 0.25vw, 0.95rem);
   --text-large: clamp(1.15rem, 1.05rem + 0.35vw, 1.45rem);
 
-  
-
- 
---radius-round: 9999px;
-  
   --shadow-floating: 0 24px 60px rgba(9, 12, 12, 0.45);
+  --shadow-elevated: 0 12px 40px rgba(9, 12, 12, 0.3);
+  --shadow-subtle: 0 1px 3px rgba(9, 12, 12, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(225, 127, 137, 0.35);
+  --shadow-inset: inset 0 1px 3px rgba(9, 12, 12, 0.12);
+  --shadow-none: none;
+  --shadow-glow: 0 0 8px rgba(225, 127, 137, 0.6);
+  --shadow-glow-soft: 0 0 12px rgba(225, 127, 137, 0.4);
+  --shadow-glow-strong: 0 0 20px rgba(225, 127, 137, 0.8);
+  --shadow-glow-inner: inset 0 0 8px rgba(225, 127, 137, 0.6);
 
   /* Primary palette */
   --primary-100: #fbeff1;
@@ -100,6 +104,12 @@
   --info-400: #3c8aa0;
   --info-500: #2d6d7f;
 
+  --primary-gradient: linear-gradient(90deg, #ea6c6e 0%, #cf445b 100%);
+  --secondary-gradient: linear-gradient(90deg, #95e5e8 0%, #3c7374 100%);
+  --light-gradient: linear-gradient(90deg, #f8f2ed 0%, #f8e6d7 100%);
+  --gray-gradient: linear-gradient(90deg, #354349 0%, #263236 100%);
+  --dark-gradient: linear-gradient(90deg, #101517 0%, #1a2124 100%);
+
   /* Surface styling */
   --panel-border: rgba(90, 184, 187, 0.3);
   --panel-bg: rgba(18, 23, 25, 0.85);
@@ -107,7 +117,7 @@
   --panel-shadow: 0 28px 60px rgba(14, 18, 20, 0.65);
   --stage-surface: rgba(22, 29, 31, 0.78);
 
-  --body-bg: url('/assets/images/handshake.svg'), var(--dark-900);
+  --body-bg: url("/assets/images/handshake.svg"), var(--dark-900);
   --body-text: var(--light-100);
   --body-muted: rgba(246, 231, 219, 0.7);
 
@@ -147,85 +157,89 @@
   /* Font families */
 
   /* Font sizes (rem @ 16px base) */
-  --sl-font-size-2x-small: 0.625rem;  /* 10px */
-  --sl-font-size-x-small:  0.75rem;   /* 12px */
-  --sl-font-size-small:    0.875rem;  /* 14px */
-  --sl-font-size-medium:   1rem;      /* 16px */
-  --sl-font-size-large:    1.25rem;   /* 20px */
-  --sl-font-size-x-large:  1.5rem;    /* 24px */
-  --sl-font-size-2x-large: 2.25rem;   /* 36px */
-  --sl-font-size-3x-large: 3rem;      /* 48px */
-  --sl-font-size-4x-large: 4.5rem;    /* 72px */
+  --sl-font-size-2x-small: 0.625rem; /* 10px */
+  --sl-font-size-x-small: 0.75rem; /* 12px */
+  --sl-font-size-small: 0.875rem; /* 14px */
+  --sl-font-size-medium: 1rem; /* 16px */
+  --sl-font-size-large: 1.25rem; /* 20px */
+  --sl-font-size-x-large: 1.5rem; /* 24px */
+  --sl-font-size-2x-large: 2.25rem; /* 36px */
+  --sl-font-size-3x-large: 3rem; /* 48px */
+  --sl-font-size-4x-large: 4.5rem; /* 72px */
 
   /* Font weights */
-  --sl-font-weight-light:    300;
-  --sl-font-weight-normal:   400;
+  --sl-font-weight-light: 300;
+  --sl-font-weight-normal: 400;
   --sl-font-weight-semibold: 500;
-  --sl-font-weight-bold:     700;
+  --sl-font-weight-bold: 700;
 
   /* Letter spacing */
   --sl-letter-spacing-denser: -0.03em;
-  --sl-letter-spacing-dense:  -0.015em;
+  --sl-letter-spacing-dense: -0.015em;
   --sl-letter-spacing-normal: normal;
-  --sl-letter-spacing-loose:  0.075em;
+  --sl-letter-spacing-loose: 0.075em;
   --sl-letter-spacing-looser: 0.15em;
 
   /* Line-height */
   --sl-line-height-denser: 1;
-  --sl-line-height-dense:  1.4;
+  --sl-line-height-dense: 1.4;
   --sl-line-height-normal: 1.8;
-  --sl-line-height-loose:  2.2;
+  --sl-line-height-loose: 2.2;
   --sl-line-height-looser: 2.6;
 
   /* =========================
    * SPACING TOKENS (rem)
    * ========================= */
   --sl-spacing-3x-small: 0.125rem; /* 2px */
-  --sl-spacing-2x-small: 0.25rem;  /* 4px */
-  --sl-spacing-x-small:  0.5rem;   /* 8px */
-  --sl-spacing-small:    0.75rem;  /* 12px */
-  --sl-spacing-medium:   1rem;     /* 16px */
-  --sl-spacing-large:    1.25rem;  /* 20px */
-  --sl-spacing-x-large:  1.75rem;  /* 28px */
-  --sl-spacing-2x-large: 2.25rem;  /* 36px */
-  --sl-spacing-3x-large: 3rem;     /* 48px */
-  --sl-spacing-4x-large: 4.5rem;   /* 72px */
+  --sl-spacing-2x-small: 0.25rem; /* 4px */
+  --sl-spacing-x-small: 0.5rem; /* 8px */
+  --sl-spacing-small: 0.75rem; /* 12px */
+  --sl-spacing-medium: 1rem; /* 16px */
+  --sl-spacing-large: 1.25rem; /* 20px */
+  --sl-spacing-x-large: 1.75rem; /* 28px */
+  --sl-spacing-2x-large: 2.25rem; /* 36px */
+  --sl-spacing-3x-large: 3rem; /* 48px */
+  --sl-spacing-4x-large: 4.5rem; /* 72px */
 
   /* =========================
    * BORDER RADIUS TOKENS
    * ========================= */
-  --sl-border-radius-small:   0.1875rem; /* 3px */
-  --sl-border-radius-medium:  0.25rem;   /* 4px */
-  --sl-border-radius-large:   0.5rem;    /* 8px */
-  --sl-border-radius-x-large: 1rem;      /* 16px */
-  --sl-border-radius-circle:  50%;
-  --sl-border-radius-pill:    9999px;
+  /* Prefer mapping to the core radius tokens so there is a single
+    source of truth for radius values. Theme layer (styles/theme.css)
+    may override if desired. */
+  --sl-border-radius-small: var(--radius-hard, 1px);
+  --sl-border-radius-medium: var(--radius-base, 4px);
+  --sl-border-radius-large: var(--radius-soft, 8px);
+  --sl-border-radius-x-large: var(--radius-rounded, 16px);
+  --sl-border-radius-circle: 50%;
+  --sl-border-radius-pill: var(--radius-round, 9999px);
 
   /* =========================
    * TRANSITION TOKENS
    * ========================= */
   --sl-transition-x-slow: 1000ms;
-  --sl-transition-slow:    500ms;
-  --sl-transition-medium:  250ms;
-  --sl-transition-fast:    150ms;
-  --sl-transition-x-fast:   50ms;
+  --sl-transition-slow: 500ms;
+  --sl-transition-medium: 250ms;
+  --sl-transition-fast: 150ms;
+  --sl-transition-x-fast: 50ms;
 
   /* =========================
    * Z-INDEX TOKENS
    * ========================= */
-  --sl-z-index-drawer:   700;
-  --sl-z-index-dialog:   800;
+  --sl-z-index-drawer: 700;
+  --sl-z-index-dialog: 800;
   --sl-z-index-dropdown: 900;
-  --sl-z-index-toast:    950;
-  --sl-z-index-tooltip:  1000;
+  --sl-z-index-toast: 950;
+  --sl-z-index-tooltip: 1000;
 
   /* =========================
    * FOCUS RING TOKENS
    * ========================= */
-  --sl-focus-ring-color:  var(--sl-color-primary-600);
-  --sl-focus-ring-style:  solid;
-  --sl-focus-ring-width:  3px;
-  --sl-focus-ring:        var(--sl-focus-ring-style) var(--sl-focus-ring-width) var(--sl-focus-ring-color);
+  --sl-focus-ring-color: var(--sl-color-primary-600);
+  --sl-focus-ring-style: solid;
+  --sl-focus-ring-width: 3px;
+  --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width)
+    var(--sl-focus-ring-color);
   --sl-focus-ring-offset: 1px;
 
   /* Button / form tokens (some map to our control tokens) */
@@ -237,4 +251,21 @@
 
   /* Overlay */
   --sl-overlay-background-color: hsl(240 3.8% 46.1% / 33%);
+
+  /* Radius */
+  --radius-hard: 1px;
+  --radius-sharp: 3px;
+  --radius-base: 5px;
+  --radius-soft: 12px;
+  --radius-rounded: 20px;
+  --radius-round: 9999px;
+
+  /* Shadows */
+  --elevation-2xs: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  --elevation-xs: 2px 2px 6px rgba(0, 0, 0, 0.543);
+  --elevation-sm: 4px 4px 12px rgba(0, 0, 0, 0.633);
+  --elevation-md: 8px 8px 24px rgba(0, 0, 0, 0.581);
+  --elevation-lg: 12px 12px 36px rgba(0, 0, 0, 0.528);
+  --elevation-xl: 35px 35px 65px rgba(0, 0, 0, 0.556);
+  --elevation-2xl: 50px 50px 100px rgba(0, 0, 0, 0.6);
 }

@@ -6,33 +6,37 @@
     <title>Mobile Preview — Design System</title>
     <link rel="icon" href="/favicon.png" />
     <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.*/css/pico.min.css" />
     <style>
-      body {
-        font-family:
-          system-ui,
-          Segoe UI,
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif;
-        margin: 0;
-        padding: 1rem;
-        background: #f7fafc;
+      main {
+        max-width: 960px;
+        margin: 1.25rem auto;
+        padding: 0 1rem;
       }
-      a {
+      header nav a {
+        margin-left: 0.5rem;
+      }
+      .snapshot-link {
+        margin-top: 1rem;
         display: inline-block;
-        margin: 0.5rem 0;
-        padding: 0.5rem 1rem;
-        background: #0ea5a4;
-        color: #fff;
-        border-radius: 6px;
-        text-decoration: none;
       }
     </style>
   </head>
   <body>
-    <h1>Mobile app layout</h1>
-    <p>Preview the mobile layout snapshot.</p>
-    <a href="/public/layout/app/mobile-app.html" target="_blank">Open mobile snapshot</a>
+    <main>
+      <header>
+        <h1>Mobile preview</h1>
+        <nav>
+          <a href="/pages/ag-grid.html">AG Grid demo</a>
+          <a href="/pages/manager-dashboard.html">Dashboard</a>
+          <a href="/pages/cms.html">CMS</a>
+        </nav>
+      </header>
+
+      <section>
+        <p>Preview the mobile layout snapshot.</p>
+        <a class="snapshot-link" href="/public/layout/app/mobile-app.html" target="_blank">Open mobile snapshot</a>
+      </section>
+    </main>
   </body>
 </html>

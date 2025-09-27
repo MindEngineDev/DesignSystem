@@ -679,7 +679,18 @@ if (typeof window !== "undefined") {
   window.builderApp = function builderApp() {
     return {
       components: componentLibrary,
-      activeId: componentLibrary[0]?.id ?? null,
+      activeId: (function () {
+        // honor ?component=<id> query parameter to deep-link into builder
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const fromQuery = params.get("component");
+          if (fromQuery && componentLibrary.some((c) => c.id === fromQuery))
+            return fromQuery;
+        } catch (e) {
+          // ignore in non-browser contexts
+        }
+        return componentLibrary[0]?.id ?? null;
+      })(),
       showDashboard: true,
       controlValues: {},
       init() {
@@ -738,6 +749,68 @@ if (typeof window !== "undefined") {
         textarea.select();
         document.execCommand("copy");
         document.body.removeChild(textarea);
+      },
+      /* Preview the current component in a new window */
+      openPreview() {
+        const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Preview</title><link rel="stylesheet" href="/styles/main.css"></head><body>${this.rawMarkup()}</body></html>`;
+        const w = window.open("", "_blank");
+        if (!w) return;
+        w.document.write(html);
+        w.document.close();
+      },
+
+      /* Download current markup as an HTML file */
+      downloadMarkup() {
+        const content = this.rawMarkup();
+        if (!content) return;
+        const blob = new Blob([content], { type: "text/html" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${this.activeId || "component"}.html`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      },
+
+      /* Presets: save and load control values per component */
+      savePreset() {
+        try {
+          const name = prompt("Preset name");
+          if (!name) return;
+          const key = `ds_presets_${this.activeId}`;
+          const existing = JSON.parse(localStorage.getItem(key) || "[]");
+          existing.push({ name, values: this.controlValues[this.activeId] });
+          localStorage.setItem(key, JSON.stringify(existing));
+          return true;
+        } catch (e) {
+          console.warn("Failed to save preset", e);
+        }
+      },
+
+      loadPresets() {
+        try {
+          const key = `ds_presets_${this.activeId}`;
+          return JSON.parse(localStorage.getItem(key) || "[]");
+        } catch (e) {
+          return [];
+        }
+      },
+
+      applyPreset(index) {
+        try {
+          const presets = this.loadPresets();
+          const p = presets[Number(index)];
+          if (!p) return;
+          this.controlValues[this.activeId] = Object.assign(
+            {},
+            this.controlValues[this.activeId],
+            p.values,
+          );
+        } catch (e) {
+          console.warn("applyPreset failed", e);
+        }
       },
     };
   };

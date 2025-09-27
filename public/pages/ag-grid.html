@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AG Grid Demo — DesignSystem</title>
+    <link rel="icon" href="/favicon.png" />
+    <!-- Pico.css for baseline styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.*/css/pico.min.css" />
+    <!-- Shoelace dark theme to preview components styling alongside grid -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/dist/themes/dark.css" />
+    <!-- AG Grid Community styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@28/dist/styles/ag-grid.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@28/dist/styles/ag-theme-alpine.css" />
+    <style>
+      body {
+        padding: 1rem;
+      }
+      .page {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      #myGrid {
+        height: 60vh;
+        width: 100%;
+      }
+      .controls {
+        margin-bottom: 0.5rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .muted {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>AG Grid demo</h1>
+        <nav>
+          <a href="/pages/mobile.html">Mobile preview</a>
+          <a href="/pages/manager-dashboard.html">Dashboard</a>
+          <a href="/pages/cms.html">CMS</a>
+        </nav>
+      </header>
+
+      <section x-data="agGridDemo()" x-init="init()">
+        <div class="controls">
+          <label>Filter: <input x-model="quickFilter" @input="onQuickFilter()" placeholder="quick filter..." /></label>
+          <button @click="shuffle()">Shuffle rows</button>
+          <button @click="addRow()">Add row</button>
+        </div>
+
+        <div id="myGrid" class="ag-theme-alpine"></div>
+      </section>
+
+      <p class="muted">This preview uses AG Grid Community via CDN and initializes the grid through Alpine.js. No local npm install required.</p>
+    </main>
+
+    <!-- Alpine.js CDN (deferred) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- AG Grid Community UMD bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@28/dist/ag-grid-community.noStyle.js"></script>
+    <script>
+      function agGridDemo() {
+        return {
+          gridApi: null,
+          gridColumnApi: null,
+          quickFilter: "",
+          rowData: [],
+          columnDefs: [{ field: "id", headerName: "ID", width: 90 }, { field: "make" }, { field: "model" }, { field: "price", headerClass: "numeric", valueFormatter: (params) => `$${params.value}` }],
+          sampleRows() {
+            return [
+              { id: 1, make: "Toyota", model: "Celica", price: 35000 },
+              { id: 2, make: "Ford", model: "Mondeo", price: 32000 },
+              { id: 3, make: "Porsche", model: "Boxster", price: 72000 },
+              { id: 4, make: "BMW", model: "5 Series", price: 59000 },
+              { id: 5, make: "Audi", model: "A4", price: 42000 },
+            ];
+          },
+          init() {
+            const gridOptions = {
+              columnDefs: this.columnDefs,
+              rowData: this.sampleRows(),
+              onGridReady: (params) => {
+                this.gridApi = params.api;
+                this.gridColumnApi = params.columnApi;
+              },
+              defaultColDef: { sortable: true, filter: true, resizable: true },
+            };
+            const eGridDiv = document.querySelector("#myGrid");
+            new agGrid.Grid(eGridDiv, gridOptions);
+          },
+          onQuickFilter() {
+            if (this.gridApi) this.gridApi.setQuickFilter(this.quickFilter);
+          },
+          shuffle() {
+            if (!this.gridApi) return;
+            const rows = this.sampleRows().sort(() => Math.random() - 0.5);
+            this.gridApi.setRowData(rows);
+          },
+          addRow() {
+            if (!this.gridApi) return;
+            const next = { id: Date.now() % 100000, make: "New", model: "Model", price: Math.floor(Math.random() * 90000) };
+            const nodes = [];
+            this.gridApi.forEachNode((n) => nodes.push(n.data));
+            nodes.push(next);
+            this.gridApi.setRowData(nodes);
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

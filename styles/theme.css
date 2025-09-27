@@ -393,12 +393,14 @@ sl-textarea::part(base) {
   --sl-color-neutral-1000: var(--light-100);
 
   /* Radii, shadows, spacing --------------------------------------------- */
-  --sl-border-radius-small: 1px;
-  --sl-border-radius-medium: 3px;
-  --sl-border-radius-large: 5px;
-  --sl-border-radius-x-large: 12px;
+  /* Map Shoelace radii to the project's canonical radius variables so
+    changes to --radius-* propagate across all components. */
+  --sl-border-radius-small: var(--radius-hard, 1px);
+  --sl-border-radius-medium: var(--radius-base, 3px);
+  --sl-border-radius-large: var(--radius-soft, 5px);
+  --sl-border-radius-x-large: var(--radius-rounded, 12px);
   --sl-border-radius-circle: 50%;
-  --sl-border-radius-pill: 9999px;
+  --sl-border-radius-pill: var(--radius-round, 9999px);
 
   --sl-shadow-x-small: 0 1px 2px rgb(0 0 0 / 18%);
   --sl-shadow-small: 0 1px 2px rgb(0 0 0 / 24%);

@@ -95,6 +95,18 @@
               </template>
             </div>
           </header>
+            <div class="preview-actions" style="display:flex;gap:0.5rem;align-items:center">
+              <sl-button size="small" variant="primary" @click="openPreview()">Preview</sl-button>
+              <sl-button size="small" @click="downloadMarkup()">Download</sl-button>
+              <sl-button size="small" @click="savePreset()">Save preset</sl-button>
+              <template x-if="loadPresets().length">
+                <select @change="applyPreset($event.target.value)">
+                  <template x-for="(p,i) in loadPresets()" :key="i">
+                    <option :value="i" x-text="p.name"></option>
+                  </template>
+                </select>
+              </template>
+            </div>
           <div class="preview-card__stage">
             <div class="preview-surface" x-html="previewMarkup()"></div>
           </div>
