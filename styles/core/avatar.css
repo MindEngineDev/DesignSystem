@@ -1,0 +1,26 @@
+/* ===============================
+   Avatars
+   =============================== */
+.avatar {
+  display: inline-block;
+  border-radius: var(--radius-round);
+  overflow: hidden;
+  box-shadow: var(--elevation-xs);
+}
+.avatar img {
+  width: var(--size-md);
+  height: var(--size-md);
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.team-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-sm);
+  box-shadow: var(--elevation-md);
+}
+.avatar-sm img { width: var(--size-sm); height: var(--size-sm); }
+.avatar-lg img { width: var(--size-lg); height: var(--size-lg); }

@@ -14,7 +14,19 @@
         <div class="topbar__actions">
           <sl-button size="small" variant="default" @click="toggleDashboard()" title="Toggle dashboard">Dashboard</sl-button>
           <sl-button variant="text" href="https://shoelace.style/components" target="_blank" rel="noreferrer"> Shoelace docs </sl-button>
-        </div>
+          <div class="topbar__actions">
+            <!-- Public layout previews -->
+            <a class="layout-link" href="/layout/dashboard/dashboard.html" target="_blank" rel="noopener noreferrer">
+              <sl-button size="small" variant="default" title="Open dashboard preview">Dashboard</sl-button>
+            </a>
+            <a class="layout-link" href="/layout/app/app.html" target="_blank" rel="noopener noreferrer">
+              <sl-button size="small" variant="default" title="Open app preview">App</sl-button>
+            </a>
+            <a class="layout-link" href="/layout/admin/admin.html" target="_blank" rel="noopener noreferrer">
+              <sl-button size="small" variant="default" title="Open admin preview">Admin</sl-button>
+            </a>
+            <sl-button variant="text" href="https://shoelace.style/components" target="_blank" rel="noreferrer"> Shoelace docs </sl-button>
+          </div>
       </nav>
 
       <div class="hero__content">
@@ -36,7 +48,7 @@
           <div class="stat-label">Total components</div>
         </div>
 
-        <div class="dashboard-card">
+        <div class="dashboard-card">c
           <h3>Selected</h3>
           <div class="stat-number" x-text="activeComponent() ? activeComponent().label : '—'"></div>
           <div class="stat-label">Active component</div>

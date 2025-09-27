@@ -9,7 +9,7 @@
   --builder-gap: clamp(1rem, 1vw + 0.75rem, 2rem);
   --builder-max-width: min(98vw, 1800px);
   --builder-padding: clamp(1rem, 2vw, 3rem);
-  --panel-radius: 8px;
+  --panel-radius: 5px;
   --panel-blur: 18px;
 
   /* Typography & rhythm */
@@ -21,7 +21,11 @@
   --text-small: clamp(0.8rem, 0.76rem + 0.25vw, 0.95rem);
   --text-large: clamp(1.15rem, 1.05rem + 0.35vw, 1.45rem);
 
-  --radius-pill: 999px;
+  
+
+ 
+--radius-round: 9999px;
+  
   --shadow-floating: 0 24px 60px rgba(9, 12, 12, 0.45);
 
   /* Primary palette */
@@ -141,9 +145,6 @@
    * TYPOGRAPHY TOKENS
    * ========================= */
   /* Font families */
-  --sl-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --sl-font-serif: Georgia, "Times New Roman", serif;
-  --sl-font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
 
   /* Font sizes (rem @ 16px base) */
   --sl-font-size-2x-small: 0.625rem;  /* 10px */

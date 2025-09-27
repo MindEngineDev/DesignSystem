@@ -1,0 +1,191 @@
+/* ===============================
+   Global Reset
+   =============================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* 16px basis */
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-body, var(--dark-900));
+  color: var(--col-body, var(--light-200));
+  font-family: var(--ff-body, sans-serif);
+  font-size: var(--fs-body, var(--font-size-md));
+  font-weight: var(--fw-body, var(--ff-weight-regular));
+  line-height: var(--lh-body, var(--line-height-md));
+  letter-spacing: var(--ls-body, var(--letter-space-xs));
+}
+
+/* ===============================
+   Base Elements
+   =============================== */
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-family: var(--ff-link, var(--ff-body));
+  font-size: var(--fs-link, var(--font-size-md));
+  font-weight: var(--fw-link, var(--ff-weight-medium));
+  letter-spacing: var(--ls-link, var(--letter-space-sm));
+  color: var(--col-link, var(--primary-200));
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: var(--col-link-hover, var(--secondary-300));
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* ===============================
+   Layout Vars
+   =============================== */
+:root {
+  --container-max: 1200px;
+  --container-padding: var(--space-5);
+  /* Section vertical rhythm mapped to new stable scale */
+  --section-pad-vertical: var(--space-8); /* default 48px */
+  --section-pad-vertical-tight: var(--space-6); /* 32px */
+  --section-pad-vertical-loose: var(--space-9); /* 64px */
+
+  --z-nav: 1000;
+  --z-dropdown: 1100;
+  --z-modal: 1200;
+  --z-toast: 1300;
+}
+
+/* ===============================
+   Container & Sections
+   =============================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section { padding: var(--section-pad-vertical) 0; }
+.section--tight { padding: var(--section-pad-vertical-tight) 0; }
+.section--loose { padding: var(--section-pad-vertical-loose) 0; }
+.section--alt { background: linear-gradient(135deg, var(--dark-800), var(--dark-900)); position: relative; }
+.section--alt::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.04), transparent 60%); pointer-events:none; }
+.section--divider { position:relative; }
+.section--divider::after { content:""; position:absolute; left:50%; transform:translateX(-50%); bottom:0; width:60%; height:1px; background: linear-gradient(90deg, transparent, var(--dark-600), transparent); }
+
+/* ===============================
+   Flex Utilities
+   =============================== */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ===============================
+   Grid Utilities
+   =============================== */
+.grid {
+  display: grid;
+  gap: var(--gap-md);
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .flex-row { flex-direction: column; }
+}
+
+/* ===============================
+   Text Alignment
+   =============================== */
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+
+
+/* ===============================
+   Section & Container Layout
+   =============================== */
+/* Page wrapper */
+.page { display:block; width:100%; flex:1 0 auto; }
+.page > .breadcrumb { margin: 0 auto var(--space-md); padding: var(--space-xs) var(--space-sm); width:100%; max-width: var(--container-max); font-size: var(--font-size-sm); color: var(--dark-300); }
+.page > .breadcrumb a { color: var(--primary-300); text-decoration:none; }
+.page > .breadcrumb a:hover { color: var(--primary-200); }
+.page > .breadcrumb nav { display:inline; }
+
+/* Breadcrumb placeholder base styling if JS injects list later */
+[data-breadcrumb] { font-size: var(--font-size-sm); }
+
+/* Map placeholder */
+.map-placeholder { height:240px; display:flex; align-items:center; justify-content:center; opacity:.65; font-size: var(--font-size-sm); background: var(--surface-elevated, var(--dark-700)); border:1px dashed var(--border-color); border-radius: var(--radius-base); }
+
+/* Section spacing override removed duplication handled above */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+

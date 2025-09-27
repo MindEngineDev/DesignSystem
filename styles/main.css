@@ -1,36 +1,46 @@
 @import "./vars.css";
 @import "./theme.css";
 
-/* Canonical, minimal stylesheet for the DesignSystem builder UI
-   - Token-driven (vars.css)
-   - No color-mix(); use RGBA fallbacks for compatibility
-   - Compact, single-source file to avoid duplication and parse errors
-@import "./vars.css";
-@import "./theme.css";
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  font-size: calc(var(--text-base, 1rem) + 0px);
+  color: var(--text, #1f2937);
+  line-height: 1.5;
+  background: var(--body-bg, #fff);
+}
 
-/* Minimal, valid stylesheet to allow a clean build. We'll expand this
-  back into a canonical stylesheet after the build is green. */
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
 
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;padding:0;background:var(--body-bg);color:var(--body-text);font-family:var(--font-body)}
+li, ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-.builder{display:grid;grid-template-columns:300px 1fr;gap:1rem;padding:1.25rem}
-.component-list{background:var(--panel-bg);padding:1rem;border-radius:var(--panel-radius)}
-.builder__main{display:grid;grid-template-columns:1fr 360px;gap:1rem}
+a, span, p, article, div {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
 
-@import "./vars.css";
-@import "./theme.css";
+/* Headings */
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.25;
+}
 
-/* Minimal valid stylesheet used to unblock PostCSS parsing. */
-html, body { height: 100%; margin: 0; padding: 0; }
-
-  border-radius: calc(var(--panel-radius) / 1.25);
-  max-height: 320px;
-  @import "./vars.css";
-  @import "./theme.css";
-
-  /* Very small, guaranteed-valid stylesheet to unblock PostCSS and allow a
-     clean build. We'll expand this back into a full main.css once the
-     build is stable. */
-
-  html, body { height: 100%; margin: 0; padding: 0; }
+h4, h5, h6 {
+  font-family: var(--font-body, Inter, system-ui, sans-serif);
+  margin: 0;
+  padding: 0;
+  line-height: 1.25;
+}
