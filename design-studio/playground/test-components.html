@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Test • Components</title>
+  <link rel="stylesheet" href="../vars.css"><link rel="stylesheet" href="../theme.css"><link rel="stylesheet" href="../ui.css"><link rel="stylesheet" href="../views.css">
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header"><strong class="brand"><i class="fa-solid fa-cubes"></i> Components</strong><span class="spacer"></span>
+    <nav><a href="./test-dashboard.html" class="contrast">Dashboard</a> · <a href="./test-forms.html" class="contrast">Forms</a> · <a href="./test-table.html" class="contrast">Table</a></nav>
+  </header>
+  <!-- Main -->
+  <main class="container">
+    <section class="card"><header class="card__header"><h3>Badges</h3></header><div><span class="badge badge--success">Success</span><span class="badge badge--warn">Warning</span><span class="badge badge--info">Info</span></div></section>
+    <section class="card"><header class="card__header"><h3>Buttons</h3></header><div><button class="sl-button">Default</button><button class="sl-button primary">Primary</button><button class="sl-button" disabled>Disabled</button></div></section>
+    <section class="card"><header class="card__header"><h3>Inputs</h3></header><div><input type="text" placeholder="Text"><input type="number" placeholder="Number"><select><option>Option A</option><option>Option B</option></select></div></section>
+  </main>
+</body>
+</html>
