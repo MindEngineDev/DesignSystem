@@ -1,30 +1,20 @@
 // app.js
 import Alpine from 'alpinejs';
 import '@picocss/pico/css/pico.min.css';
-import '@shoelace-style/shoelace/dist/themes/light.css';
 import '@shoelace-style/shoelace/dist/themes/dark.css';
 import './styles/main.css';
-import './styles/shoelace.css';
 
 import { setBasePath } from '@shoelace-style/shoelace/dist/utilities/base-path.js';
 setBasePath('/node_modules/@shoelace-style/shoelace/dist');
 import './components/shoelace/index.js';
 
-const THEME_STORAGE_KEY = 'design-system-theme';
+const DEFAULT_THEME = 'dark';
 
-function getPreferredTheme() {
-	if (typeof window === 'undefined') return 'light';
-	const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
-	if (stored === 'dark' || stored === 'light') {
-		return stored;
-	}
-	return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-}
-
-function applyTheme(theme) {
+function applyTheme(theme = DEFAULT_THEME) {
 	if (typeof document === 'undefined') return;
-	const nextTheme = theme === 'dark' ? 'dark' : 'light';
+	const nextTheme = theme === 'dark' ? 'dark' : DEFAULT_THEME;
 	document.documentElement.setAttribute('data-theme', nextTheme);
+	document.documentElement.classList.toggle('sl-theme-dark', nextTheme === 'dark');
 }
 
 function escapeHtml(value) {
@@ -243,16 +233,286 @@ ${openTag}
 			const openTag = attr ? `<sl-progress-bar ${attr}></sl-progress-bar>` : '<sl-progress-bar></sl-progress-bar>';
 			return openTag;
 		}
+	},
+	{
+		id: 'switch',
+		label: 'Switch',
+		description: 'Toggle boolean values with smooth animation.',
+		summary: 'Configure <sl-switch> states, sizes, and labels.',
+		tags: ['Form', 'Interactive'],
+		controls: [
+			{ id: 'label', type: 'text', label: 'Label', default: 'Enable notifications', placeholder: 'Switch label' },
+			{
+				id: 'size',
+				type: 'select',
+				label: 'Size',
+				default: 'medium',
+				options: [
+					{ value: 'small', label: 'Small' },
+					{ value: 'medium', label: 'Medium' },
+					{ value: 'large', label: 'Large' }
+				]
+			},
+			{ id: 'checked', type: 'boolean', label: 'Checked', default: true },
+			{ id: 'disabled', type: 'boolean', label: 'Disabled', default: false }
+		],
+		render(state) {
+			const attr = joinAttributes([
+				state.size !== 'medium' ? `size="${state.size}"` : '',
+				state.checked ? 'checked' : '',
+				state.disabled ? 'disabled' : ''
+			]);
+			const openTag = attr ? `<sl-switch ${attr}>` : '<sl-switch>';
+			return `${openTag}${escapeHtml(state.label || 'Enable notifications')}</sl-switch>`;
+		}
+	},
+	{
+		id: 'select',
+		label: 'Select',
+		description: 'Dropdown selection with search and multi-select.',
+		summary: 'Build <sl-select> dropdowns with various options.',
+		tags: ['Form', 'Selection'],
+		controls: [
+			{ id: 'label', type: 'text', label: 'Label', default: 'Choose framework', placeholder: 'Select label' },
+			{ id: 'placeholder', type: 'text', label: 'Placeholder', default: 'Select an option...' },
+			{
+				id: 'size',
+				type: 'select',
+				label: 'Size',
+				default: 'medium',
+				options: [
+					{ value: 'small', label: 'Small' },
+					{ value: 'medium', label: 'Medium' },
+					{ value: 'large', label: 'Large' }
+				]
+			},
+			{ id: 'clearable', type: 'boolean', label: 'Clearable', default: true },
+			{ id: 'multiple', type: 'boolean', label: 'Multiple', default: false },
+			{ id: 'disabled', type: 'boolean', label: 'Disabled', default: false }
+		],
+		render(state) {
+			const attr = joinAttributes([
+				`label="${escapeHtml(state.label)}"`,
+				state.placeholder ? `placeholder="${escapeHtml(state.placeholder)}"` : '',
+				state.size !== 'medium' ? `size="${state.size}"` : '',
+				state.clearable ? 'clearable' : '',
+				state.multiple ? 'multiple' : '',
+				state.disabled ? 'disabled' : ''
+			]);
+			const openTag = attr ? `<sl-select ${attr}>` : '<sl-select>';
+			return `${openTag}
+  <sl-option value="react">React</sl-option>
+  <sl-option value="vue">Vue</sl-option>
+  <sl-option value="angular">Angular</sl-option>
+  <sl-option value="svelte">Svelte</sl-option>
+</sl-select>`;
+		}
+	},
+	{
+		id: 'checkbox',
+		label: 'Checkbox',
+		description: 'Multi-select options with intermediate states.',
+		summary: 'Style <sl-checkbox> components with various states.',
+		tags: ['Form', 'Selection'],
+		controls: [
+			{ id: 'label', type: 'text', label: 'Label', default: 'Accept terms', placeholder: 'Checkbox label' },
+			{
+				id: 'size',
+				type: 'select',
+				label: 'Size',
+				default: 'medium',
+				options: [
+					{ value: 'small', label: 'Small' },
+					{ value: 'medium', label: 'Medium' },
+					{ value: 'large', label: 'Large' }
+				]
+			},
+			{ id: 'checked', type: 'boolean', label: 'Checked', default: false },
+			{ id: 'indeterminate', type: 'boolean', label: 'Indeterminate', default: false },
+			{ id: 'disabled', type: 'boolean', label: 'Disabled', default: false }
+		],
+		render(state) {
+			const attr = joinAttributes([
+				state.size !== 'medium' ? `size="${state.size}"` : '',
+				state.checked ? 'checked' : '',
+				state.indeterminate ? 'indeterminate' : '',
+				state.disabled ? 'disabled' : ''
+			]);
+			const openTag = attr ? `<sl-checkbox ${attr}>` : '<sl-checkbox>';
+			return `${openTag}${escapeHtml(state.label || 'Accept terms')}</sl-checkbox>`;
+		}
+	},
+	{
+		id: 'radio',
+		label: 'Radio Group',
+		description: 'Single-select from multiple options.',
+		summary: 'Configure <sl-radio-group> with radio buttons.',
+		tags: ['Form', 'Selection'],
+		controls: [
+			{ id: 'label', type: 'text', label: 'Label', default: 'Deployment target', placeholder: 'Group label' },
+			{
+				id: 'size',
+				type: 'select',
+				label: 'Size',
+				default: 'medium',
+				options: [
+					{ value: 'small', label: 'Small' },
+					{ value: 'medium', label: 'Medium' },
+					{ value: 'large', label: 'Large' }
+				]
+			},
+			{ id: 'disabled', type: 'boolean', label: 'Disabled', default: false }
+		],
+		render(state) {
+			const groupAttr = joinAttributes([
+				`label="${escapeHtml(state.label)}"`,
+				'value="production"'
+			]);
+			const radioAttr = joinAttributes([
+				state.size !== 'medium' ? `size="${state.size}"` : '',
+				state.disabled ? 'disabled' : ''
+			]);
+			const radioTag = radioAttr ? `<sl-radio ${radioAttr}` : '<sl-radio';
+			return `<sl-radio-group ${groupAttr}>
+  ${radioTag} value="development">Development</sl-radio>
+  ${radioTag} value="staging">Staging</sl-radio>
+  ${radioTag} value="production">Production</sl-radio>
+</sl-radio-group>`;
+		}
+	},
+	{
+		id: 'card',
+		label: 'Card',
+		description: 'Flexible content container with header and footer.',
+		summary: 'Design <sl-card> layouts with various content sections.',
+		tags: ['Layout', 'Container'],
+		controls: [
+			{ id: 'header', type: 'text', label: 'Header', default: 'Project Settings', placeholder: 'Card header' },
+			{ id: 'content', type: 'text', label: 'Content', default: 'Configure your project deployment options and environment variables.' },
+			{ id: 'showFooter', type: 'boolean', label: 'Show footer', default: true },
+			{ id: 'shadowDepth', type: 'select', label: 'Shadow', default: 'medium', options: [
+				{ value: 'none', label: 'None' },
+				{ value: 'small', label: 'Small' },
+				{ value: 'medium', label: 'Medium' },
+				{ value: 'large', label: 'Large' }
+			]}
+		],
+		render(state) {
+			const cardClass = state.shadowDepth !== 'medium' ? ` class="card-${state.shadowDepth}"` : '';
+			let content = `<sl-card${cardClass}>`;
+			if (state.header) {
+				content += `\n  <div slot="header">${escapeHtml(state.header)}</div>`;
+			}
+			content += `\n  ${escapeHtml(state.content || 'Card content goes here.')}`;
+			if (state.showFooter) {
+				content += `\n  <div slot="footer">
+    <sl-button variant="primary">Save Changes</sl-button>
+    <sl-button>Cancel</sl-button>
+  </div>`;
+			}
+			content += '\n</sl-card>';
+			return content;
+		}
+	},
+	{
+		id: 'badge',
+		label: 'Badge',
+		description: 'Small status indicators and counters.',
+		summary: 'Style <sl-badge> components with variants and positions.',
+		tags: ['Indicator', 'Status'],
+		controls: [
+			{ id: 'content', type: 'text', label: 'Content', default: '12', placeholder: 'Badge text' },
+			{
+				id: 'variant',
+				type: 'select',
+				label: 'Variant',
+				default: 'primary',
+				options: [
+					{ value: 'primary', label: 'Primary' },
+					{ value: 'success', label: 'Success' },
+					{ value: 'neutral', label: 'Neutral' },
+					{ value: 'warning', label: 'Warning' },
+					{ value: 'danger', label: 'Danger' }
+				]
+			},
+			{ id: 'pill', type: 'boolean', label: 'Pill shape', default: false },
+			{ id: 'pulse', type: 'boolean', label: 'Pulse animation', default: false }
+		],
+		render(state) {
+			const attr = joinAttributes([
+				`variant="${state.variant}"`,
+				state.pill ? 'pill' : '',
+				state.pulse ? 'pulse' : ''
+			]);
+			const openTag = attr ? `<sl-badge ${attr}>` : '<sl-badge>';
+			return `${openTag}${escapeHtml(state.content || '12')}</sl-badge>`;
+		}
+	},
+	{
+		id: 'textarea',
+		label: 'Textarea',
+		description: 'Multi-line text input with resize options.',
+		summary: 'Configure <sl-textarea> with rows, resize, and validation.',
+		tags: ['Form', 'Text'],
+		controls: [
+			{ id: 'label', type: 'text', label: 'Label', default: 'Description', placeholder: 'Field label' },
+			{ id: 'placeholder', type: 'text', label: 'Placeholder', default: 'Enter a detailed description...' },
+			{ id: 'rows', type: 'number', label: 'Rows', default: 4, min: 2, max: 10 },
+			{
+				id: 'resize',
+				type: 'select',
+				label: 'Resize',
+				default: 'vertical',
+				options: [
+					{ value: 'none', label: 'None' },
+					{ value: 'vertical', label: 'Vertical' },
+					{ value: 'auto', label: 'Auto' }
+				]
+			},
+			{ id: 'disabled', type: 'boolean', label: 'Disabled', default: false }
+		],
+		render(state) {
+			const attr = joinAttributes([
+				`label="${escapeHtml(state.label)}"`,
+				state.placeholder ? `placeholder="${escapeHtml(state.placeholder)}"` : '',
+				`rows="${state.rows}"`,
+				state.resize !== 'vertical' ? `resize="${state.resize}"` : '',
+				state.disabled ? 'disabled' : ''
+			]);
+			return `<sl-textarea ${attr}></sl-textarea>`;
+		}
+	},
+	{
+		id: 'spinner',
+		label: 'Spinner',
+		description: 'Loading indicators with size variants.',
+		summary: 'Display <sl-spinner> components for loading states.',
+		tags: ['Feedback', 'Loading'],
+		controls: [
+			{
+				id: 'size',
+				type: 'select',
+				label: 'Size',
+				default: 'medium',
+				options: [
+					{ value: 'small', label: 'Small' },
+					{ value: 'medium', label: 'Medium' },
+					{ value: 'large', label: 'Large' }
+				]
+			}
+		],
+		render(state) {
+			const attr = state.size !== 'medium' ? ` style="font-size: ${state.size === 'small' ? '1rem' : state.size === 'large' ? '3rem' : '2rem'}"` : '';
+			return `<sl-spinner${attr}></sl-spinner>`;
+		}
 	}
 ];
 
-const initialTheme = getPreferredTheme();
-applyTheme(initialTheme);
+applyTheme(DEFAULT_THEME);
 
 if (typeof window !== 'undefined') {
 	window.builderApp = function builderApp() {
 		return {
-			theme: initialTheme,
 			components: componentLibrary,
 			activeId: componentLibrary[0]?.id ?? null,
 			controlValues: {},
@@ -262,12 +522,6 @@ if (typeof window !== 'undefined') {
 						acc[control.id] = control.default;
 						return acc;
 					}, {});
-				});
-
-				this.$watch('theme', (value) => {
-					const nextTheme = value === 'dark' ? 'dark' : 'light';
-					applyTheme(nextTheme);
-					window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
 				});
 			},
 			setActive(id) {

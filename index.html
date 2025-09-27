@@ -1,162 +1,148 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shoelace Component Builder</title>
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body x-data="builderApp()" x-init="init()">
-    <header class="hero container">
-      <nav class="topbar">
-        <span class="brand">Shoelace Component Builder</span>
-        <div class="topbar__actions">
-          <span class="theme-label" x-text="theme === 'dark' ? 'Dark theme' : 'Light theme'"></span>
-          <sl-switch
-            size="small"
-            :checked="theme === 'dark'"
-            @sl-change="theme = $event.target.checked ? 'dark' : 'light'"
-          >Dark mode</sl-switch>
-          <sl-button variant="text" href="https://shoelace.style/components" target="_blank" rel="noreferrer">
-            Shoelace docs
-          </sl-button>
-        </div>
-      </nav>
-      <div class="hero__content">
-        <h1>Design components in the browser</h1>
-        <p>
-          Pick a Shoelace element, tweak its props with Alpine.js controls, and preview the result instantly. No token sync,
-          no Figma dependency—just build.
-        </p>
-        <sl-alert open variant="primary" class="hero__alert">
-          <sl-icon slot="icon" name="tools"></sl-icon>
-          This dashboard renders directly against your local code, so changes here mirror production Shoelace behavior.
-        </sl-alert>
-      </div>
-    </header>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shoelace Component Builder</title>
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body x-data="builderApp()" x-init="init()">
+<header class="hero container">
+<nav class="topbar">
+<span class="brand">Shoelace Component Builder</span>
+<div class="topbar__actions">
+<sl-button variant="text" href="https://shoelace.style/components" target="_blank" rel="noreferrer">
+Shoelace docs
+</sl-button>
+</div>
+</nav>
+<div class="hero__content">
+<h1>Design components in the browser</h1>
+<p>
+Pick a Shoelace element, tweak its props with Alpine.js controls, and preview the result instantly. No token sync,
+no Figma dependency—just build.
+</p>
+<sl-alert open variant="primary" class="hero__alert">
+<sl-icon slot="icon" name="tools"></sl-icon>
+This dashboard renders directly against your local code, so changes here mirror production Shoelace behavior.
+</sl-alert>
+</div>
+</header>
 
-    <main class="builder container">
-      <aside class="component-list" aria-label="Component catalog" x-cloak>
-        <header class="component-list__header">
-          <h2>Components</h2>
-          <p class="muted">Select a component to configure.</p>
-        </header>
-        <ul class="component-list__items">
-          <template x-for="component in components" :key="component.id">
-            <li>
-              <button
-                type="button"
-                class="component-item"
-                :class="{ 'component-item--active': component.id === activeId }"
-                @click="setActive(component.id)"
-              >
-                <span class="component-item__label" x-text="component.label"></span>
-                <span class="component-item__description" x-text="component.description"></span>
-              </button>
-            </li>
-          </template>
-        </ul>
-      </aside>
+<main class="builder container">
+<aside class="component-list" aria-label="Component catalog" x-cloak>
+<header class="component-list__header">
+<h2>Components</h2>
+<p class="muted">Select a component to configure.</p>
+</header>
+<ul class="component-list__items">
+<template x-for="component in components" :key="component.id">
+<li>
+<button type="button" class="component-item" :class="{ 'component-item--active': component.id === activeId }" @click="setActive(component.id)">
+<span class="component-item__label" x-text="component.label"></span>
+<span class="component-item__description" x-text="component.description"></span>
+</button>
+</li>
+</template>
+</ul>
+</aside>
 
-      <section class="builder__main" x-show="activeComponent()" x-cloak>
-        <article class="preview-card">
-          <header class="preview-card__header">
-            <div>
-              <h2 x-text="activeComponent().label"></h2>
-              <p class="muted" x-text="activeComponent().summary"></p>
-            </div>
-            <div class="preview-card__tags" x-show="activeComponent().tags?.length" x-cloak>
-              <template x-for="tag in activeComponent().tags" :key="tag">
-                <span class="tag" x-text="tag"></span>
-              </template>
-            </div>
-          </header>
-          <div class="preview-card__stage">
-            <div class="preview-surface" x-html="previewMarkup()"></div>
-          </div>
-        </article>
+<section class="builder__main" x-show="activeComponent()" x-cloak>
+<article class="preview-card">
+<header class="preview-card__header">
+<div>
+<h2 x-text="activeComponent().label"></h2>
+<p class="muted" x-text="activeComponent().summary"></p>
+</div>
+<div class="preview-card__tags" x-show="activeComponent().tags?.length" x-cloak>
+<template x-for="tag in activeComponent().tags" :key="tag">
+<span class="tag" x-text="tag"></span>
+</template>
+</div>
+</header>
+<div class="preview-card__stage">
+<div class="preview-surface" x-html="previewMarkup()"></div>
+</div>
+</article>
 
-        <section class="control-panel" x-show="activeControls().length" x-cloak>
-          <header class="control-panel__header">
-            <h3>Controls</h3>
-            <p class="muted">Adjust props to explore different states.</p>
-          </header>
+<section class="control-panel" x-show="activeControls().length" x-cloak>
+<header class="control-panel__header">
+<h3>Controls</h3>
+<p class="muted">Adjust props to explore different states.</p>
+</header>
 
-          <div class="control-panel__grid">
-            <template x-for="control in activeControls()" :key="control.id">
-              <div class="control" :class="`control--${control.type}`">
-                <template x-if="control.type === 'boolean'">
-                  <sl-switch
-                    :checked="controlValues[activeId][control.id]"
-                    @sl-change="updateControl(control.id, $event.target.checked)"
-                  >
-                    <span x-text="control.label"></span>
-                  </sl-switch>
-                </template>
+<div class="control-panel__grid">
+<template x-for="control in activeControls()" :key="control.id">
+<div class="control" :class="`control--${control.type}`">
+<template x-if="control.type === 'boolean'">
+<sl-switch :checked="controlValues[activeId][control.id]" @sl-change="updateControl(control.id, $event.target.checked)">
+<span x-text="control.label"></span>
+</sl-switch>
+</template>
 
-                <template x-if="control.type === 'text'">
-                  <label>
-                    <span class="control__label" x-text="control.label"></span>
-                    <input
-                      type="text"
-                      :value="controlValues[activeId][control.id]"
-                      @input="updateControl(control.id, $event.target.value)"
-                      :placeholder="control.placeholder ?? ''"
-                    />
-                  </label>
-                </template>
+<template x-if="control.type === 'text'">
+<label>
+<span class="control__label" x-text="control.label"></span>
+<input
+  type="text"
+  :value="controlValues[activeId][control.id]"
+  @input="updateControl(control.id, $event.target.value)"
+  :placeholder="control.placeholder ?? ''"
+/>
+</label>
+</template>
 
-                <template x-if="control.type === 'select'">
-                  <label>
-                    <span class="control__label" x-text="control.label"></span>
-                    <select
-                      :value="controlValues[activeId][control.id]"
-                      @change="updateControl(control.id, $event.target.value)"
-                    >
-                      <template x-for="option in control.options" :key="option.value">
-                        <option :value="option.value" x-text="option.label"></option>
-                      </template>
-                    </select>
-                  </label>
-                </template>
+<template x-if="control.type === 'select'">
+<label>
+<span class="control__label" x-text="control.label"></span>
+<select
+  :value="controlValues[activeId][control.id]"
+  @change="updateControl(control.id, $event.target.value)"
+>
+  <template x-for="option in control.options" :key="option.value">
+    <option :value="option.value" x-text="option.label"></option>
+  </template>
+</select>
+</label>
+</template>
 
-                <template x-if="control.type === 'number'">
-                  <label>
-                    <span class="control__label" x-text="control.label"></span>
-                    <input
-                      type="number"
-                      :value="controlValues[activeId][control.id]"
-                      :min="control.min"
-                      :max="control.max"
-                      :step="control.step ?? 1"
-                      @input="updateControl(control.id, Number($event.target.value))"
-                    />
-                  </label>
-                </template>
-              </div>
-            </template>
-          </div>
-        </section>
+<template x-if="control.type === 'number'">
+<label>
+<span class="control__label" x-text="control.label"></span>
+<input
+  type="number"
+  :value="controlValues[activeId][control.id]"
+  :min="control.min"
+  :max="control.max"
+  :step="control.step ?? 1"
+  @input="updateControl(control.id, Number($event.target.value))"
+/>
+</label>
+</template>
+</div>
+</template>
+</div>
+</section>
 
-        <section class="markup-panel">
-          <header class="markup-panel__header">
-            <div>
-              <h3>Markup</h3>
-              <p class="muted">Copy the HTML-ready snippet for your current state.</p>
-            </div>
-            <sl-copy-button x-bind:value="rawMarkup()" @click.prevent="copyMarkup()" class="copy-button">
-              Copy snippet
-            </sl-copy-button>
-          </header>
-          <div class="markup-panel__code">
-            <pre><code x-text="prettyMarkup()"></code></pre>
-          </div>
-        </section>
-      </section>
-    </main>
+<section class="markup-panel">
+<header class="markup-panel__header">
+<div>
+<h3>Markup</h3>
+<p class="muted">Copy the HTML-ready snippet for your current state.</p>
+</div>
+<sl-copy-button x-bind:value="rawMarkup()" @click.prevent="copyMarkup()" class="copy-button">
+Copy snippet
+</sl-copy-button>
+</header>
+<div class="markup-panel__code">
+<pre><code x-text="prettyMarkup()"></code></pre>
+</div>
+</section>
+</section>
+</main>
 
-    <script type="module" src="/app.js"></script>
-  </body>
+<script type="module" src="/app.js"></script>
+</body>
 </html>
 
