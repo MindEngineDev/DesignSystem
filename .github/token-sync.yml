@@ -33,25 +33,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build tokens
-        run: npm run build
-
-      - name: Check for changes
-        id: changes
-        run: |
-          git diff --quiet styles/tokens.css utils/tokens.js || echo "changed=true" >> $GITHUB_OUTPUT
-
-      - name: Commit and push changes
-        if: steps.changes.outputs.changed == 'true'
-        run: |
-          git config --local user.email "figma-tokens@mindengine.dev"
-          git config --local user.name "Figma Token Sync"
-          git add styles/tokens.css styles/tokens.dark.css utils/tokens.js
-          git commit -m "🎨 Auto-update design tokens from Figma [skip ci]"
-          git push
-
       - name: Build and Deploy to GitHub Pages
-        if: steps.changes.outputs.changed == 'true'
         run: |
           npm run build
         

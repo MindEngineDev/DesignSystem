@@ -9,7 +9,7 @@
     "tokens:build": "style-dictionary build --config config/sd.config.mjs",
     "tokens:watch": "node scripts/sync-tokens.js --watch",
     "sync": "node scripts/sync-tokens.js",
-    "build": "npm run tokens:build && vite build",
+    "build": "vite build",
     "new": "node scripts/create-component.js",
     "setup:figma": "node scripts/setup-figma-webhook.js",
     "shoelace:scaffold": "node scripts/scaffold-shoelace-components.js",
