@@ -3,299 +3,160 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Design System Playground</title>
+  <title>Shoelace Component Builder</title>
     <link rel="icon" href="/favicon.png" type="image/png" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body x-data="playgroundApp()">
-    <header class="site-header container">
-      <div class="site-heading">
-        <h1>Design System Playground</h1>
-        <p class="muted">Preview tokens, iterate on Shoelace wrappers, and ship UI faster.</p>
-      </div>
-      <div class="header-controls">
-        <sl-switch size="small" :checked="theme === 'dark'" @sl-change="theme = $event.target.checked ? 'dark' : 'light'">Dark mode</sl-switch>
+  <body x-data="builderApp()" x-init="init()">
+    <header class="hero container">
+      <nav class="topbar">
+        <span class="brand">Shoelace Component Builder</span>
+        <div class="topbar__actions">
+          <span class="theme-label" x-text="theme === 'dark' ? 'Dark theme' : 'Light theme'"></span>
+          <sl-switch
+            size="small"
+            :checked="theme === 'dark'"
+            @sl-change="theme = $event.target.checked ? 'dark' : 'light'"
+          >Dark mode</sl-switch>
+          <sl-button variant="text" href="https://shoelace.style/components" target="_blank" rel="noreferrer">
+            Shoelace docs
+          </sl-button>
+        </div>
+      </nav>
+      <div class="hero__content">
+        <h1>Design components in the browser</h1>
+        <p>
+          Pick a Shoelace element, tweak its props with Alpine.js controls, and preview the result instantly. No token sync,
+          no Figma dependency—just build.
+        </p>
+        <sl-alert open variant="primary" class="hero__alert">
+          <sl-icon slot="icon" name="tools"></sl-icon>
+          This dashboard renders directly against your local code, so changes here mirror production Shoelace behavior.
+        </sl-alert>
       </div>
     </header>
 
-    <main class="playground container">
-      <section class="card intro">
-        <sl-alert variant="primary" open>
-          <sl-icon slot="icon" name="rocket"></sl-icon>
-          You're in the live component playground. Use the tabs below to inspect tokens and interact with the
-          generated Alpine-powered Shoelace wrappers.
-        </sl-alert>
-        <div class="quick-actions">
-          <div>
-            <h3>Workflow cheatsheet</h3>
-            <p>
-              Edit tokens in Figma → run the sync script → reload this playground to see updated colors, typography,
-              and component behavior in context.
-            </p>
-          </div>
-          <div class="quick-actions__buttons">
-            <sl-button variant="primary" href="/tokens/tokens.json" target="_blank" rel="noreferrer">
-              View tokens JSON
-            </sl-button>
-            <sl-button variant="neutral" href="https://shoelace.style/components" target="_blank" rel="noreferrer">
-              Shoelace docs
-            </sl-button>
-          </div>
-        </div>
-      </section>
+    <main class="builder container">
+      <aside class="component-list" aria-label="Component catalog" x-cloak>
+        <header class="component-list__header">
+          <h2>Components</h2>
+          <p class="muted">Select a component to configure.</p>
+        </header>
+        <ul class="component-list__items">
+          <template x-for="component in components" :key="component.id">
+            <li>
+              <button
+                type="button"
+                class="component-item"
+                :class="{ 'component-item--active': component.id === activeId }"
+                @click="setActive(component.id)"
+              >
+                <span class="component-item__label" x-text="component.label"></span>
+                <span class="component-item__description" x-text="component.description"></span>
+              </button>
+            </li>
+          </template>
+        </ul>
+      </aside>
 
-      <sl-tab-group class="playground-tabs" activation="manual">
-        <sl-tab slot="nav" panel="overview" active>Overview</sl-tab>
-        <sl-tab slot="nav" panel="tokens">Tokens</sl-tab>
-        <sl-tab slot="nav" panel="components">Components</sl-tab>
+      <section class="builder__main" x-show="activeComponent()" x-cloak>
+        <article class="preview-card">
+          <header class="preview-card__header">
+            <div>
+              <h2 x-text="activeComponent().label"></h2>
+              <p class="muted" x-text="activeComponent().summary"></p>
+            </div>
+            <div class="preview-card__tags" x-show="activeComponent().tags?.length" x-cloak>
+              <template x-for="tag in activeComponent().tags" :key="tag">
+                <span class="tag" x-text="tag"></span>
+              </template>
+            </div>
+          </header>
+          <div class="preview-card__stage">
+            <div class="preview-surface" x-html="previewMarkup()"></div>
+          </div>
+        </article>
 
-        <sl-tab-panel name="components">
-          <div class="component-playground" x-data="componentShowcase()">
-            <aside class="component-nav card">
-              <div class="component-nav__header">
-                <h2>Component catalog</h2>
-                <p class="muted">Pick a wrapper to preview live states and tokens.</p>
-              </div>
-              <ul class="component-nav__list">
-                <template x-for="component in components" :key="component.id">
-                  <li>
-                    <button
-                      type="button"
-                      class="component-nav__button"
-                      :class="{ 'is-active': component.id === activeId }"
-                      @click="setActive(component.id)"
+        <section class="control-panel" x-show="activeControls().length" x-cloak>
+          <header class="control-panel__header">
+            <h3>Controls</h3>
+            <p class="muted">Adjust props to explore different states.</p>
+          </header>
+
+          <div class="control-panel__grid">
+            <template x-for="control in activeControls()" :key="control.id">
+              <div class="control" :class="`control--${control.type}`">
+                <template x-if="control.type === 'boolean'">
+                  <sl-switch
+                    :checked="controlValues[activeId][control.id]"
+                    @sl-change="updateControl(control.id, $event.target.checked)"
+                  >
+                    <span x-text="control.label"></span>
+                  </sl-switch>
+                </template>
+
+                <template x-if="control.type === 'text'">
+                  <label>
+                    <span class="control__label" x-text="control.label"></span>
+                    <input
+                      type="text"
+                      :value="controlValues[activeId][control.id]"
+                      @input="updateControl(control.id, $event.target.value)"
+                      :placeholder="control.placeholder ?? ''"
+                    />
+                  </label>
+                </template>
+
+                <template x-if="control.type === 'select'">
+                  <label>
+                    <span class="control__label" x-text="control.label"></span>
+                    <select
+                      :value="controlValues[activeId][control.id]"
+                      @change="updateControl(control.id, $event.target.value)"
                     >
-                      <span class="component-nav__label" x-text="component.label"></span>
-                      <span class="component-nav__description" x-text="component.description"></span>
-                    </button>
-                  </li>
-                </template>
-              </ul>
-            </aside>
-
-            <section class="component-stage card" x-show="activeComponent()" x-cloak>
-              <header class="component-stage__header">
-                <div>
-                  <h2 x-text="activeComponent().label"></h2>
-                  <p class="muted" x-text="activeComponent().detail"></p>
-                </div>
-                <div class="component-stage__tokens" x-show="activeComponent().tokens?.length" x-cloak>
-                  <template x-for="token in activeComponent().tokens" :key="token">
-                    <span class="token-pill" x-text="token"></span>
-                  </template>
-                </div>
-              </header>
-
-              <div class="component-stage__body">
-                <template x-if="activeId === 'buttons'">
-                  <div class="component-stage__section" x-data="{ loading: false, size: 'medium' }">
-                    <div class="component-stage__preview component-stage__preview--grid">
-                      <sl-button variant="primary" :loading="loading" :size="size">Primary action</sl-button>
-                      <sl-button variant="neutral" :loading="loading" :size="size">Secondary</sl-button>
-                      <sl-button variant="success" :loading="loading" :size="size">Success</sl-button>
-                      <sl-button variant="danger" :loading="loading" :size="size">Destructive</sl-button>
-                      <sl-button variant="text" caret :loading="loading" :size="size">Text link</sl-button>
-                      <sl-button variant="primary" pill :loading="loading" :size="size">
-                        <sl-icon slot="prefix" name="lightning-charge"></sl-icon>
-                        With icon
-                      </sl-button>
-                    </div>
-                    <div class="component-stage__controls">
-                      <sl-switch :checked="loading" @sl-change="loading = $event.target.checked">
-                        Toggle loading state
-                      </sl-switch>
-                      <sl-select label="Size" value="medium" @sl-change="size = $event.target.value">
-                        <sl-option value="small">Small</sl-option>
-                        <sl-option value="medium">Medium</sl-option>
-                        <sl-option value="large">Large</sl-option>
-                      </sl-select>
-                    </div>
-                  </div>
+                      <template x-for="option in control.options" :key="option.value">
+                        <option :value="option.value" x-text="option.label"></option>
+                      </template>
+                    </select>
+                  </label>
                 </template>
 
-                <template x-if="activeId === 'forms'">
-                  <div class="component-stage__section component-stage__section--stack">
-                    <div class="component-field" x-data="inputComponent({ value: 'Mind Engine' })">
-                      <sl-input
-                        label="Project name"
-                        placeholder="Enter a value"
-                        clearable
-                        @sl-input="update({ value: $event.target.value })"
-                      ></sl-input>
-                    </div>
-                    <div class="component-field" x-data="selectComponent({ value: 'alpha' })">
-                      <sl-select
-                        label="Release channel"
-                        value="alpha"
-                        @sl-change="update({ value: $event.target.value })"
-                      >
-                        <sl-option value="alpha">Alpha</sl-option>
-                        <sl-option value="beta">Beta</sl-option>
-                        <sl-option value="stable">Stable</sl-option>
-                      </sl-select>
-                    </div>
-                    <div class="component-field component-field--inline">
-                      <div x-data="switchComponent({ checked: true })">
-                        <sl-switch :checked="checked" @sl-change="checked = $event.target.checked; update({ checked })">
-                          Feature flag enabled
-                        </sl-switch>
-                      </div>
-                      <div x-data="rangeComponent({ value: 32 })">
-                        <sl-range
-                          label="Opacity"
-                          min="0"
-                          max="100"
-                          :value="value"
-                          @sl-input="value = Number($event.target.value); update({ value })"
-                        ></sl-range>
-                      </div>
-                    </div>
-                    <div class="component-field" x-data="textareaComponent({ value: 'Collect feedback early and often.' })">
-                      <sl-textarea
-                        label="Notes"
-                        rows="3"
-                        resize="auto"
-                        @sl-input="update({ value: $event.target.value })"
-                      ></sl-textarea>
-                    </div>
-                  </div>
+                <template x-if="control.type === 'number'">
+                  <label>
+                    <span class="control__label" x-text="control.label"></span>
+                    <input
+                      type="number"
+                      :value="controlValues[activeId][control.id]"
+                      :min="control.min"
+                      :max="control.max"
+                      :step="control.step ?? 1"
+                      @input="updateControl(control.id, Number($event.target.value))"
+                    />
+                  </label>
                 </template>
-
-                <template x-if="activeId === 'feedback'">
-                  <div class="component-stage__section component-stage__section--stack">
-                    <div class="component-field" x-data="alertComponent({ variant: 'success', open: true })">
-                      <sl-alert variant="success" open closable>
-                        <sl-icon slot="icon" name="check2-circle"></sl-icon>
-                        Tokens synced successfully.
-                      </sl-alert>
-                    </div>
-                    <div class="component-field component-field--inline" x-data="{ value: 48 }">
-                      <sl-progress-bar :value="value" label="Deploying design tokens"></sl-progress-bar>
-                      <sl-range
-                        min="0"
-                        max="100"
-                        :value="value"
-                        @sl-input="value = Number($event.target.value)"
-                      ></sl-range>
-                    </div>
-                    <div class="component-field" x-data="dialogComponent()">
-                      <sl-button variant="primary" @click="$refs.dialog.show()">Show dialog</sl-button>
-                      <sl-dialog label="Review deployment" x-ref="dialog">
-                        <p>Use dialogs for confirmations or rich content.</p>
-                        <sl-button slot="footer" variant="primary" @click="$refs.dialog.hide()">Close</sl-button>
-                      </sl-dialog>
-                    </div>
-                    <div class="component-field">
-                      <sl-tooltip content="Sync complete" placement="bottom">
-                        <sl-badge pill variant="success">Status</sl-badge>
-                      </sl-tooltip>
-                    </div>
-                  </div>
-                </template>
-
-                <template x-if="activeId === 'navigation'">
-                  <div class="component-stage__section component-stage__section--stack" x-data="{ activeTab: 'overview' }">
-                    <div class="component-field">
-                      <sl-breadcrumb>
-                        <sl-breadcrumb-item href="#">Home</sl-breadcrumb-item>
-                        <sl-breadcrumb-item href="#">Design system</sl-breadcrumb-item>
-                        <sl-breadcrumb-item current>Components</sl-breadcrumb-item>
-                      </sl-breadcrumb>
-                    </div>
-                    <div class="component-field">
-                      <sl-tab-group placement="top">
-                        <sl-tab slot="nav" panel="overview" active>Overview</sl-tab>
-        --- truncated due to size? need continue patch carefully. apply_patch truncated maybe. Need to continue replacing rest of block carefully. We'll re-run patch to include rest? Already inserted but truncated by formatting? Wait we need to ensure patch includes entire new content. We'll continue the patch adding rest of navigation portion and closing tags. But we cannot reopen patch—they may have inserted partial? The patch ended with partial? we need to check file to ensure inserted as expected. Let's read portion after the patch to ensure no truncated mania. We'll read relevant section of file to fix. We'll call read_file around area to ensure final markup and finish editing if necessary. After patch we might have inserted truncated block due to
-              <h2>Semantic colors</h2>
-              <div class="swatch-grid">
-                <article class="swatch swatch--surface">
-                  <span class="swatch__name">Surface</span>
-                  <span class="swatch__token">--color-semantic-surface</span>
-                </article>
-                <article class="swatch swatch--bg">
-                  <span class="swatch__name">Background</span>
-                  <span class="swatch__token">--color-semantic-bg</span>
-                </article>
-                <article class="swatch swatch--text">
-                  <span class="swatch__name">Text</span>
-                  <span class="swatch__token">--color-semantic-text</span>
-                </article>
-                <article class="swatch swatch--brand">
-                  <span class="swatch__name">Brand</span>
-                  <span class="swatch__token">--color-semantic-brand</span>
-                </article>
-                <article class="swatch swatch--cta">
-                  <span class="swatch__name">CTA</span>
-                  <span class="swatch__token">--color-semantic-cta</span>
-                </article>
-                <article class="swatch swatch--success">
-                  <span class="swatch__name">Success</span>
-                  <span class="swatch__token">--color-semantic-success</span>
-                </article>
-                <article class="swatch swatch--warning">
-                  <span class="swatch__name">Warning</span>
-                  <span class="swatch__token">--color-semantic-warning</span>
-                </article>
-                <article class="swatch swatch--danger">
-                  <span class="swatch__name">Danger</span>
-                  <span class="swatch__token">--color-semantic-danger</span>
-                </article>
               </div>
-            </section>
-
-            <section class="card">
-              <h2>Typography scale</h2>
-              <ul class="type-scale">
-                <li class="type-scale__item">
-                  <span class="type-label">Heading / 3xl</span>
-                  <span class="type-preview type-preview--3xl">Responsive headline sizes from tokens.</span>
-                </li>
-                <li class="type-scale__item">
-                  <span class="type-label">Heading / 2xl</span>
-                  <span class="type-preview type-preview--2xl">Design once, respond everywhere.</span>
-                </li>
-                <li class="type-scale__item">
-                  <span class="type-label">Body / md</span>
-                  <span class="type-preview type-preview--md">Body copy pairs line-height with font-size tokens.</span>
-                </li>
-                <li class="type-scale__item">
-                  <span class="type-label">Caption / sm</span>
-                  <span class="type-preview type-preview--sm">Use for captions, helper text, or badges.</span>
-                </li>
-              </ul>
-            </section>
-
-            <section class="card">
-              <h2>Spacing ramp</h2>
-              <ul class="space-scale">
-                <li class="space-scale__item">
-                  <span class="space-label">--space-xs</span>
-                  <span class="space-bar space-bar--xs"></span>
-                </li>
-                <li class="space-scale__item">
-                  <span class="space-label">--space-sm</span>
-                  <span class="space-bar space-bar--sm"></span>
-                </li>
-                <li class="space-scale__item">
-                  <span class="space-label">--space-md</span>
-                  <span class="space-bar space-bar--md"></span>
-                </li>
-                <li class="space-scale__item">
-                  <span class="space-label">--space-lg</span>
-                  <span class="space-bar space-bar--lg"></span>
-                </li>
-                <li class="space-scale__item">
-                  <span class="space-label">--space-xl</span>
-                  <span class="space-bar space-bar--xl"></span>
-                </li>
-              </ul>
-            </section>
+            </template>
           </div>
-        </sl-tab-panel>
+        </section>
 
-      </sl-tab-group>
+        <section class="markup-panel">
+          <header class="markup-panel__header">
+            <div>
+              <h3>Markup</h3>
+              <p class="muted">Copy the HTML-ready snippet for your current state.</p>
+            </div>
+            <sl-copy-button x-bind:value="rawMarkup()" @click.prevent="copyMarkup()" class="copy-button">
+              Copy snippet
+            </sl-copy-button>
+          </header>
+          <div class="markup-panel__code">
+            <pre><code x-text="prettyMarkup()"></code></pre>
+          </div>
+        </section>
+      </section>
     </main>
 
     <script type="module" src="/app.js"></script>
   </body>
 </html>
+

@@ -3,10 +3,23 @@
 import chokidar from 'chokidar';
 import { spawn } from 'child_process';
 
-const NPM_BIN = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-
 const TOKENS_GLOB = 'tokens/**/*.json';
 const SD_CONFIG = 'config/sd.config.mjs';
+
+function getNpmInvocation(args = []) {
+  const npmExecPath = process.env.npm_execpath || process.env.npm_execPath;
+  const nodeExecPath = process.env.npm_node_execpath || process.execPath;
+
+  if (npmExecPath && npmExecPath.endsWith('npm-cli.js')) {
+    return {
+      command: nodeExecPath,
+      args: [npmExecPath, ...args],
+    };
+  }
+
+  const npmBin = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+  return { command: npmBin, args };
+}
 
 function run(command, args = []) {
   return new Promise((resolve, reject) => {
@@ -24,7 +37,8 @@ function run(command, args = []) {
 
 async function build() {
   console.log('🧱 Building tokens…');
-  await run(NPM_BIN, ['run', 'tokens:build']);
+  const npm = getNpmInvocation(['run', 'tokens:build']);
+  await run(npm.command, npm.args);
   console.log('✅ Tokens built into styles/');
 }
 
