@@ -6,7 +6,8 @@
   "scripts": {
     "tokens:build": "style-dictionary build --config sd.config.mjs",
     "css:build": "postcss packages/css/base.css -o packages/css/base.min.css",
-    "build": "npm run tokens:build && npm run css:build"
+    "build": "npm run tokens:build && npm run css:build",
+    "new": "node scripts/create-component.js"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.14.4",
@@ -23,4 +24,3 @@
     "htmx.org": "^1.9.12"
   }
 }
-
