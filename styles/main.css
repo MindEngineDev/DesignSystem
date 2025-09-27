@@ -244,7 +244,7 @@ input[type="text"], select, textarea { width:100%; padding:.5rem; border-radius:
 .component-item:focus { outline: 3px solid rgba(225,127,137,0.22); outline-offset: 2px; }
 
 /* Accessibility focus */
-.component-item:focus { outline: 3px solid rgba(225,127,137,0.22); outline: 3px solid color-mix(in srgb, var(--primary-500) 22%, transparent); outline-offset: 2px; }
+.component-item:focus { outline: 3px solid rgba(225,127,137,0.22); outline-offset: 2px; }
 
 
 
@@ -377,14 +377,14 @@ input[type="text"], select, textarea { width: 100%; padding: .5rem; border-radiu
 .control__label { display: block; margin-bottom: 0.25rem; font-weight: 600; }
 
 .markup-panel { grid-area: markup; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: var(--panel-radius); padding: 1rem; }
-.markup-panel__code { background: color-mix(in srgb, var(--panel-bg) 80%, var(--sl-color-gray-50)); padding: 1rem; border-radius: calc(var(--panel-radius) / 1.25); overflow: auto; max-height: 320px; }
+.markup-panel__code { background: rgba(18,23,25,0.9); padding: 1rem; border-radius: calc(var(--panel-radius) / 1.25); overflow: auto; max-height: 320px; }
 
 
 /* ------------------------------------------------------------------------ */
 /*  Utilities & small helpers
 /* ------------------------------------------------------------------------ */
 .muted { color: var(--body-muted); }
-.tag { background: color-mix(in srgb, var(--primary-500) 8%, transparent); color: var(--primary-700); padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.8rem; }
+.tag { background: rgba(225,127,137,0.08); color: var(--primary-700); padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.8rem; }
 
 /* Forms: keep appearance consistent with tokens */
 input[type="text"], select, textarea { width: 100%; padding: 0.5rem; border-radius: var(--sl-border-radius-medium); border: 1px solid var(--sl-input-border-color); background: var(--sl-input-background-color); color: var(--sl-input-color); }
@@ -620,7 +620,7 @@ input[type="text"], select, textarea {
 
 
 /* Accessibility focus */
-.component-item:focus { outline: 3px solid color-mix(in srgb, var(--primary-500) 22%, transparent); outline-offset: 2px; }
+.component-item:focus { outline: 3px solid rgba(225,127,137,0.22); outline-offset: 2px; }
 
 
   height: 100%;
