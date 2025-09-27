@@ -1,5 +1,38 @@
 /* components/shoelace/tag/tag.css */
 .sl-tag {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  font-size: var(--sl-font-size-small, 0.875rem);
+  color: var(--sl-color-neutral-900, var(--body-text));
+  background: var(--sl-color-gray-100, var(--light-200));
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--sl-border-radius-pill, 9999px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sl-tag--small {
+  font-size: 0.75rem;
+  padding: 0.08rem 0.4rem;
+}
+.sl-tag--large {
+  font-size: 1rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.sl-tag--primary {
+  background: var(--sl-color-primary-100);
+  color: var(--sl-color-primary-700);
+}
+.sl-tag--success {
+  background: var(--sl-color-success-100);
+  color: var(--sl-color-success-700);
+}
+.sl-tag--warning {
+  background: var(--sl-color-warning-100);
+  color: var(--sl-color-warning-700);
+}
+.sl-tag--danger {
+  background: var(--sl-color-danger-100);
+  color: var(--sl-color-danger-700);
 }

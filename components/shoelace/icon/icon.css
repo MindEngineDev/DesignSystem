@@ -1,5 +1,18 @@
 /* components/shoelace/icon/icon.css */
 .sl-icon {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  display: inline-block;
+  line-height: 1;
+  color: var(--sl-color-neutral-900, var(--body-text));
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+
+.sl-icon--small {
+  width: 0.75em;
+  height: 0.75em;
+}
+.sl-icon--large {
+  width: 1.5em;
+  height: 1.5em;
 }

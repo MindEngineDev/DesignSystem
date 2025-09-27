@@ -1,4 +1,7 @@
 <!-- components/shoelace/input/input.html -->
-<sl-input class="sl-input" x-data="inputComponent()" data-component="shoelace-input">
+<sl-input class="sl-input" x-data="inputComponent()" data-component="shoelace-input" aria-live="polite">
+  <slot name="icon-start" part="icon-start" aria-hidden="true"></slot>
   <slot></slot>
+  <slot name="icon-end" part="icon-end" aria-hidden="true"></slot>
+  <slot name="loading" part="loading" hidden aria-hidden="true"></slot>
 </sl-input>
