@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../vars.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+
+    <title>Manager CMS</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand"><span class="dot"></span> ManagerCMS</div>
+      <div class="actions">
+        <sl-input size="small" placeholder="Zoeken content…"></sl-input>
+      </div>
+      <div class="actions">
+        <sl-button size="small" variant="default">Preview</sl-button>
+        <sl-button size="small" variant="primary">Publiceer</sl-button>
+      </div>
+    </header>
+
+    <main class="app-main cms-shell">
+      <section>
+        <div class="toolbar">
+          <sl-button size="small" variant="primary">Nieuw</sl-button>
+          <sl-button size="small">Importeer</sl-button>
+          <sl-select size="small" value="all">
+            <sl-option value="all">Alle types</sl-option>
+            <sl-option value="page">Pages</sl-option>
+            <sl-option value="post">Posts</sl-option>
+            <sl-option value="media">Media</sl-option>
+          </sl-select>
+        </div>
+        <div class="cms-list">
+          <button class="cms-item active">Homepage — <span class="muted">/</span></button>
+          <button class="cms-item">Product — <span class="muted">/product</span></button>
+          <button class="cms-item">Blog — <span class="muted">/blog</span></button>
+          <button class="cms-item">Vacatures — <span class="muted">/jobs</span></button>
+          <button class="cms-item">Contact — <span class="muted">/contact</span></button>
+        </div>
+      </section>
+
+      <section class="card cms-editor">
+        <header class="card__header">
+          <h3>Homepage</h3>
+          <div class="actions">
+            <sl-button size="small">Opslaan</sl-button>
+            <sl-button size="small" variant="primary">Opslaan & Publiceer</sl-button>
+          </div>
+        </header>
+
+        <div class="meta">
+          <sl-input size="small" placeholder="Titel" value="Homepage"></sl-input>
+          <sl-input size="small" placeholder="Slug" value="/"></sl-input>
+          <sl-select size="small" value="published">
+            <sl-option value="draft">Draft</sl-option>
+            <sl-option value="published">Published</sl-option>
+          </sl-select>
+        </div>
+
+        <sl-textarea rows="8" resize="auto" placeholder="Content (markdown/HTML)…"></sl-textarea>
+
+        <div class="cms-preview">Preview komt hier…</div>
+      </section>
+    </main>
+  </body>
+</html>

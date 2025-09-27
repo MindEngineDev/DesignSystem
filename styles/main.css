@@ -10,7 +10,7 @@ body {
   font-size: calc(var(--text-base, 1rem) + 0px);
   color: var(--text, #1f2937);
   line-height: 1.5;
-  background: var(--body-bg, #fff);
+  background: var(--bg, #fff);
 }
 
 /* Utility classes */

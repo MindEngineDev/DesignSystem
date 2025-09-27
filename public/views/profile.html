@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../vars.css" />
+    <link rel="stylesheet" href="../theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <title>Profile</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">Profile</div>
+      <div class="spacer"></div>
+      <a href="./index.html">Terug</a>
+    </header>
+    <main>
+      <section class="card" id="tabs">
+        <header class="card__header">
+          <div class="user" style="display: flex; align-items: center; gap: 0.75rem">
+            <span class="avatar" style="width: 56px; height: 56px; font-size: 1.2rem">UH</span>
+            <div>
+              <strong>Uwe Hoogheid</strong>
+              <div class="muted">CEO</div>
+            </div>
+          </div>
+          <div class="tabs">
+            <button class="badge active" data-tab="overview">Overzicht</button>
+            <button class="badge" data-tab="activity">Activiteit</button>
+            <button class="badge" data-tab="security">Beveiliging</button>
+          </div>
+        </header>
+
+        <div data-pane="overview">
+          <dl class="kv">
+            <dt>Bedrijf</dt>
+            <dd>Mind Engine</dd>
+            <dt>Email</dt>
+            <dd>uwe@example.com</dd>
+            <dt>Tel</dt>
+            <dd>+31 6 1234 5678</dd>
+            <dt>Locatie</dt>
+            <dd>Amsterdam</dd>
+          </dl>
+        </div>
+
+        <div data-pane="activity" hidden>
+          <ul class="list">
+            <li class="list__item">Nieuwe klant aangemaakt: <strong>Acme BV</strong></li>
+            <li class="list__item">Plan geüpdatet: <strong>Scale</strong></li>
+            <li class="list__item">Twee-factor-auth geactiveerd</li>
+          </ul>
+        </div>
+
+        <div data-pane="security" hidden>
+          <p class="muted">Laatste login: 2 uur geleden · IP 192.168.0.24</p>
+          <sl-button variant="primary">Reset wachtwoord</sl-button>
+        </div>
+      </section>
+    </main>
+    <script type="module">
+      import { setupTabs } from "../scripts/main.js";
+      document.addEventListener("DOMContentLoaded", () => setupTabs("#tabs"));
+    </script>
+  </body>
+</html>

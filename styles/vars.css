@@ -112,18 +112,18 @@
 
   /* Surface styling */
   --panel-border: rgba(90, 184, 187, 0.3);
-  --panel-bg: rgba(18, 23, 25, 0.85);
+  --panel-bg: var(--dark-800);
   --panel-bg-elevated: rgba(14, 18, 20, 0.92);
   --panel-shadow: 0 28px 60px rgba(14, 18, 20, 0.65);
   --stage-surface: rgba(22, 29, 31, 0.78);
 
-  --body-bg: url("/assets/images/handshake.svg"), var(--dark-900);
-  --body-text: var(--light-100);
+  --body-bg: var(--dark-900);
+  --body-text: var(--light-300);
   --body-muted: rgba(246, 231, 219, 0.7);
 
   /* Accent colors */
-  --accent-color: var(--primary-600);
-  --accent-color-strong: var(--primary-700);
+  --accent-color: var(--primary-300);
+  --accent-color-strong: var(--primary-500);
   --accent-muted: rgba(232, 157, 164, 0.7);
   --accent-soft: rgba(246, 218, 220, 0.18);
   --accent-hover: rgba(240, 188, 193, 0.22);
@@ -131,18 +131,19 @@
   --accent-shadow-strong: 0 16px 42px rgba(225, 127, 137, 0.35);
 
   /* Secondary highlight utilities */
-  --highlight-soft: rgba(120, 197, 199, 0.18);
-  --highlight-strong: var(--secondary-800);
-  --divider-subtle: rgba(148, 163, 184, 0.35);
+  --highlight-soft: var(--secondary-300);
+  --highlight-strong: var(--secondary-500);
+  --divider-subtle: var(--primary-100);
 
   /* Control styling */
-  --control-surface: rgba(22, 29, 31, 0.85);
-  --control-border: rgba(90, 184, 187, 0.35);
-  --control-shadow: 0 0 0 3px rgba(232, 157, 164, 0.35);
-  --control-focus-border: rgba(225, 127, 137, 0.55);
+  --control-surface: var(--dark-700);
+  --control-border: var(--dark-200);
+  --control-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  --control-focus-border: var(--accent-color);
 
   /* Code panel styling */
-  --code-surface: rgba(18, 23, 25, 0.85);
+  --code-surface: var(--light-300);
+  --code-text-color: var(--dark-300);
   --code-border: rgba(24, 30, 33, 0.2);
 }
 
@@ -174,11 +175,11 @@
   --sl-font-weight-bold: 700;
 
   /* Letter spacing */
-  --sl-letter-spacing-denser: -0.03em;
-  --sl-letter-spacing-dense: -0.015em;
-  --sl-letter-spacing-normal: normal;
-  --sl-letter-spacing-loose: 0.075em;
-  --sl-letter-spacing-looser: 0.15em;
+  --sl-letter-spacing-denser: 0.5px;
+  --sl-letter-spacing-dense:  1px;
+  --sl-letter-spacing-normal: 1.5px;
+  --sl-letter-spacing-loose: 2.5px;
+  --sl-letter-spacing-looser: 5px;
 
   /* Line-height */
   --sl-line-height-denser: 1;
@@ -238,8 +239,7 @@
   --sl-focus-ring-color: var(--sl-color-primary-600);
   --sl-focus-ring-style: solid;
   --sl-focus-ring-width: 3px;
-  --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width)
-    var(--sl-focus-ring-color);
+  --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width) var(--sl-focus-ring-color);
   --sl-focus-ring-offset: 1px;
 
   /* Button / form tokens (some map to our control tokens) */

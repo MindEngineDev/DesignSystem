@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="nl" data-theme="dark">
   <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="../vars.css">
-  <link rel="stylesheet" href="../theme.css">
-  <link rel="stylesheet" href="./styles.css">
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../vars.css" />
+    <link rel="stylesheet" href="../theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
     <title>Forms</title>
   </head>
   <body>
-    <header class="header"><div class="brand">Forms</div><div class="spacer"></div><a href="./index.html">Terug</a></header>
+    <header class="header">
+      <div class="brand">Forms</div>
+      <div class="spacer"></div>
+      <a href="./index.html">Terug</a>
+    </header>
     <main class="grid-2">
       <section class="card">
         <header class="card__header"><h3>Profiel</h3></header>
@@ -57,9 +61,7 @@
           </div>
           <div>
             <label>Branche</label>
-            <sl-select>
-              <sl-option>Tech</sl-option><sl-option>Retail</sl-option><sl-option>SaaS</sl-option>
-            </sl-select>
+            <sl-select> <sl-option>Tech</sl-option><sl-option>Retail</sl-option><sl-option>SaaS</sl-option> </sl-select>
           </div>
           <div class="card__header">
             <sl-button variant="primary" id="nextStep">Volgende</sl-button>
@@ -68,10 +70,18 @@
         </div>
       </section>
     </main>
-    <script type="module">
-      let step=1;
-      const info=document.querySelector('#stepInfo');
-      document.querySelector('#nextStep').addEventListener('click',()=>{ step=Math.min(3, step+1); info.textContent=`Stap ${step}/3`; });
+    <script type="module" src="../scripts/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let step = 1;
+        const info = document.querySelector("#stepInfo");
+        const btn = document.querySelector("#nextStep");
+        if (!btn || !info) return;
+        btn.addEventListener("click", () => {
+          step = Math.min(3, step + 1);
+          info.textContent = `Stap ${step}/3`;
+        });
+      });
     </script>
   </body>
 </html>

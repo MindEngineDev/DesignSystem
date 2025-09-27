@@ -5,7 +5,11 @@ import "@shoelace-style/shoelace/dist/themes/dark.css";
 import "./styles/main.css";
 
 import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
-setBasePath("/node_modules/@shoelace-style/shoelace/dist");
+// Use CDN path for Shoelace assets in production builds so the dist/ site can
+// fetch icons and other static files without exposing node_modules.
+setBasePath(
+  "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist",
+);
 import "./components/shoelace/index.js";
 
 // Project-specific plugins
@@ -752,7 +756,23 @@ if (typeof window !== "undefined") {
       },
       /* Preview the current component in a new window */
       openPreview() {
-        const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Preview</title><link rel="stylesheet" href="/styles/main.css"></head><body>${this.rawMarkup()}</body></html>`;
+        const markup = this.rawMarkup();
+        // Collect current document styles (link[rel=stylesheet] and inline <style>)
+        const nodes = Array.from(
+          document.querySelectorAll('link[rel="stylesheet"], style'),
+        );
+        const headHtml = nodes
+          .map((node) => {
+            if (node.tagName.toLowerCase() === "link") {
+              const href = node.getAttribute("href") || "";
+              // Preserve absolute and relative hrefs
+              return `<link rel="stylesheet" href="${href}">`;
+            }
+            return `<style>${node.innerHTML}</style>`;
+          })
+          .join("\n");
+
+        const html = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Preview</title>${headHtml}</head><body>${markup}</body></html>`;
         const w = window.open("", "_blank");
         if (!w) return;
         w.document.write(html);

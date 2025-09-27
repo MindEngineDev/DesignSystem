@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../vars.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+
+    <title>Login</title>
+  </head>
+  <body>
+    <main class="app-main" style="display:grid; place-items:center; min-height:100dvh;">
+      <section class="card" style="width:min(420px, 92vw)">
+        <header class="card__header"><h3>Aanmelden</h3></header>
+        <form class="list" style="gap:.75rem">
+          <sl-input type="email" placeholder="Email"></sl-input>
+          <sl-input type="password" placeholder="Wachtwoord"></sl-input>
+          <sl-switch checked>Onthoud mij</sl-switch>
+          <sl-button variant="primary">Login</sl-button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

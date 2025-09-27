@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../vars.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+
+    <title>App Shell (Header + Footer Nav)</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand"><span class="dot"></span> AppShell</div>
+      <div></div>
+      <div class="actions">
+        <sl-input size="small" placeholder="Zoeken…"></sl-input>
+        <sl-button size="small" variant="primary">Nieuw</sl-button>
+      </div>
+    </header>
+
+    <div class="app-shell with-sidebar">
+      <aside class="side">
+        <nav class="list">
+          <a class="list__item" href="#">Dashboard</a>
+          <a class="list__item" href="#">Rapporten</a>
+          <a class="list__item" href="#">Team</a>
+          <a class="list__item" href="#">Instellingen</a>
+        </nav>
+      </aside>
+
+      <main class="app-main">
+        <section class="grid-3">
+          <article class="card"><header class="card__header"><h3>KPI 1</h3><span class="badge">+12%</span></header><div class="muted">Korte toelichting…</div></article>
+          <article class="card"><header class="card__header"><h3>KPI 2</h3><span class="badge">−2%</span></header><div class="muted">Korte toelichting…</div></article>
+          <article class="card"><header class="card__header"><h3>KPI 3</h3><span class="badge">+4%</span></header><div class="muted">Korte toelichting…</div></article>
+        </section>
+        <section class="grid-2">
+          <article class="card">
+            <header class="card__header"><h3>Overzicht</h3><sl-select size="small" value="30d"><sl-option>7d</sl-option><sl-option>30d</sl-option><sl-option>12m</sl-option></sl-select></header>
+            <div class="table-wrap">
+              <table class="table">
+                <thead><tr><th>Item</th><th>Status</th><th>Owner</th><th>Laatste update</th></tr></thead>
+                <tbody>
+                  <tr><td>Record A</td><td><span class="badge">Open</span></td><td>Jansen</td><td>gisteren</td></tr>
+                  <tr><td>Record B</td><td><span class="badge">Closed</span></td><td>De Vries</td><td>2 dgn</td></tr>
+                  <tr><td>Record C</td><td><span class="badge">Open</span></td><td>Bakker</td><td>5 dgn</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+          <article class="card">
+            <header class="card__header"><h3>Activiteit</h3><sl-button size="small" variant="text">Markeer alles</sl-button></header>
+            <ul class="list">
+              <li class="list__item">Nieuwe klant: <strong>Acme BV</strong></li>
+              <li class="list__item">Betaalmislukking bij <strong>Globex</strong></li>
+              <li class="list__item">Rapport “Q3 Insights” gedeeld</li>
+            </ul>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <nav class="footer-nav">
+      <a class="active" href="#"><span>🏠</span><span>Home</span></a>
+      <a href="#"><span>📊</span><span>Stats</span></a>
+      <a href="#"><span>🔔</span><span>Alerts</span></a>
+      <a href="#"><span>⚙️</span><span>Instellingen</span></a>
+    </nav>
+  </body>
+</html>
