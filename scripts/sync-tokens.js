@@ -4,14 +4,17 @@ import chokidar from 'chokidar';
 import { spawn } from 'child_process';
 
 const NPM_BIN = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+const NPM_EXEC_PATH = process.env.npm_execpath;
+const NODE_BIN = process.execPath;
 
 const TOKENS_GLOB = 'tokens/**/*.json';
 const SD_CONFIG = 'config/sd.config.mjs';
 
-function run(command, args = []) {
+function run(command, args = [], options = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, { stdio: 'inherit' });
+    const child = spawn(command, args, { stdio: 'inherit', ...options });
 
+    child.on('error', reject);
     child.on('close', (code) => {
       if (code === 0) {
         resolve();
@@ -24,7 +27,11 @@ function run(command, args = []) {
 
 async function build() {
   console.log('🧱 Building tokens…');
-  await run(NPM_BIN, ['run', 'tokens:build']);
+  if (NPM_EXEC_PATH) {
+    await run(NODE_BIN, [NPM_EXEC_PATH, 'run', 'tokens:build']);
+  } else {
+    await run(NPM_BIN, ['run', 'tokens:build'], { shell: process.platform === 'win32' });
+  }
   console.log('✅ Tokens built into styles/');
 }
 
