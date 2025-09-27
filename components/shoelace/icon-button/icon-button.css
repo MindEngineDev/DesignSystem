@@ -1,0 +1,5 @@
+/* components/shoelace/icon-button/icon-button.css */
+.sl-icon-button {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

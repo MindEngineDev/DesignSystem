@@ -1,5 +1,5 @@
 export default {
-  source: ['tokens/tokens.json'],
+  source: ['tokens/tokens.json', 'tokens/themes.json'],
   platforms: {
     css: {
       transformGroup: 'css',
@@ -20,8 +20,8 @@ export default {
             selector: ':root[data-theme="dark"]',
             outputReferences: true
           },
-          filter: function(token) {
-            return token.path && token.path.includes('modes') && token.path.includes('dark');
+          filter(token) {
+            return token.path.includes('modes') ? token.path.includes('dark') : false;
           }
         }
       ]

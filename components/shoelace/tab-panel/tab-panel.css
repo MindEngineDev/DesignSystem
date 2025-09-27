@@ -1,0 +1,5 @@
+/* components/shoelace/tab-panel/tab-panel.css */
+.sl-tab-panel {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

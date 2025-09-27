@@ -1,0 +1,5 @@
+/* components/shoelace/tab-group/tab-group.css */
+.sl-tab-group {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

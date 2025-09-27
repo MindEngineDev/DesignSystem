@@ -1,0 +1,5 @@
+/* components/shoelace/menu-label/menu-label.css */
+.sl-menu-label {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

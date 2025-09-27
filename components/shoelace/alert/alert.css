@@ -1,0 +1,5 @@
+/* components/shoelace/alert/alert.css */
+.sl-alert {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

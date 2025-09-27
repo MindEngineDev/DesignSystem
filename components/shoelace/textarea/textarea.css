@@ -1,0 +1,5 @@
+/* components/shoelace/textarea/textarea.css */
+.sl-textarea {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

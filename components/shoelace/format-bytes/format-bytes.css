@@ -1,0 +1,5 @@
+/* components/shoelace/format-bytes/format-bytes.css */
+.sl-format-bytes {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}
