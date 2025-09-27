@@ -2,14 +2,12 @@
 import Alpine from "alpinejs";
 import "@picocss/pico/css/pico.min.css";
 import "@shoelace-style/shoelace/dist/themes/dark.css";
-import "./styles/main.css";
+import "./main.css";
 
 import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
 // Use CDN path for Shoelace assets in production builds so the dist/ site can
 // fetch icons and other static files without exposing node_modules.
-setBasePath(
-  "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist",
-);
+setBasePath("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist");
 import "./components/shoelace/index.js";
 
 // Project-specific plugins
@@ -22,10 +20,7 @@ function applyTheme(theme = DEFAULT_THEME) {
   if (typeof document === "undefined") return;
   const nextTheme = theme === "dark" ? "dark" : DEFAULT_THEME;
   document.documentElement.setAttribute("data-theme", nextTheme);
-  document.documentElement.classList.toggle(
-    "sl-theme-dark",
-    nextTheme === "dark",
-  );
+  document.documentElement.classList.toggle("sl-theme-dark", nextTheme === "dark");
 }
 
 function escapeHtml(value) {
@@ -52,8 +47,7 @@ function formatMarkup(markup) {
   let depth = 0;
   const formatted = lines.map((line) => {
     const isClosing = /^<\//.test(line);
-    const isSelfClosing =
-      /\/>$/.test(line) || (line.includes("</") && !line.startsWith("</"));
+    const isSelfClosing = /\/>$/.test(line) || (line.includes("</") && !line.startsWith("</"));
     if (isClosing) {
       depth = Math.max(depth - 1, 0);
     }
@@ -183,16 +177,12 @@ ${openTag}
     render(state) {
       const attr = joinAttributes([
         `label="${escapeHtml(state.label)}"`,
-        state.placeholder
-          ? `placeholder="${escapeHtml(state.placeholder)}"`
-          : "",
+        state.placeholder ? `placeholder="${escapeHtml(state.placeholder)}"` : "",
         state.size !== "medium" ? `size="${state.size}"` : "",
         state.clearable ? "clearable" : "",
         state.disabled ? "disabled" : "",
       ]);
-      const openTag = attr
-        ? `<sl-input ${attr}></sl-input>`
-        : "<sl-input></sl-input>";
+      const openTag = attr ? `<sl-input ${attr}></sl-input>` : "<sl-input></sl-input>";
       return openTag;
     },
   },
@@ -245,11 +235,7 @@ ${openTag}
       { id: "closable", type: "boolean", label: "Closable", default: true },
     ],
     render(state) {
-      const attr = joinAttributes([
-        `variant="${state.variant}"`,
-        state.open ? "open" : "",
-        state.closable ? "closable" : "",
-      ]);
+      const attr = joinAttributes([`variant="${state.variant}"`, state.open ? "open" : "", state.closable ? "closable" : ""]);
       const openTag = attr ? `<sl-alert ${attr}>` : "<sl-alert>";
       const body = [];
       if (state.showIcon) {
@@ -296,14 +282,8 @@ ${openTag}
     ],
     render(state) {
       const value = clamp(state.value, 0, 100);
-      const attr = joinAttributes([
-        state.indeterminate ? "indeterminate" : `value="${value}"`,
-        state.label ? `label="${escapeHtml(state.label)}"` : "",
-        state.striped ? "striped" : "",
-      ]);
-      const openTag = attr
-        ? `<sl-progress-bar ${attr}></sl-progress-bar>`
-        : "<sl-progress-bar></sl-progress-bar>";
+      const attr = joinAttributes([state.indeterminate ? "indeterminate" : `value="${value}"`, state.label ? `label="${escapeHtml(state.label)}"` : "", state.striped ? "striped" : ""]);
+      const openTag = attr ? `<sl-progress-bar ${attr}></sl-progress-bar>` : "<sl-progress-bar></sl-progress-bar>";
       return openTag;
     },
   },
@@ -336,11 +316,7 @@ ${openTag}
       { id: "disabled", type: "boolean", label: "Disabled", default: false },
     ],
     render(state) {
-      const attr = joinAttributes([
-        state.size !== "medium" ? `size="${state.size}"` : "",
-        state.checked ? "checked" : "",
-        state.disabled ? "disabled" : "",
-      ]);
+      const attr = joinAttributes([state.size !== "medium" ? `size="${state.size}"` : "", state.checked ? "checked" : "", state.disabled ? "disabled" : ""]);
       const openTag = attr ? `<sl-switch ${attr}>` : "<sl-switch>";
       return `${openTag}${escapeHtml(state.label || "Enable notifications")}</sl-switch>`;
     },
@@ -383,9 +359,7 @@ ${openTag}
     render(state) {
       const attr = joinAttributes([
         `label="${escapeHtml(state.label)}"`,
-        state.placeholder
-          ? `placeholder="${escapeHtml(state.placeholder)}"`
-          : "",
+        state.placeholder ? `placeholder="${escapeHtml(state.placeholder)}"` : "",
         state.size !== "medium" ? `size="${state.size}"` : "",
         state.clearable ? "clearable" : "",
         state.multiple ? "multiple" : "",
@@ -473,14 +447,8 @@ ${openTag}
       { id: "disabled", type: "boolean", label: "Disabled", default: false },
     ],
     render(state) {
-      const groupAttr = joinAttributes([
-        `label="${escapeHtml(state.label)}"`,
-        'value="production"',
-      ]);
-      const radioAttr = joinAttributes([
-        state.size !== "medium" ? `size="${state.size}"` : "",
-        state.disabled ? "disabled" : "",
-      ]);
+      const groupAttr = joinAttributes([`label="${escapeHtml(state.label)}"`, 'value="production"']);
+      const radioAttr = joinAttributes([state.size !== "medium" ? `size="${state.size}"` : "", state.disabled ? "disabled" : ""]);
       const radioTag = radioAttr ? `<sl-radio ${radioAttr}` : "<sl-radio";
       return `<sl-radio-group ${groupAttr}>
   ${radioTag} value="development">Development</sl-radio>
@@ -507,8 +475,7 @@ ${openTag}
         id: "content",
         type: "text",
         label: "Content",
-        default:
-          "Configure your project deployment options and environment variables.",
+        default: "Configure your project deployment options and environment variables.",
       },
       {
         id: "showFooter",
@@ -530,10 +497,7 @@ ${openTag}
       },
     ],
     render(state) {
-      const cardClass =
-        state.shadowDepth !== "medium"
-          ? ` class="card-${state.shadowDepth}"`
-          : "";
+      const cardClass = state.shadowDepth !== "medium" ? ` class="card-${state.shadowDepth}"` : "";
       let content = `<sl-card${cardClass}>`;
       if (state.header) {
         content += `\n  <div slot="header">${escapeHtml(state.header)}</div>`;
@@ -585,11 +549,7 @@ ${openTag}
       },
     ],
     render(state) {
-      const attr = joinAttributes([
-        `variant="${state.variant}"`,
-        state.pill ? "pill" : "",
-        state.pulse ? "pulse" : "",
-      ]);
+      const attr = joinAttributes([`variant="${state.variant}"`, state.pill ? "pill" : "", state.pulse ? "pulse" : ""]);
       const openTag = attr ? `<sl-badge ${attr}>` : "<sl-badge>";
       return `${openTag}${escapeHtml(state.content || "12")}</sl-badge>`;
     },
@@ -638,9 +598,7 @@ ${openTag}
     render(state) {
       const attr = joinAttributes([
         `label="${escapeHtml(state.label)}"`,
-        state.placeholder
-          ? `placeholder="${escapeHtml(state.placeholder)}"`
-          : "",
+        state.placeholder ? `placeholder="${escapeHtml(state.placeholder)}"` : "",
         `rows="${state.rows}"`,
         state.resize !== "vertical" ? `resize="${state.resize}"` : "",
         state.disabled ? "disabled" : "",
@@ -668,10 +626,7 @@ ${openTag}
       },
     ],
     render(state) {
-      const attr =
-        state.size !== "medium"
-          ? ` style="font-size: ${state.size === "small" ? "1rem" : state.size === "large" ? "3rem" : "2rem"}"`
-          : "";
+      const attr = state.size !== "medium" ? ` style="font-size: ${state.size === "small" ? "1rem" : state.size === "large" ? "3rem" : "2rem"}"` : "";
       return `<sl-spinner${attr}></sl-spinner>`;
     },
   },
@@ -688,8 +643,7 @@ if (typeof window !== "undefined") {
         try {
           const params = new URLSearchParams(window.location.search);
           const fromQuery = params.get("component");
-          if (fromQuery && componentLibrary.some((c) => c.id === fromQuery))
-            return fromQuery;
+          if (fromQuery && componentLibrary.some((c) => c.id === fromQuery)) return fromQuery;
         } catch (e) {
           // ignore in non-browser contexts
         }
@@ -699,13 +653,10 @@ if (typeof window !== "undefined") {
       controlValues: {},
       init() {
         this.components.forEach((component) => {
-          this.controlValues[component.id] = component.controls.reduce(
-            (acc, control) => {
-              acc[control.id] = control.default;
-              return acc;
-            },
-            {},
-          );
+          this.controlValues[component.id] = component.controls.reduce((acc, control) => {
+            acc[control.id] = control.default;
+            return acc;
+          }, {});
         });
       },
       toggleDashboard() {
@@ -715,11 +666,7 @@ if (typeof window !== "undefined") {
         this.activeId = id;
       },
       activeComponent() {
-        return (
-          this.components.find((component) => component.id === this.activeId) ??
-          this.components[0] ??
-          null
-        );
+        return this.components.find((component) => component.id === this.activeId) ?? this.components[0] ?? null;
       },
       activeControls() {
         return this.activeComponent()?.controls ?? [];
@@ -758,9 +705,7 @@ if (typeof window !== "undefined") {
       openPreview() {
         const markup = this.rawMarkup();
         // Collect current document styles (link[rel=stylesheet] and inline <style>)
-        const nodes = Array.from(
-          document.querySelectorAll('link[rel="stylesheet"], style'),
-        );
+        const nodes = Array.from(document.querySelectorAll('link[rel="stylesheet"], style'));
         const headHtml = nodes
           .map((node) => {
             if (node.tagName.toLowerCase() === "link") {
@@ -823,11 +768,7 @@ if (typeof window !== "undefined") {
           const presets = this.loadPresets();
           const p = presets[Number(index)];
           if (!p) return;
-          this.controlValues[this.activeId] = Object.assign(
-            {},
-            this.controlValues[this.activeId],
-            p.values,
-          );
+          this.controlValues[this.activeId] = Object.assign({}, this.controlValues[this.activeId], p.values);
         } catch (e) {
           console.warn("applyPreset failed", e);
         }
