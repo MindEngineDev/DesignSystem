@@ -1,5 +1,20 @@
 /* components/shoelace/menu-item/menu-item.css */
 .sl-menu-item {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-foreground, var(--body-text, #1f2937));
+}
+
+.sl-menu-item::part(base) {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--sl-border-radius-small, 4px);
+  transition: background-color var(--sl-transition-duration, 180ms) ease;
+}
+
+.sl-menu-item::part(base):hover {
+  background: var(--sl-menu-item-hover-bg, rgba(0, 0, 0, 0.04));
+}
+
+.sl-menu-item[disabled]::part(base) {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

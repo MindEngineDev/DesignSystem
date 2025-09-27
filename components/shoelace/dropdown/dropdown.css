@@ -1,5 +1,14 @@
 /* components/shoelace/dropdown/dropdown.css */
 .sl-dropdown {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-foreground, var(--body-text, #1f2937));
+}
+
+.sl-dropdown::part(panel) {
+  background: var(--sl-panel-background-color, var(--panel-bg, #fff));
+  border: 1px solid
+    var(--sl-panel-border, var(--panel-border, rgba(0, 0, 0, 0.06)));
+  border-radius: var(--sl-border-radius-small, 6px);
+  box-shadow: var(--sl-shadow-medium, 0 6px 18px rgba(2, 6, 23, 0.08));
+  padding: 0.25rem;
 }
