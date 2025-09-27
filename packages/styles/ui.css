@@ -1,0 +1,31 @@
+/* Basic Button Component */
+.sl-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--sl-color-primary-600);
+  border-radius: var(--sl-border-radius-medium);
+  background-color: var(--sl-color-primary-600);
+  color: var(--sl-color-neutral-0);
+  font-family: var(--sl-font-sans);
+  font-size: var(--sl-button-font-size-medium);
+  font-weight: var(--sl-font-weight-semibold);
+  padding: var(--sl-spacing-small) var(--sl-spacing-medium);
+  cursor: pointer;
+  transition: background-color var(--sl-transition-fast), border-color var(--sl-transition-fast);
+}
+
+.sl-button:hover {
+  background-color: var(--sl-color-primary-700);
+  border-color: var(--sl-color-primary-700);
+}
+
+.sl-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 var(--sl-focus-ring-offset) var(--sl-focus-ring-color), 0 0 0 calc(var(--sl-focus-ring-width) + var(--sl-focus-ring-offset)) var(--sl-focus-ring-color);
+}
+
+.sl-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
