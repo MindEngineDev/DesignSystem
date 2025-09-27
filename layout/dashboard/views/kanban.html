@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../vars.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <title>Kanban</title>
+  </head>
+  <body>
+    <header class="header"><div class="brand">Kanban</div><div class="spacer"></div><a href="./index.html">Terug</a></header>
+    <main class="card">
+      <div class="grid-3" id="board">
+        <section class='card' data-col='todo'><header class='card__header'><strong>To do</strong></header><div class='col'></div></section>
+        <section class='card' data-col='doing'><header class='card__header'><strong>Bezig</strong></header><div class='col'></div></section>
+        <section class='card' data-col='done'><header class='card__header'><strong>Klaar</strong></header><div class='col'></div></section>
+      </div>
+    </main>
+    <script type="module">
+      const cols = [...document.querySelectorAll('.col')];
+      const cards = ['Dashboard layout','API integratie','Pricing test','Onboarding','Dark mode'];
+      cards.forEach((t,i)=>{
+        const el = document.createElement('div');
+        el.className='list__item'; el.draggable=true; el.tabIndex=0; el.textContent=t;
+        cols[i%3].appendChild(el);
+      });
+      let dragEl=null;
+      document.addEventListener('dragstart', e=> dragEl = e.target.closest('.list__item'));
+      document.addEventListener('dragover', e=>{
+        const col = e.target.closest('.col'); if(!col) return; e.preventDefault();
+      });
+      document.addEventListener('drop', e=>{
+        const col = e.target.closest('.col'); if(!col || !dragEl) return;
+        col.appendChild(dragEl); dragEl=null;
+      });
+    </script>
+  </body>
+</html>

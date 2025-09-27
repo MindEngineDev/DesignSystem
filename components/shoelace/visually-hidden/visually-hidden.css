@@ -1,0 +1,5 @@
+/* components/shoelace/visually-hidden/visually-hidden.css */
+.sl-visually-hidden {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

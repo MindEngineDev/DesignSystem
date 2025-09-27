@@ -1,0 +1,372 @@
+@font-face {
+  font-family: "Signal";
+  src: url("/assets/webfonts/Signal-Normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Signal";
+  src: url("/assets/webfonts/Signal-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Signal";
+  src: url("/assets/webfonts/Signal-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Signal";
+  src: url("/assets/webfonts/Signal-ExtraBold.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Signal";
+  src: url("/assets/webfonts/Signal-Heavy.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lorin";
+  src: url("/assets/webfonts/Lorin-Regular.woff2") format("woff2"),
+    url("/assets/webfonts/Lorin-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lorin";
+  src: url("/assets/webfonts/Lorin-Bold.woff2") format("woff2"),
+    url("/assets/webfonts/Lorin-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lorin";
+  src: url("/assets/webfonts/Lorin-Light.woff2") format("woff2"),
+    url("/assets/webfonts/Lorin-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lorin";
+  src: url("/assets/webfonts/Lorin-ExtraBold.woff2") format("woff2"),
+    url("/assets/webfonts/Lorin-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Design Tokens Root */
+
+:root {
+  /* Color Variables */
+  --primary-100: #ff9fa0;
+  --primary-200: #e87387;
+  --primary-300: #cc6174;
+  --primary-400: #b75667;
+  --primary-500: #ab4d5e;
+  --secondary-100: #95e5e8;
+  --secondary-200: #71cfd1;
+  --secondary-300: #5ab8bb;
+  --secondary-400: #4e9fa1;
+  --secondary-500: #3c7374;
+  --light-100: #f8f2ed;
+  --light-200: #f3e8de;
+  --light-300: #f4e3d5;
+  --light-400: #e9d5c6;
+  --light-500: #dfc7b6;
+  --light-600: #ffdec5;
+  --light-700: #f1ccae;
+  --light-800: #f4c29b;
+  --light-900: #e6b996;
+  --dark-100: #5b6b6f;
+  --dark-200: #3f4c50;
+  --dark-300: #354349;
+  --dark-400: #263236;
+  --dark-500: #202a2d;
+  --dark-600: #1f292c;
+  --dark-700: #1a2124;
+  --dark-800: #191f21;
+  --dark-900: #101517;
+  --dark-1000: #090c0c;
+  --success-100: #c2e8b8;
+  --success-200: #a6da99;
+  --success-300: #84ca73;
+  --success-400: #6fa262;
+  --success-500: #62815a;
+  --error-100: #f17d7b;
+  --error-200: #e66d6a;
+  --error-300: #d64644;
+  --error-400: #b43634;
+  --error-500: #861816;
+  --warning-100: #f68b55;
+  --warning-200: #f37e43;
+  --warning-300: #f86b24;
+  --warning-400: #d05e25;
+  --warning-500: #ba4d16;
+  --info-100: #92e7ff;
+  --info-200: #79cae0;
+  --info-300: #4ca1b8;
+  --info-400: #3c8aa0;
+  --info-500: #2d6d7f; 
+
+/* Gradient Variables */
+  --primary-gradient: linear-gradient(90deg, #ea6c6e 0%, #cf445b 100%);
+  --secondary-gradient: linear-gradient(90deg, #95e5e8 0%, #3c7374 100%);
+  --light-gradient: linear-gradient(90deg, #f8f2ed 0%, #f8e6d7 100%);
+  --gray-gradient: linear-gradient(90deg, #354349 0%, #263236 100%);
+  --dark-gradient: linear-gradient(90deg, #101517 0%, #1a2124 100%);
+
+  /* Radius */
+  --radius-hard: 1px;
+  --radius-sharp: 3px;
+  --radius-base: 5px;
+  --radius-soft: 12px;
+  --radius-rounded: 20px;
+  --radius-round: 9999px; 
+
+/* Shadows */
+  --elevation-2xs: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  --elevation-xs: 2px 2px 6px rgba(0, 0, 0, 0.543);
+  --elevation-sm: 4px 4px 12px rgba(0, 0, 0, 0.633);
+  --elevation-md: 8px 8px 24px rgba(0, 0, 0, 0.581);
+  --elevation-lg: 12px 12px 36px rgba(0, 0, 0, 0.528);
+  --elevation-xl: 35px 35px 65px rgba(0, 0, 0, 0.556);
+  --elevation-2xl: 50px 50px 100px rgba(0, 0, 0, 0.6); 
+
+/* Letter Spacing */
+  --letter-space-xs: 0.5px;
+  --letter-space-sm: 1px;
+  --letter-space-md: 2px;
+  --letter-space-lg: 3px;
+  --letter-space-xl: 5px; 
+
+/* Line Heights */
+  --line-height-xs: 1.2;
+  --line-height-sm: 1.4;
+  --line-height-md: 1.6;
+  --line-height-lg: 1.8;
+  --line-height-xl: 2; 
+
+/* Spacing */
+/* Legacy fluid spacing (reduced to fixed for consistency; keep variables to avoid breakage) */
+  --space-xxs: 0.25rem; /* 4px */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 0.75rem;  /* 12px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2rem;     /* 32px */
+  --space-xxl: 3rem;    /* 48px */
+
+  --gap-xs: var(--space-xs);
+  --gap-sm: var(--space-sm);
+  --gap-md: var(--space-md);
+  --gap-lg: var(--space-lg);
+  --gap-xl: var(--space-xl);
+
+  /* Stable (non-fluid) spacing scale for consistent internal rhythm */
+  /* Using a 4px base with selective skips for clarity */
+  --space-0: 0;
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem;  /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem;    /* 16px */
+  --space-5: 1.5rem;  /* 24px */
+  --space-6: 2rem;    /* 32px */
+  --space-7: 2.5rem;  /* 40px */
+  --space-8: 3rem;    /* 48px */
+  --space-9: 4rem;    /* 64px */
+
+  /* Alias layer (semantic to numeric) – keeps existing names functional while allowing opt‑in migration */
+  --space-inline-sm: var(--space-3);
+  --space-inline-md: var(--space-4);
+  --space-inline-lg: var(--space-5);
+  --space-stack-xs: var(--space-2);
+  --space-stack-sm: var(--space-3);
+  --space-stack-md: var(--space-5);
+  --space-stack-lg: var(--space-7);
+  --space-stack-xl: var(--space-8);
+
+  /* Default vertical flow spacing (used by upcoming .flow utility) */
+  --flow-space: var(--space-5);
+  --size-2xs: clamp(8px, 12px, 16px);
+  --size-xs: clamp(12px, 16px, 24px);
+  --size-sm: clamp(16px, 24px, 32px);
+  --size-md: clamp(24px, 32px, 40px);
+  --size-lg: clamp(32px, 40px, 48px);
+  --size-xl: clamp(48px, 56px, 64px);
+  --size-2xl: clamp(64px, 72px, 80px);
+ 
+  /* Font Sizes body */
+  --fs-body: var(--font-size-md);
+  --fw-body: var(--font-weight-regular);
+  --ls-body: var(--letter-space-xs);
+  --lh-body: var(--line-height-md);
+  --fs-icon: var(--font-size-sm);
+  --body-font: "Lorin", sans-serif;
+
+  /* Headings font vars */
+  --ff-heading: "Signal", sans-serif;
+  --ff-h1: var(--ff-heading);
+  --ff-h2: var(--ff-heading);
+  --ff-h3: var(--ff-heading);
+  --ff-h4: var(--ff-heading);
+  --ff-h5: var(--body-font);
+  --ff-h6: var(--body-font);
+  --ff-body: var(--body-font);
+
+  /* Heading Sizes, Weights, Spacing, Line Heights */
+  --fs-h1: var(--font-size-6xl);
+  --fs-h2: var(--font-size-5xl);
+  --fs-h3: var(--font-size-4xl);
+  --fs-h4: var(--font-size-3xl);
+  --fs-h5: var(--font-size-2xl);
+  --fs-h6: var(--font-size-xl);
+
+  --fw-h1: var(--font-weight-regular);
+  --fw-h2: var(--font-weight-regular);
+  --fw-h3: var(--font-weight-medium);
+  --fw-h4: var(--font-weight-medium);
+  --fw-h5: var(--font-weight-semi-bold);
+  --fw-h6: var(--font-weight-bold);
+
+  --ls-h1: var(--letter-space-xl);
+  --ls-h2: var(--letter-space-lg);
+  --ls-h3: var(--letter-space-sm);
+  --ls-h4: var(--letter-space-sm);
+  --ls-h5: var(--letter-space-xs);
+  --ls-h6: var(--letter-space-xs);
+
+  --lh-h1: var(--line-height-lg);
+  --lh-h2: var(--line-height-lg);
+  --lh-h3: var(--line-height-lg);
+  --lh-h4: var(--line-height-md);
+  --lh-h5: var(--line-height-md);
+  --lh-h6: var(--line-height-sm);
+
+
+
+  /* Adjusted heading scale (larger for hierarchy) */
+  --font-size-6xl: clamp(2.75rem, 5.5vw, 3.75rem);
+  --font-size-5xl: clamp(2.25rem, 4.5vw, 3rem);
+  --font-size-4xl: clamp(1.9rem, 3.8vw, 2.25rem);
+  --font-size-3xl: clamp(1.6rem, 3.2vw, 1.9rem);
+  --font-size-2xl: clamp(1.35rem, 2.6vw, 1.6rem);
+  --font-size-xl: clamp(1.125rem, 2vw, 1.4rem);
+  --font-size-lg: clamp(1rem, 1.5vw, 1.125rem);
+  --font-size-md: clamp(0.9375rem, 1.25vw, 1rem);
+  --font-size-sm: clamp(0.875rem, 1vw, 0.9375rem);
+  --font-size-xs: clamp(0.75rem, 0.75vw, 0.875rem);
+  --font-size-xxs: clamp(0.625rem, 0.5vw, 0.75rem);
+
+  /* Extended display scale */
+  --font-size-7xl: clamp(3.25rem, 6.5vw, 4.5rem);
+  --font-size-8xl: clamp(3.75rem, 7.5vw, 5.25rem);
+
+  /* Font Weights */
+  --font-weight-thin: 100;
+  --font-weight-extra-light: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+
+  --fw-thin: var(--font-weight-thin);
+  --fw-extra-light: var(--font-weight-extra-light);
+  --fw-light: var(--font-weight-light);
+  --fw-regular: var(--font-weight-regular);
+  --fw-medium: var(--font-weight-medium);
+  --fw-semi-bold: var(--font-weight-semi-bold);
+  --fw-bold: var(--font-weight-bold);
+  --fw-extra-bold: var(--font-weight-extra-bold);
+  --fw-black: var(--font-weight-black);
+
+
+  /* Heading Colors */
+  --col-h1: var(--primary-200);
+  --col-h2: var(--primary-300);
+  --col-h3: var(--primary-400);
+  --col-h4: var(--light-600);
+  --col-h5: var(--light-700);
+  --col-h6: var(--light-800);
+
+  /* Navbar Colors */
+  --col-nav-bg: var(--dark-800);
+  --col-nav-border: none;
+  --col-nav-link: var(--light-500);
+  --col-nav-link-hover: var(--primary-200);
+  --col-nav-link-active: var(--primary-300);
+  --col-nav-icon: var(--light-500);
+  --col-nav-icon-hover: var(--primary-200);
+  --col-nav-toggle-bg: transparent;
+  --col-nav-toggle-color: var(--light-100);
+  --col-nav-dropdown-bg: var(--dark-700);
+  --col-nav-dropdown-border: var(--dark-600);
+}
+
+/* =====================================
+   Semantic Alias Tokens (Theme Layer)
+   ===================================== */
+:root {
+  /* Surfaces */
+  --surface-base: var(--dark-800);
+  --surface-alt: var(--dark-600);
+  --surface-elevated: var(--dark-700);
+  --surface-overlay: rgba(16,21,23,0.72);
+  --surface-card: var(--dark-500);
+
+  /* Borders */
+  --border-color: var(--dark-400);
+  --border-color-alt: var(--dark-200);
+  --border-color-focus: var(--primary-300);
+
+  /* Text */
+  --text-base: var(--light-200);
+  --text-muted: var(--dark-300);
+  --text-inverse: var(--dark-900);
+  --text-accent: var(--primary-200);
+
+  /* Focus / States */
+  --focus-ring: 0 0 0 3px rgba(204,97,116,0.35);
+  --state-success-bg: var(--success-300);
+  --state-warning-bg: var(--warning-300);
+  --state-error-bg: var(--error-300);
+  --state-info-bg: var(--info-300);
+
+  /* Buttons (semantic mapping) */
+  --btn-primary-bg: var(--primary-gradient);
+  --btn-primary-text: var(--light-100);
+  --btn-secondary-bg: var(--secondary-gradient);
+  --btn-secondary-text: var(--dark-500);
+  --btn-dark-bg: var(--dark-gradient);
+  --btn-dark-text: var(--light-500);
+  --btn-light-bg: var(--light-gradient);
+  --btn-light-text: var(--primary-300);
+  --btn-gray-bg: var(--gray-gradient);
+  --btn-gray-text: var(--primary-200);
+  --btn-outline-border: var(--primary-300);
+  --btn-outline-text: var(--primary-200);
+  --btn-hover-filter: brightness(1.08);
+
+  --background-image-body: url('/assets/images/background/bg-body-2.svg');
+  --background-image-navbar: url('/assets/images/background/bg-navbar.svg');
+  --background-image-card: url('/assets/images/background/bg-card.svg');
+  --background-image-primary-button: url('/assets/images/background/bg-btn-primary.svg');
+  --background-image-secondary-button: url('/assets/images/background/bg-btn-secondary.svg');
+  --background-image-dark-button: url('/assets/images/background/bg-btn-dark.svg');
+  --background-image-light-button: url('/assets/images/background/bg-btn-light.svg');
+  --background-image-gray-button: url('/assets/images/background/bg-btn-gray.svg');
+}

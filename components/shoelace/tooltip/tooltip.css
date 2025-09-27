@@ -1,0 +1,22 @@
+/* components/shoelace/tooltip/tooltip.css */
+.sl-tooltip {
+  font-family: var(
+    --sl-tooltip-font-family,
+    var(--sl-font-sans, Inter, system-ui, sans-serif)
+  );
+  font-size: var(--sl-tooltip-font-size, var(--text-small));
+  color: var(--sl-tooltip-color, var(--body-text));
+  background: var(--sl-tooltip-background-color, rgba(14, 18, 20, 0.92));
+  padding: var(--sl-tooltip-padding, 0.25rem 0.5rem);
+  border-radius: var(--sl-tooltip-border-radius, var(--panel-radius));
+  box-shadow: var(--sl-shadow-small);
+}
+
+.sl-tooltip--small {
+  font-size: calc(var(--sl-tooltip-font-size) * 0.9);
+  padding: 0.125rem 0.35rem;
+}
+.sl-tooltip--large {
+  font-size: calc(var(--sl-tooltip-font-size) * 1.1);
+  padding: 0.35rem 0.6rem;
+}

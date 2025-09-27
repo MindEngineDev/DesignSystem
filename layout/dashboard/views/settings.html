@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../vars.css">
+  <link rel="stylesheet" href="../theme.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <title>Settings</title>
+  </head>
+  <body>
+    <header class="header"><div class="brand">Settings</div><div class="spacer"></div><a href="./index.html">Terug</a></header>
+    <main class="grid-2">
+      <section class="card">
+        <header class="card__header"><h3>Voorkeuren</h3></header>
+        <form class="form">
+          <div>
+            <label>Taal</label>
+            <sl-select value="nl"><sl-option value="nl">Nederlands</sl-option><sl-option value="en">English</sl-option></sl-select>
+          </div>
+          <div>
+            <label>Notificaties</label>
+            <sl-switch checked>Pushmeldingen</sl-switch>
+          </div>
+          <div>
+            <label>Datumformaat</label>
+            <sl-select value="nl-NL"><sl-option value="nl-NL">nl-NL</sl-option><sl-option value="en-GB">en-GB</sl-option></sl-select>
+          </div>
+          <div class="card__header">
+            <sl-button variant="primary">Opslaan</sl-button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <header class="card__header"><h3>Danger zone</h3></header>
+        <p class="muted">Acties hieronder zijn permanent.</p>
+        <sl-button variant="danger">Verwijder account</sl-button>
+      </section>
+    </main>
+  </body>
+</html>

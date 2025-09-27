@@ -1,0 +1,778 @@
+/* ==========================================================================
+   INPUT ATOM — BASE (FlexJobs2go tokens)
+   ========================================================================== */
+
+/* 1) Design tokens (input*) */
+:root {
+  /* Sizing */
+  --input-height: clamp(44px, 48px, 56px);
+  --input-padding-y: clamp(0.5rem, 0.75rem, 1rem);
+  --input-padding-x: clamp(0.75rem, 1.25rem, 1.75rem);
+  --input-gap: clamp(0.5rem, 0.75rem, 1rem);
+  --input-radius: var(--radius-base, 5px);
+  --input-border-width: 1px;
+  --input-border: var(--dark-300, #3a3a44);
+
+  /* Typography */
+  --input-font-family: var(
+    --ff-base,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Arial,
+    sans-serif
+  );
+  --input-font-size: var(--fs-base, 1rem);
+  --input-line-height: 1.4;
+  --label-font-size: var(--fs-lg, 1.125rem);
+  --label-font-weight: var(--fw-semi-bold, 600);
+  --help-font-size: calc(var(--fs-sm, 0.9rem) - 0.05rem);
+
+  /* Colors (dark + fallbacks) */
+  --input-bg: var(--dark-600, #1f1f24);
+  --input-bg-hover: var(--dark-700, #26262c);
+  --input-bg-focus: var(--dark-700, #26262c);
+  --input-bg-disabled: var(--dark-900, #17171a);
+
+  --input-color: var(--light-100, #f6f6f9);
+  --input-placeholder: var(--dark-100, #6e6e77);
+
+  --input-border: var(--dark-300, #3a3a44);
+  --input-border-hover: var(--primary-300, #2aa5ff);
+  --input-border-focus: var(--primary-400, #1f9fff);
+  --input-border-disabled: var(--dark-700, #2a2a33);
+
+  --input-valid: var(--success-400, #2ecc71);
+  --input-invalid: var(--danger-400, #ff5b6e);
+  --input-warning: var(--warning-400, #ffb347);
+
+  /* Effects */
+  --input-shadow-focus: 0 0 0 3px color-mix(in srgb, var(--input-border-focus) 25%, transparent);
+  --input-shadow-invalid: 0 0 0 3px color-mix(in srgb, var(--input-invalid) 25%, transparent);
+  --input-shadow-valid: 0 0 0 3px color-mix(in srgb, var(--input-valid) 25%, transparent);
+
+  /* Icons / adornments */
+  --input-icon-size: var(--input-font-size);
+  --input-icon-color: var(--input-placeholder);
+  --input-adornment-gap: var(--space-2, 0.5rem);
+  --input-left-pad: 2.25rem; /* ruimte voor left icon */
+  --input-right-pad: 2.25rem; /* ruimte voor right icon */
+
+  /* Transitions */
+  --input-transition: 140ms ease;
+}
+
+
+.input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--ff-base);
+  font-size: var(--fs-base);
+  line-height: 1.4;
+  color: var(--light-100);
+  background: var(--dark-800);
+  border: 1px solid var(--dark-400);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* 2) Field wrappers */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--input-gap);
+  width: 100%;
+}
+.form-row {
+  display: grid;
+  gap: calc(var(--input-gap) * 1.25);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .form-row--2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 960px) {
+  .form-row--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Labels & help */
+.form-label {
+  font-family: var(--input-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--light-500, #e1e1e8);
+  line-height: 1.5;
+}
+.form-help {
+  font-family: var(--input-font-family);
+  font-size: var(--help-font-size);
+  color: var(--light-400, #a7a7b0);
+  line-height: 1.45;
+}
+.form-error {
+  font-family: var(--input-font-family);
+  font-size: var(--help-font-size);
+  color: var(--input-invalid);
+}
+.form-valid {
+  font-family: var(--input-font-family);
+  font-size: var(--help-font-size);
+  color: var(--input-valid);
+}
+.form-label .required {
+  color: var(--input-invalid);
+  margin-left: 0.25rem;
+}
+
+/* 3) Base inputs */
+input,
+select,
+textarea {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--input-font-family);
+  font-size: var(--input-font-size);
+  line-height: var(--input-line-height);
+  color: var(--input-color);
+  background: var(--input-bg);
+  border: var(--input-border-width) solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: var(--input-padding-y) var(--input-padding-x);
+  min-height: var(--input-height);
+  transition: border-color var(--input-transition),
+    box-shadow var(--input-transition), background-color var(--input-transition),
+    color var(--input-transition);
+}
+::placeholder {
+  color: var(--input-placeholder);
+  opacity: 1;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  background: var(--input-bg-hover);
+  border-color: var(--input-border-hover);
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  background: var(--input-bg-focus);
+  border-color: var(--input-border-focus);
+  box-shadow: var(--input-shadow-focus);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: var(--input-bg-disabled);
+  color: color-mix(in srgb, var(--input-color) 60%, transparent);
+  border-color: var(--input-border-disabled);
+  cursor: not-allowed;
+}
+input[readonly],
+textarea[readonly] {
+  background: var(--input-bg);
+  border-style: dashed;
+}
+
+/* Autofill */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: var(--input-color);
+  -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset;
+}
+
+/* 4) Density modifiers */
+.input--sm {
+  --input-height: clamp(40px, 44px, 48px);
+  --input-padding-y: 0.45rem;
+  --input-padding-x: 0.7rem;
+  --input-font-size: 0.95rem;
+}
+.input--lg {
+  --input-height: clamp(44px, 48px, 56px);
+  --input-padding-y: 0.8rem;
+  --input-padding-x: 1rem;
+  --input-font-size: 1.0625rem;
+}
+
+/* 5) Icons / adornments */
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.input-wrap .icon-left,
+.input-wrap .icon-right {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--input-icon-size);
+  height: var(--input-icon-size);
+  color: var(--input-icon-color);
+}
+.input-wrap .icon-left {
+  left: 0.75rem;
+}
+.input-wrap .icon-right {
+  right: 0.75rem;
+}
+.input-wrap .form-input.has-icon-left {
+  padding-left: var(--input-left-pad);
+}
+.input-wrap .form-input.has-icon-right {
+  padding-right: var(--input-right-pad);
+}
+
+/* 6) Validation (class based) */
+.form-input.is-valid {
+  border-color: var(--input-valid);
+  box-shadow: var(--input-shadow-valid);
+}
+.form-input.is-invalid {
+  border-color: var(--input-invalid);
+  box-shadow: var(--input-shadow-invalid);
+}
+.form-input.is-warning {
+  border-color: var(--input-warning);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--input-warning) 25%, transparent);
+}
+
+/* 7) Input groups */
+.input-group {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+.input-addon {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--input-padding-x);
+  background: var(--input-bg);
+  color: var(--input-color);
+  border: var(--input-border-width) solid var(--input-border);
+}
+.input-addon--left {
+  border-right: none;
+  border-radius: var(--input-radius) 0 0 var(--input-radius);
+}
+.input-addon--right {
+  border-left: none;
+  border-radius: 0 var(--input-radius) var(--input-radius) 0;
+}
+.input-group .form-input {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+.input-group > .form-input:first-child {
+  border-left: var(--input-border-width) solid var(--input-border);
+  border-top-left-radius: var(--input-radius);
+  border-bottom-left-radius: var(--input-radius);
+}
+.input-group > .form-input:last-child {
+  border-right: var(--input-border-width) solid var(--input-border);
+  border-top-right-radius: var(--input-radius);
+  border-bottom-right-radius: var(--input-radius);
+}
+
+/* 8) Floating label (opt-in) */
+.floating-field {
+  position: relative;
+}
+.floating-field .form-input {
+  padding-top: calc(var(--input-padding-y) * 1.8);
+}
+.floating-field .form-label {
+  position: absolute;
+  left: var(--input-padding-x);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: transform var(--input-transition), color var(--input-transition),
+    top var(--input-transition), font-size var(--input-transition);
+  opacity: 0.9;
+}
+.floating-field .form-input:focus + .form-label,
+.floating-field .form-input:not(:placeholder-shown) + .form-label {
+  top: 0.35rem;
+  transform: translateY(0);
+  font-size: 0.75rem;
+  color: var(--input-border-focus);
+  opacity: 1;
+}
+
+/* 9) RTL */
+[dir="rtl"] .input-wrap .icon-left {
+  left: auto;
+  right: 0.75rem;
+}
+[dir="rtl"] .input-wrap .icon-right {
+  right: auto;
+  left: 0.75rem;
+}
+[dir="rtl"] .input-wrap .form-input.has-icon-left {
+  padding-left: var(--input-padding-x);
+  padding-right: var(--input-right-pad);
+}
+[dir="rtl"] .input-wrap .form-input.has-icon-right {
+  padding-right: var(--input-padding-x);
+  padding-left: var(--input-left-pad);
+}
+
+/* 10) Utilities */
+.form-input {
+  font-family: var(--input-font-family);
+  font-size: var(--input-font-size);
+  background: var(--input-bg);
+  color: var(--input-color);
+}
+
+
+.input:hover {
+  border-color: var(--primary-300);
+}
+
+.input:focus {
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 2px rgba(0, 180, 255, 0.35); /* glow */
+  outline: none;
+}
+
+.input:disabled {
+  background: var(--dark-600);
+  border-color: var(--dark-500);
+  color: var(--dark-300);
+  cursor: not-allowed;
+}
+
+.input.error {
+  border-color: var(--danger-400);
+  background: var(--danger-900);
+  color: var(--danger-100);
+}
+
+.input.success {
+  border-color: var(--success-400);
+  background: var(--success-900);
+  color: var(--success-100);
+}
+
+
+.help-text {
+  font-size: var(--fs-xs);
+  color: var(--light-400);
+  margin-top: var(--space-1);
+}
+
+/* ==========================================================================
+   INPUT DATE
+   ========================================================================== */
+input[type="date"], input[type="month"], input[type="week"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23cfcfd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cpath d='M16 2v4M8 2v4M3 10h18'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* ==========================================================================
+   INPUT TIME
+   ========================================================================== */
+input[type="time"] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23cfcfd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid var(--primary-300);
+  border-radius: var(--radius-sm);
+  background: var(--dark-700);
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  margin-right: var(--space-2);
+}
+
+input[type="checkbox"]:hover {
+  border-color: var(--primary-500);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--primary-500);
+  border-color: var(--primary-500);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--light-100);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+input[type="checkbox"]:disabled {
+  background: var(--dark-500);
+  border-color: var(--dark-500);
+  cursor: not-allowed;
+}
+input[type="checkbox"]:disabled::after {
+  border-color: var(--dark-300);
+}
+/* ==========================================================================
+   INPUT SWITCH / TOGGLE
+   ========================================================================== */
+input[type="checkbox"].switch {
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  width: 2.75rem; height: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--dark-600);
+  position: relative;
+  cursor: pointer;
+  transition: background var(--input-transition);
+}
+input[type="checkbox"].switch::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 1.1rem; height: 1.1rem;
+  background: var(--light-100);
+  border-radius: 50%;
+  transition: transform var(--input-transition);
+}
+input[type="checkbox"].switch:checked {
+  background: var(--primary-500);
+}
+input[type="checkbox"].switch:checked::after {
+  transform: translateX(1.25rem);
+}
+/* ==========================================================================
+   INPUT NUMBER
+   ========================================================================== */
+input[type="number"]{height:var(--input-height);}
+
+/* Spinners verbergen (optioneel) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+input[type="number"]{ -moz-appearance: textfield; }
+
+/* ==========================================================================
+   INPUT TEXT-LIKE (text, email-like, url, tel, search)
+   ========================================================================== */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"] {
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-base);
+  font-family: var(--ff-base);
+  color: var(--light-200, #f6f6f9);
+
+  background: var(--dark-800, #1f1f24);
+  border: 1px solid var(--dark-600, #2d2d33);
+  border-radius: var(--radius-sharp, 0);
+  box-shadow: var(--elevation-xs);
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Search: icon links binnenin (optioneel) */
+.input-search {
+  position: relative;
+}
+.input-search .form-input {
+  padding-left: var(--input-left-pad);
+}
+.input-search .icon-left {
+  left: 0.75rem;
+  color: var(--light-400, #a7a7b0);
+}
+
+/* Clear button (webkit) netjes houden op dark */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(0deg, transparent, transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23cfcfd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 6L6 18M6 6l12 12'/%3E%3C/svg%3E")
+      no-repeat center/12px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   INPUT PASSWORD
+   ========================================================================== */
+input[type="password"]{
+  height:var(--input-height);
+  letter-spacing: 2px; /* visuele hint */
+}
+
+/* Toggle visibility (hook) */
+.password-field{position:relative;}
+.password-field .form-input.has-icon-right{padding-right:var(--input-right-pad);}
+.password-field .icon-right{right:.75rem;cursor:pointer;color:var(--light-300,#d9d9e0);}
+.password-field .icon-right:hover{color:var(--primary-300,#2aa5ff);}
+
+
+/* ==========================================================================
+   INPUT EMAIL (pattern hints / icon opt-in)
+   ========================================================================== */
+input[type="email"] {
+  height: var(--input-height);
+}
+.input-email {
+  position: relative;
+}
+.input-email .form-input.has-icon-right {
+  padding-right: var(--input-right-pad);
+}
+.input-email .icon-right {
+  right: 0.75rem;
+  color: var(--light-400, #a7a7b0);
+}
+
+
+/* ==========================================================================
+   INPUT TEXTAREA
+   ========================================================================== */
+/* ============================
+   Textarea
+   ============================ */
+.input[type="textarea"],
+textarea.input {
+  width: 100%;
+  min-height: 120px;
+  padding: var(--space-3);
+  font-family: var(--ff-base);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  color: var(--light-100);
+  background: var(--dark-800);
+  border: 1px solid var(--dark-400);
+  border-radius: var(--radius-md);
+  resize: vertical; /* alleen in hoogte aanpassen */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* Hover */
+textarea.input:hover {
+  border-color: var(--primary-300);
+}
+
+/* Focus */
+textarea.input:focus {
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 2px rgba(0, 180, 255, 0.35);
+  outline: none;
+}
+
+/* Disabled */
+textarea.input:disabled {
+  background: var(--dark-600);
+  border-color: var(--dark-500);
+  color: var(--dark-300);
+  cursor: not-allowed;
+}
+
+/* Error */
+textarea.input.error {
+  border-color: var(--danger-400);
+  background: var(--danger-900);
+  color: var(--danger-100);
+}
+
+/* Success */
+textarea.input.success {
+  border-color: var(--success-400);
+  background: var(--success-900);
+  color: var(--success-100);
+}
+
+
+/* ==========================================================================
+   INPUT SELECT
+   ========================================================================== */
+select {
+  height: var(--input-height);
+  background: var(--input-bg);
+  color: var(--input-color);
+  padding-right: var(--input-right-pad);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23cfcfd6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right .75rem center;
+  background-size: 1rem;
+}
+select[multiple] {
+  height: auto;
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+/* ==========================================================================
+   INPUT FILE
+   ========================================================================== */
+input[type="file"] {
+  display: block;
+  width: 100%;
+  padding: var(--space-3);
+  font-size: var(--fs-sm);
+  color: var(--input-color);
+  background: var(--dark-700);
+  border: 1px dashed var(--input-border);
+  border-radius: var(--radius-base);
+  cursor: pointer;
+  transition: border-color var(--input-transition);
+}
+input[type="file"]:hover {
+  border-color: var(--primary-400);
+}
+input[type="file"]::file-selector-button {
+  background: var(--primary-500);
+  border: none;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  color: var(--light-100);
+  cursor: pointer;
+  transition: background var(--input-transition);
+}
+input[type="file"]::file-selector-button:hover {
+  background: var(--primary-600);
+}
+
+
+/* Range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--dark-600);
+  outline: none;
+  cursor: pointer;
+  margin: var(--space-3) 0;
+}
+
+/* Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--dark-600);
+}
+input[type="range"]::-moz-range-track {
+  height: 0.4rem;
+  border-radius: var(--radius-pill);
+  background: var(--dark-600);
+}
+
+/* Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--primary-500);
+  border: 2px solid var(--light-100);
+  box-shadow: var(--elevation-sm);
+  margin-top: -0.35rem; /* align thumb to track */
+  transition: background 0.2s;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--primary-500);
+  border: 2px solid var(--light-100);
+  box-shadow: var(--elevation-sm);
+  transition: background 0.2s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb,
+input[type="range"]:hover::-moz-range-thumb {
+  background: var(--primary-400);
+}
+
+input[type="range"]:active::-webkit-slider-thumb,
+input[type="range"]:active::-moz-range-thumb {
+  background: var(--primary-600);
+}
+
+
+/* ========== DATE & TIME PICKERS ========== */
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
+  background: var(--input-bg) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23cccccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='4' width='18' height='18' rx='2' ry='2'/><line x1='16' y1='2' x2='16' y2='6'/><line x1='8' y1='2' x2='8' y2='6'/><line x1='3' y1='10' x2='21' y2='10'/></svg>") no-repeat right var(--space-3) center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+input[type="time"] {
+  background: var(--input-bg) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23cccccc' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>") no-repeat right var(--space-3) center;
+  background-size: 1rem;
+  padding-right: 2rem;
+}
+
+/* ==========================================================================
+   INPUT RADIO
+   ========================================================================== */
+input[type="radio"] {
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  width: 1.1rem; height: 1.1rem;
+  border: var(--input-border-width) solid var(--input-border);
+  border-radius: 50%;
+  background: var(--input-bg);
+  cursor: pointer;
+  transition: border-color var(--input-transition), background var(--input-transition);
+}
+input[type="radio"]:checked {
+  border-color: var(--primary-400);
+  background: radial-gradient(circle, var(--primary-400) 50%, transparent 51%);
+}
+
+/* ==========================================================================
+   INPUT COLOR PICKER
+   ========================================================================== */
+input[type="color"] {
+  -webkit-appearance: none; -moz-appearance: none; appearance: none;
+  width: 2.5rem; height: 2.5rem;
+  border: var(--input-border-width) solid var(--input-border);
+  border-radius: var(--radius-base);
+  background: var(--input-bg);
+  cursor: pointer;
+}
+input[type="color"]::-webkit-color-swatch { border: none; border-radius: var(--radius-sm); }
+input[type="color"]::-moz-color-swatch { border: none; border-radius: var(--radius-sm); }

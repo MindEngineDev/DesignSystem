@@ -1,0 +1,15 @@
+/* components/shoelace/details/details.css */
+.sl-details {
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-foreground, var(--body-text, #1f2937));
+}
+
+.sl-details::part(summary) {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--sl-border-radius-small, 6px);
+}
+
+.sl-details::part(content) {
+  padding: 0.75rem;
+  background: var(--sl-panel-background-color, transparent);
+}

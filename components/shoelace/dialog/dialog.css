@@ -1,0 +1,18 @@
+/* components/shoelace/dialog/dialog.css */
+.sl-dialog {
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-foreground, var(--body-text, #1f2937));
+}
+
+.sl-dialog::part(surface) {
+  background: var(--sl-panel-background-color, var(--panel-bg, #fff));
+  border: 1px solid
+    var(--sl-panel-border, var(--panel-border, rgba(0, 0, 0, 0.06)));
+  border-radius: var(--sl-border-radius-large, 12px);
+  box-shadow: var(--sl-shadow-large, 0 12px 40px rgba(2, 6, 23, 0.12));
+  padding: 1rem;
+}
+
+.sl-dialog::part(backdrop) {
+  background: var(--sl-backdrop-color, rgba(6, 8, 15, 0.6));
+}

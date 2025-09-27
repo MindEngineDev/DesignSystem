@@ -1,0 +1,5 @@
+/* components/shoelace/animation/animation.css */
+.sl-animation {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

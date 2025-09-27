@@ -1,0 +1,56 @@
+:root {
+  --badge-radius: var(--radius-round);
+  --badge-shadow: var(--elevation-xs);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--badge-radius);
+  font-size: var(--font-size-sm);
+  font-weight: var(--ff-weight-medium);
+  letter-spacing: var(--letter-space-xs);
+  box-shadow: var(--badge-shadow);
+  transition: filter 0.2s ease;
+}
+
+/* Variants */
+.badge-primary {
+  background: var(--primary-200);
+  color: var(--light-100);
+  border: 1px solid var(--primary-300);
+}
+
+.badge-secondary {
+  background: var(--secondary-200);
+  color: var(--dark-600);
+}
+.badge-dark {
+  background: var(--gray-gradient);
+  color: var(--primary-100);
+  border: 1px solid var(--primary-300);
+}
+.badge-light {
+  background: var(--light-300);
+  color: var(--dark-300);
+}
+.badge-gray {
+  background: var(--dark-500);
+  color: var(--light-600);
+  border: 1px solid var(--primary-300);
+}
+
+/* States */
+.badge:hover {
+  filter: brightness(1.15);
+}
+.badge:active {
+  filter: brightness(0.9);
+}
+.badge.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}

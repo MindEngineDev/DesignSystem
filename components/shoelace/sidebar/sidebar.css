@@ -1,0 +1,14 @@
+/* components/shoelace/sidebar/sidebar.css */
+.sl-sidebar {
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-foreground, var(--body-text, #1f2937));
+  background: var(--sl-panel-background-color, var(--panel-bg, #fff));
+  border-right: 1px solid
+    var(--sl-panel-border, var(--panel-border, rgba(0, 0, 0, 0.06)));
+  padding: 0.5rem;
+}
+
+sl-menu-item::part(base) {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

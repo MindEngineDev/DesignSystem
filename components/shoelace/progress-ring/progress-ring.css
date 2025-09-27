@@ -1,0 +1,5 @@
+/* components/shoelace/progress-ring/progress-ring.css */
+.sl-progress-ring {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

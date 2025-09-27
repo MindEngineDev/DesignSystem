@@ -1,0 +1,36 @@
+!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Admin Layout — Design System</title>
+    <link rel="stylesheet" href="/styles/main.css">    
+<link rel="stylesheet" href="../../styles/layout/app.css"/>
+
+  </head>
+<body>
+    <header class="admin-topbar">
+      <div class="brand">Admin</div>
+      <button class="icon-btn" aria-label="Profile">◯</button>
+    </header>
+
+    <main class="admin-shell container">
+      <nav class="admin-sidebar">
+        <button class="nav-item">Dashboard</button>
+        <button class="nav-item">Content</button>
+        <button class="nav-item">Users</button>
+        <button class="nav-item">Settings</button>
+      </nav>
+
+      <section class="admin-content">
+        <h1>Admin/CMS Layout</h1>
+        <p class="muted">This is a basic admin/CMS layout for previewing components.</p>
+
+        <slot></slot>
+      </section>
+    </main>
+
+    <footer class="admin-footer">
+      <small class="muted">© Design System</small>
+    </footer>
+  </body>

@@ -1,0 +1,5 @@
+/* components/shoelace/resize-observer/resize-observer.css */
+.sl-resize-observer {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

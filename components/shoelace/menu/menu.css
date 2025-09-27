@@ -1,0 +1,19 @@
+/* components/shoelace/menu/menu.css */
+.sl-menu {
+  /* Use design tokens from styles/theme.css, fall back to existing panel tokens */
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-foreground, var(--body-text, #1f2937));
+  background: var(--sl-panel-background-color, var(--panel-bg, transparent));
+  border: 1px solid var(--sl-panel-border, var(--panel-border, transparent));
+  border-radius: var(--sl-border-radius-medium, var(--panel-radius, 6px));
+  box-shadow: var(--sl-shadow-small, none);
+}
+
+.sl-menu::part(base) {
+  padding: 0.35rem 0.5rem;
+}
+
+.sl-menu a,
+.sl-menu sl-menu-item {
+  color: inherit;
+}

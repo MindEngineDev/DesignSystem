@@ -1,0 +1,32 @@
+/* components/shoelace/select/select.css */
+.sl-select {
+  font-family: var(
+    --sl-input-font-family,
+    var(--sl-font-sans, Inter, system-ui, sans-serif)
+  );
+  font-size: var(--sl-input-font-size-medium, var(--text-base));
+  color: var(--sl-input-color, var(--body-text));
+  background: var(--sl-input-background-color, var(--control-surface));
+  border-radius: var(--sl-input-border-radius-medium, var(--panel-radius));
+  border: var(--sl-input-border-width, 1px) solid
+    var(--sl-input-border-color, var(--control-border));
+  padding: 0.375rem 0.5rem;
+  box-sizing: border-box;
+}
+
+.sl-select--small {
+  font-size: var(--sl-input-font-size-small);
+}
+.sl-select--filled {
+  background: var(--sl-input-filled-background-color);
+  color: var(--sl-input-filled-color);
+}
+.sl-select:disabled,
+.sl-select--disabled {
+  opacity: 0.6;
+}
+
+.sl-select:focus {
+  outline: var(--sl-input-focus-ring-color, var(--sl-focus-ring));
+  outline-offset: var(--sl-input-focus-ring-offset, 0);
+}

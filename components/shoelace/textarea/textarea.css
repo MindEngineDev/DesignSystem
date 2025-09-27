@@ -1,0 +1,27 @@
+/* components/shoelace/textarea/textarea.css */
+.sl-textarea {
+  font-family: var(
+    --sl-input-font-family,
+    var(--sl-font-sans, Inter, system-ui, sans-serif)
+  );
+  font-size: var(--sl-input-font-size-medium, var(--text-base));
+  color: var(--sl-input-color, var(--body-text));
+  background: var(--sl-input-background-color, var(--control-surface));
+  border-radius: var(--sl-input-border-radius-medium, var(--panel-radius));
+  border: var(--sl-input-border-width, 1px) solid
+    var(--sl-input-border-color, var(--control-border));
+  padding: var(--sl-input-spacing-medium, 1rem);
+  box-sizing: border-box;
+}
+
+.sl-textarea--filled {
+  background: var(--sl-input-filled-background-color);
+  color: var(--sl-input-filled-color);
+}
+.sl-textarea--auto {
+  resize: vertical;
+}
+.sl-textarea:disabled,
+.sl-textarea--disabled {
+  opacity: 0.6;
+}

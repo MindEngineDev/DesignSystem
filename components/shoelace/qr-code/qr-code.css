@@ -1,0 +1,5 @@
+/* components/shoelace/qr-code/qr-code.css */
+.sl-qr-code {
+  font-family: var(--font-base, Inter, system-ui, sans-serif);
+  color: var(--text, #1f2937);
+}

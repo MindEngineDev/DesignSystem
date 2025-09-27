@@ -1,0 +1,112 @@
+/* ===============================
+   Button Variables
+   =============================== */
+:root {
+  --btn-ff: var(--ff-body);
+  --btn-fs: var(--font-size-md);
+  --btn-fw: var(--fw-bold);
+  --btn-ls: var(--letter-space-xs);
+  --btn-lh: var(--line-height-md);
+  --btn-text-transform: uppercase;
+
+  --btn-padding-y: var(--space-sm);
+  --btn-padding-x: var(--space-md);
+
+  --btn-radius: var(--radius-base);
+  --btn-shadow: var(--elevation-sm);
+
+  /* Variants */
+  --btn-bg-primary: var(--primary-400);
+  --btn-col-primary: var(--light-400);
+
+  --btn-bg-secondary: var(--secondary-gradient);
+  --btn-col-secondary: var(--light-100);
+
+  --btn-bg-dark: var(--dark-gradient);
+  --btn-col-dark: var(--light-100);
+
+  --btn-bg-light: var(--light-gradient);
+  --btn-col-light: var(--dark-800);
+
+  --btn-bg-gray: var(--gray-gradient);
+  --btn-col-gray: var(--light-100);
+
+  /* States */
+  --btn-opacity-disabled: 0.5;
+  --btn-scale-active: 0.98;
+
+  /* Icons */
+  --btn-icon-size: var(--icon-size-md);
+  --btn-icon-gap: var(--space-xs);
+  --btn-icon-color: inherit;
+}
+
+/* ===============================
+   Buttons
+   =============================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-icon-gap);
+  font-family: var(--btn-ff);
+  font-size: var(--btn-fs);
+  font-weight: var(--btn-fw);
+  letter-spacing: var(--btn-ls);
+  line-height: var(--btn-lh);
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border: none;
+  border-radius: var(--btn-radius);
+  box-shadow: var(--btn-shadow);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+
+.btn i,
+.btn svg {
+  font-size: var(--btn-icon-size);
+  color: var(--btn-icon-color);
+}
+
+/* Variants */
+.btn-primary   { background: var(--btn-bg-primary);   color: var(--btn-col-primary); }
+.btn-secondary { background: var(--btn-bg-secondary); color: var(--btn-col-secondary); }
+.btn-dark      { background: var(--btn-bg-dark);      color: var(--btn-col-dark); }
+.btn-light     { background: var(--btn-bg-light);     color: var(--btn-col-light); }
+.btn-gray      { background: var(--btn-bg-gray);      color: var(--btn-col-gray); }
+
+.btn-primary:hover  { background: var(--primary-400); }
+.btn-secondary:hover{ background: var(--secondary-400); }
+.btn-dark:hover     { background: var(--dark-400); }
+.btn-light:hover    { background: var(--light-400); }
+.btn-gray:hover     { background: var(--gray-400); }
+.btn-primary :active { background: var(--primary-100); }
+.btn-secondary:active { background: var(--secondary-100); }
+.btn-dark:active    { background: var(--dark-100); }
+.btn-light:active   { background: var(--light-100); }
+.btn-gray:active    { background: var(--gray-100); }
+
+
+.btn-w-2xl { width: 100%; max-width: 360px; }
+.btn-w-xl { width: 100%; max-width: 320px; }
+.btn-w-lg { width: 100%; max-width: 280px; }
+.btn-w-md { width: 100%; max-width: 240px; }
+.btn-w-sm { width: 100%; max-width: 180px; }
+.btn-w-xs { width: 100%; max-width: 140px; }
+.btn-w-2xs { width: 100%; max-width: 120px; }
+
+.btn-fit  { width: fit-content; }
+.btn-full { width: 100%; }
+
+/* States */
+.btn:hover   { filter: brightness(1.1); }
+.btn:active  { transform: scale(var(--btn-scale-active)); }
+.btn:disabled {
+  opacity: var(--btn-opacity-disabled);
+  cursor: not-allowed;
+}
+.btn:focus {
+  outline: 2px solid var(--primary-200);
+  outline-offset: 2px;
+}

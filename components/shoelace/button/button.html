@@ -1,0 +1,14 @@
+<!-- components/shoelace/button/button.html -->
+<sl-button class="sl-button" x-data="buttonComponent()" data-component="shoelace-button" role="button" aria-busy="false">
+  <!-- named icon slot at the start -->
+  <slot name="icon-start" part="icon-start"></slot>
+
+  <!-- main label/content -->
+  <slot></slot>
+
+  <!-- named icon slot at the end -->
+  <slot name="icon-end" part="icon-end"></slot>
+
+  <!-- optional loading indicator slot (authors can provide a spinner) -->
+  <slot name="loading" part="loading" hidden aria-hidden="true"></slot>
+</sl-button>
