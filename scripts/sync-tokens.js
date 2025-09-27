@@ -1,54 +1,31 @@
+// scripts/sync-tokens.js
 #!/usr/bin/env node
+import chokidar from 'chokidar';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import fs from 'fs/promises';
-import path from 'path';
-import chokidar from 'chokidar';
 
 const execAsync = promisify(exec);
 
-class TokenSync {
-  constructor() {
-    this.tokensPath = './packages/tokens';
-    this.outputPath = './site/dist';
-  }
+const TOKENS_GLOB = 'tokens/**/*.json';
+const SD_CONFIG = 'config/sd.config.mjs';
 
-  async syncFromFigma() {
-    console.log('í¾¨ Syncing tokens from Figma...');
-    try {
-      await execAsync('git pull origin production');
-      await this.buildTokens();
-      console.log('âœ… Tokens synced successfully');
-    } catch (error) {
-      console.error('âŒ Sync failed:', error);
-    }
-  }
-
-  async buildTokens() {
-    console.log('í´¨ Building tokens...');
-    await execAsync('npx style-dictionary build --config sd.config.mjs');
-  }
-
-  watch() {
-    console.log('í±ï¸ Watching for token changes...');
-    const watcher = chokidar.watch([
-      path.join(this.tokensPath, '*.json'),
-      './sd.config.mjs'
-    ], {
-      persistent: true,
-      ignoreInitial: true
-    });
-
-    watcher.on('change', async (filepath) => {
-      console.log(`í³ ${filepath} changed`);
-      await this.buildTokens();
-    });
-  }
+async function build() {
+  console.log('ðŸ§± Building tokensâ€¦');
+  await execAsync('npx style-dictionary build --config config/sd.config.mjs', { stdio: 'inherit' });
+  console.log('âœ… Tokens built into styles/');
 }
 
-const sync = new TokenSync();
+async function watch() {
+  console.log('ðŸ‘€ Watching tokensâ€¦');
+  const watcher = chokidar.watch([TOKENS_GLOB, SD_CONFIG], { ignoreInitial: true });
+  watcher.on('change', async (file) => {
+    console.log(`âœ³ Changed: ${file}`);
+    await build();
+  });
+}
+
 if (process.argv.includes('--watch')) {
-  sync.watch();
+  watch();
 } else {
-  sync.syncFromFigma();
+  build();
 }

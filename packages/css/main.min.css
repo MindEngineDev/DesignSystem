@@ -1,0 +1,92 @@
+/* styles/main.css */
+/* Pull in generated variables from Style Dictionary (tokens.css) */
+@import './tokens.css';
+
+/* Base: use your semantic tokens */
+:root {
+  /* If tokens are missing during first run, the browser will still render using these fallbacks. */
+  --bg: var(--color-semantic-bg, #F8FAFC);
+  --surface: var(--color-semantic-surface, #F1F5F9);
+  --border: var(--color-semantic-border, #E2E8F0);
+  --text: var(--color-semantic-text, #111827);
+  --muted: var(--color-semantic-muted, #64748B);
+  --brand: var(--color-semantic-brand, #1F6BFF);
+  --cta: var(--color-semantic-cta, #F97316);
+
+  /* Typography tokens */
+  --font-base: var(--font-family-base, Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  --font-heading: var(--font-family-heading, Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif);
+  --font-mono: var(--font-family-mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace);
+
+  --fs-xs: var(--font-size-xs, .8125rem);
+  --fs-sm: var(--font-size-sm, .875rem);
+  --fs-md: var(--font-size-md, 1rem);
+  --fs-lg: var(--font-size-lg, 1.125rem);
+  --fs-xl: var(--font-size-xl, 1.25rem);
+  --fs-2xl: var(--font-size-2xl, 1.5rem);
+  --fs-3xl: var(--font-size-3xl, 1.875rem);
+
+  --lh-tight: var(--font-line-tight, 1.25);
+  --lh-normal: var(--font-line-normal, 1.5);
+  --lh-relaxed: var(--font-line-relaxed, 1.7);
+
+  /* Spacing / radius (map from your token names) */
+  --space-xs: var(--space-xs, .5rem);
+  --space-sm: var(--space-sm, .75rem);
+  --space-md: var(--space-md, 1rem);
+  --space-lg: var(--space-lg, 1.25rem);
+  --space-xl: var(--space-xl, 1.5rem);
+
+  --radius-sm: var(--radius-sm, 6px);
+  --radius-md: var(--radius-md, 10px);
+  --radius-lg: var(--radius-lg, 14px);
+
+  /* Motion (from tokens if present) */
+  --ease-standard: var(--easing-standard, cubic-bezier(0.2, 0, 0, 1));
+  --dur-fast: var(--duration-fast, 120ms);
+  --dur-base: var(--duration-base, 200ms);
+  --dur-slow: var(--duration-slow, 320ms);
+}
+
+/* Reset-ish + base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-base);
+  color: var(--text);
+  background: var(--bg);
+  line-height: var(--lh-normal);
+  font-size: var(--fs-md);
+}
+
+/* Structure helpers */
+.container { max-width: 960px; margin: 0 auto; padding: calc(var(--space-lg) * 2) var(--space-md); }
+.muted { color: var(--muted); }
+
+/* Card look that follows your tokens */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: background var(--dur-base) var(--ease-standard), border-color var(--dur-base) var(--ease-standard), box-shadow var(--dur-base) var(--ease-standard);
+}
+
+/* Headings with tokenized typography */
+h1, h2, h3 { font-family: var(--font-heading); line-height: var(--lh-tight); margin: 0 0 var(--space-md); }
+h1 { font-size: var(--fs-3xl); }
+h2 { font-size: var(--fs-2xl); }
+h3 { font-size: var(--fs-xl); }
+
+/* Buttons: give Shoelace buttons a brand accent that matches your tokens */
+sl-button::part(base) { border-radius: var(--radius-md); }
+sl-button[variant="primary"]::part(base) { background: var(--brand); border-color: var(--brand); }
+sl-button[variant="primary"]::part(base):hover { filter: brightness(0.95); }
+sl-button[variant="neutral"]::part(base) { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+
+/* Alerts: align to semantic palette */
+sl-alert[variant="success"]::part(base) { border-radius: var(--radius-md); }

@@ -1,22 +1,27 @@
+// vite.config.mjs
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
-  root: 'site',
   server: {
     port: 3000,
-    proxy: {
-      '/api': 'http://localhost:5173'
-    }
+    open: true
+  },
+  build: {
+    outDir: 'dist'
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
-      '@tokens': resolve(__dirname, './site/dist'),
-      '@components': resolve(__dirname, './src/components')
+      '@': resolve(__dirname, './'),
+      '@styles': resolve(__dirname, './styles'),
+      '@utils': resolve(__dirname, './utils'),
+      '@plugins': resolve(__dirname, './plugins'),
+      '@public': resolve(__dirname, './public'),
+      '@assets': resolve(__dirname, './assets')
     }
   }
 });

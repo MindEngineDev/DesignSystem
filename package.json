@@ -4,23 +4,30 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "tokens:build": "style-dictionary build --config sd.config.mjs",
-    "css:build": "postcss packages/css/base.css -o packages/css/base.min.css",
-    "build": "npm run tokens:build && npm run css:build",
-    "new": "node scripts/create-component.js"
+    "dev": "vite",
+    "preview": "vite preview",
+    "tokens:build": "style-dictionary build --config config/sd.config.mjs",
+    "tokens:watch": "node scripts/sync-tokens.js --watch",
+    "sync": "node scripts/sync-tokens.js",
+    "css:build": "postcss styles/main.css -o packages/css/main.min.css",
+    "build": "npm run tokens:build && npm run css:build && vite build",
+    "new": "node scripts/create-component.js",
+    "setup:figma": "node scripts/setup-figma-webhook.js"
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^0.14.4",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.21",
+    "chokidar": "^4.0.3",
     "cssnano": "^6.1.2",
-    "postcss": "^8.4.47",
-    "postcss-cli": "^11.0.0",
-    "style-dictionary": "^3.9.2"
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "style-dictionary": "^3.9.2",
+    "vite": "^7.1.7"
   },
   "dependencies": {
-    "@shoelace-style/shoelace": "^2.16.0",
-    "@picocss/pico": "^2.0.6",
-    "alpinejs": "^3.14.7",
+    "@picocss/pico": "^2.1.1",
+    "@shoelace-style/shoelace": "^2.20.1",
+    "alpinejs": "^3.15.0",
     "htmx.org": "^1.9.12"
   }
 }
