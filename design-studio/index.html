@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Design Studio — Dashboard</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="../theme.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+  </head>
+  <body>
+    <header class="ds-header">
+      <div class="brand">Design Studio</div>
+      <div class="controls">
+        <sl-switch size="small" id="themeToggle">Dark mode</sl-switch>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel">
+        <h2>Playground</h2>
+        <p class="muted">Snelle voorbeelden en layout playgrounds.</p>
+        <ul class="nav-list" id="playgroundList">
+          <!-- JS will populate links -->
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Pages</h2>
+        <p class="muted">Full page examples and app shells.</p>
+        <ul class="nav-list" id="pagesList"></ul>
+      </section>
+
+      <section class="panel panel--small">
+        <h2>Quick actions</h2>
+        <p class="muted">Utilities for previewing and opening pages.</p>
+        <div class="actions">
+          <sl-button variant="primary" id="openFirst">Open first playground</sl-button>
+          <sl-button id="openAppShell">Open app shell</sl-button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./index.js"></script>
+    <script type="module">
+      import { init } from "./index.js";
+      // Build the lists based on known pages in the repo
+      const playgroundPages = [
+        { title: "Layouts", href: "./playground/views/index.html" },
+        { title: "Tables", href: "./playground/views/tables.html" },
+        { title: "Forms", href: "./playground/views/forms.html" },
+        { title: "Lists", href: "./playground/views/lists.html" },
+        { title: "Profile", href: "./playground/views/profile.html" },
+        { title: "Settings", href: "./playground/views/settings.html" },
+        { title: "Kanban", href: "./playground/views/kanban.html" },
+      ];
+
+      const pages = [
+        { title: "App Shell", href: "./pages/workforce/app-shell.html" },
+        { title: "Login (workforce)", href: "./pages/workforce/login.html" },
+        { title: "Mobile preview", href: "./pages/workforce/mobile.html" },
+      ];
+
+      function mkList(listEl, items) {
+        listEl.innerHTML = items.map((it) => `<li><a href="${it.href}" target="_blank" rel="noreferrer">${it.title}</a></li>`).join("\n");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        mkList(document.getElementById("playgroundList"), playgroundPages);
+        mkList(document.getElementById("pagesList"), pages);
+
+        document.getElementById("openFirst").addEventListener("click", () => {
+          window.open(playgroundPages[0].href, "_blank");
+        });
+        document.getElementById("openAppShell").addEventListener("click", () => {
+          window.open(pages[0].href, "_blank");
+        });
+
+        init();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <title>Team - Creative Studio</title>
+    <link rel="icon" href="/favicon.ico" type="image/png" />
+  </head>
+  <body>
+    <header class="container">
+      <nav class="topbar">
+        <span class="brand">Creative Studio</span>
+        <div class="topbar__actions">
+          <a href="index.html"><sl-button size="small" variant="default">Home</sl-button></a>
+          <a href="home.html"><sl-button size="small" variant="default">About</sl-button></a>
+          <a href="products.html"><sl-button size="small" variant="default">Products</sl-button></a>
+          <a href="pricing.html"><sl-button size="small" variant="default">Pricing</sl-button></a>
+          <sl-button size="small" variant="primary" href="/design-studio/index.html" target="_blank" rel="noreferrer">Design Studio</sl-button>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h1>Meet the Creative Studio Crew</h1>
+        <p>We are designers, engineers, strategists, and storytellers dedicated to delivering delightful digital experiences.</p>
+      </section>
+
+      <section>
+        <h2>Leadership</h2>
+        <div class="grid">
+          <article class="card">
+            <header>
+              <sl-avatar slot="icon" initials="JV"></sl-avatar>
+              <h3>Jason Vega</h3>
+              <p class="muted">Founder &amp; Creative Director</p>
+            </header>
+            <p>Jason leads the studio with a passion for inclusive, accessible interfaces and empowers the team to experiment.</p>
+          </article>
+          <article class="card">
+            <header>
+              <sl-avatar slot="icon" initials="BT"></sl-avatar>
+              <h3>Bart Turner</h3>
+              <p class="muted">Head of Engineering</p>
+            </header>
+            <p>Bart architects the component system and ensures every release is reliable, performant, and well documented.</p>
+          </article>
+          <article class="card">
+            <header>
+              <sl-avatar slot="icon" initials="VM"></sl-avatar>
+              <h3>Volker Meyer</h3>
+              <p class="muted">Lead Product Designer</p>
+            </header>
+            <p>Volker balances strategy, research, and craft—translating user insights into polished, production-ready designs.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>How we work</h2>
+        <div class="grid">
+          <article class="card">
+            <header><h3>Remote-first</h3></header>
+            <p>Our team collaborates from across the globe, pairing live sessions with asynchronous design critiques.</p>
+          </article>
+          <article class="card">
+            <header><h3>Open tooling</h3></header>
+            <p>We build on open standards like Shoelace and Alpine.js to keep the workflow flexible and future-proof.</p>
+          </article>
+          <article class="card">
+            <header><h3>Iterative delivery</h3></header>
+            <p>Every component is versioned, tested, and documented so product teams can ship confidently.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Join our community</h2>
+        <p>Want to contribute patterns or request new templates? Reach out and we’ll connect you with the right squad.</p>
+        <sl-button variant="primary" href="mailto:hello@creativestudio.io">Email the team</sl-button>
+      </section>
+    </main>
+  </body>
+</html>

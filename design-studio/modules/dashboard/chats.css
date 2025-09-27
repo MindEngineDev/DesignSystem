@@ -1,0 +1,58 @@
+/* Minimal chat widget styles for dashboard preview */
+.chats {
+  border: 1px solid var(--panel-border, #e6eef2);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg, #fff);
+  width: 100%;
+  max-width: 360px;
+}
+.chats__header {
+  background: var(--muted-bg, #f7fafb);
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+}
+.chats__messages {
+  padding: 0.5rem;
+  min-height: 80px;
+  max-height: 200px;
+  overflow: auto;
+  background: var(--chat-bg, #fff);
+}
+.chats__msg {
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+  max-width: 85%;
+}
+.chats__msg--you {
+  background: #0ea5a4;
+  color: #fff;
+  margin-left: auto;
+}
+.chats__msg--bot {
+  background: #eef2ff;
+  color: #0f172a;
+  margin-right: auto;
+}
+.chats__form {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--panel-border, #e6eef2);
+}
+.chats__form input {
+  flex: 1;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+.chats__form button {
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background: var(--primary, #0ea5a4);
+  color: #fff;
+}

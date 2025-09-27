@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>Pricing - Creative Studio</title>
+    <link rel="icon" href="/favicon.ico" type="image/png" />
+  </head>
+  <body>
+    <header class="container">
+      <nav class="topbar">
+        <span class="brand">Creative Studio</span>
+        <div class="topbar__actions">
+          <a href="index.html"><sl-button size="small" variant="default">Home</sl-button></a>
+          <a href="home.html"><sl-button size="small" variant="default">About</sl-button></a>
+          <a href="products.html"><sl-button size="small" variant="default">Products</sl-button></a>
+          <a href="pricing.html"><sl-button size="small" variant="default">Pricing</sl-button></a>
+          <a href="team.html"><sl-button size="small" variant="default">Team</sl-button></a>
+          <sl-button size="small" variant="primary" @click="showLogin = true">Login</sl-button>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <section>
+        <h1>Pricing Plans</h1>
+        <p>Choose the perfect plan for your creative needs.</p>
+        <div class="grid">
+          <article class="card">
+            <header>
+              <h3>Free</h3>
+              <p class="price">$0/month</p>
+            </header>
+            <ul>
+              <li>Basic tools</li>
+              <li>5 projects</li>
+              <li>Community support</li>
+            </ul>
+            <sl-button variant="primary">Get Started</sl-button>
+          </article>
+          <article class="card">
+            <header>
+              <h3>Pro</h3>
+              <p class="price">$19/month</p>
+            </header>
+            <ul>
+              <li>Advanced tools</li>
+              <li>Unlimited projects</li>
+              <li>Priority support</li>
+              <li>Collaboration features</li>
+            </ul>
+            <sl-button variant="primary">Upgrade Now</sl-button>
+          </article>
+          <article class="card">
+            <header>
+              <h3>Enterprise</h3>
+              <p class="price">Contact Us</p>
+            </header>
+            <ul>
+              <li>All Pro features</li>
+              <li>Custom integrations</li>
+              <li>Dedicated account manager</li>
+              <li>On-premise deployment</li>
+            </ul>
+            <sl-button variant="primary">Contact Sales</sl-button>
+          </article>
+        </div>
+      </section>
+    </main>
+    <!-- Simple Login Modal -->
+    <sl-dialog label="Login to Design Studio" x-show="showLogin" @sl-hide="showLogin = false">
+      <form>
+        <sl-input label="Username" name="username" required></sl-input>
+        <sl-input label="Password" name="password" type="password" required></sl-input>
+        <sl-button type="submit" variant="primary" @click="alert('Login successful!')">Login</sl-button>
+      </form>
+    </sl-dialog>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("app", () => ({
+          showLogin: false,
+        }));
+      });
+    </script>
+  </body>
+</html>

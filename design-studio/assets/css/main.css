@@ -1,5 +1,9 @@
-@import "layout/layout.css";
+@import "app.css";
+@import "components.css";
+@import "dashboard.css";
+@import "layout.css";
 @import "shoelace.css";
 @import "theme.css";
-@import "vars.css";
 @import "ui.css";
+@import "vars.css";
+@import "views.css";

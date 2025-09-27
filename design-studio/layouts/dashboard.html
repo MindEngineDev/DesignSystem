@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/styles/theme.css" />
 
     <!-- Dashboard styles -->
-    <link rel="stylesheet" href="../../styles/layout/dashboard.css"/>
+    <link rel="stylesheet" href="../../styles/layout/dashboard.css" />
 
     <!-- Shoelace (for nice inputs/buttons), optional -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
@@ -22,7 +22,10 @@
       <button class="icon-btn" id="menuToggle" aria-label="Toggle menu">☰</button>
       <div class="brand">
         <span class="dot"></span>
-        <span class="name">Builder<span class="muted">Board</span></span>
+        <span class="name">
+          Builder
+          <span class="muted">Board</span>
+        </span>
       </div>
       <div class="header-actions">
         <sl-input placeholder="Zoeken…" size="small" clearable></sl-input>
@@ -116,11 +119,20 @@
                 <!-- area -->
                 <path class="area" fill="url(#areaFill)" d="M0,180 L50,170 L100,150 L150,155 L200,130 L250,110 L300,120 L350,95 L400,105 L450,90 L500,80 L550,60 L600,65 L600,240 L0,240 Z" />
                 <!-- line -->
-                <path class="line" fill="none" stroke="var(--primary-500)" stroke-width="3" d="M0,180 L50,170 L100,150 L150,155 L200,130 L250,110 L300,120 L350,95 L400,105 L450,90 L500,80 L550,60 L600,65" />
+                <path
+                  class="line"
+                  fill="none"
+                  stroke="var(--primary-500)"
+                  stroke-width="3"
+                  d="M0,180 L50,170 L100,150 L150,155 L200,130 L250,110 L300,120 L350,95 L400,105 L450,90 L500,80 L550,60 L600,65"
+                />
               </svg>
             </div>
             <footer class="card__footer">
-              <div class="legend"><span class="dot dot--primary"></span> Omzet</div>
+              <div class="legend">
+                <span class="dot dot--primary"></span>
+                Omzet
+              </div>
             </footer>
           </article>
 
@@ -130,10 +142,22 @@
               <sl-button size="small" variant="text" id="markAll">Markeer als gelezen</sl-button>
             </header>
             <ul class="activity__list" id="activityList">
-              <li><span class="badge badge--success">+</span> Nieuwe klant: **Acme BV**</li>
-              <li><span class="badge badge--warn">!</span> Betaalmislukking bij **Globex**</li>
-              <li><span class="badge badge--info">i</span> Rapport “Q3 Insights” gedeeld</li>
-              <li><span class="badge">•</span> Notitie toegevoegd aan **Project Nova**</li>
+              <li>
+                <span class="badge badge--success">+</span>
+                Nieuwe klant: **Acme BV**
+              </li>
+              <li>
+                <span class="badge badge--warn">!</span>
+                Betaalmislukking bij **Globex**
+              </li>
+              <li>
+                <span class="badge badge--info">i</span>
+                Rapport “Q3 Insights” gedeeld
+              </li>
+              <li>
+                <span class="badge">•</span>
+                Notitie toegevoegd aan **Project Nova**
+              </li>
             </ul>
           </article>
         </section>
@@ -191,8 +215,23 @@
             </table>
           </div>
         </section>
+        <!-- Chat widget for manual testing -->
+        <section class="card" id="chatsSection">
+          <header class="card__header"><h3>Chat (demo)</h3></header>
+          <div class="card__body">
+            <div id="chatsWidget"></div>
+          </div>
+        </section>
       </main>
     </div>
+
+    <!-- Dashboard-specific chat script + styles (local module for testing) -->
+    <link rel="stylesheet" href="./modules/dashboard/chats.css" />
+    <script type="module">
+      import { initChats } from "./modules/dashboard/chats.js";
+      // Initialize when DOM is ready
+      document.addEventListener("DOMContentLoaded", () => initChats("chatsWidget"));
+    </script>
 
     <script src="./app.js" type="module"></script>
   </body>

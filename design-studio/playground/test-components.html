@@ -7,6 +7,18 @@
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
+<!-- Site Nav -->
+  <nav class="site-nav" x-data="{open:false,dark:true}" style="position:sticky;top:0;z-index:100;display:flex;gap:.75rem;align-items:center;padding:.6rem 1rem;border-bottom:1px solid #20262b;background:#0f1315;color:#e5e7eb;">
+    <div style="display:flex;gap:.5rem;align-items:center;font-weight:700;"><span style="width:.6rem;height:.6rem;border-radius:50%;background:#56c4c6;display:inline-block"></span><span>Design System</span></div>
+    <div style="margin-left:auto;display:flex;gap:.75rem;flex-wrap:wrap">
+      <a href="../../index.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="./test-dashboard.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+      <a href="./test-forms.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-sliders"></i> Forms</a>
+      <a href="./test-table.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-table"></i> Table</a>
+      <a href="./test-components.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-cubes"></i> Components</a>
+    </div>
+    <div style="margin-left:.75rem;display:flex;align-items:center;gap:.5rem"><sl-switch @sl-change="dark=$event.target.checked;document.documentElement.setAttribute('data-theme',dark?'dark':'light')" checked>Dark</sl-switch></div>
+  </nav>
   <!-- Header -->
   <header class="header"><strong class="brand"><i class="fa-solid fa-cubes"></i> Components</strong><span class="spacer"></span>
     <nav><a href="./test-dashboard.html" class="contrast">Dashboard</a> · <a href="./test-forms.html" class="contrast">Forms</a> · <a href="./test-table.html" class="contrast">Table</a></nav>

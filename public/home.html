@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>Home - Creative Studio</title>
+    <link rel="icon" href="/favicon.ico" type="image/png" />
+  </head>
+  <body>
+    <header class="container">
+      <nav class="topbar">
+        <span class="brand">Creative Studio</span>
+        <div class="topbar__actions">
+          <a href="index.html"><sl-button size="small" variant="default">Home</sl-button></a>
+          <a href="home.html"><sl-button size="small" variant="default">About</sl-button></a>
+          <a href="products.html"><sl-button size="small" variant="default">Products</sl-button></a>
+          <a href="pricing.html"><sl-button size="small" variant="default">Pricing</sl-button></a>
+          <a href="team.html"><sl-button size="small" variant="default">Team</sl-button></a>
+          <sl-button size="small" variant="primary" @click="showLogin = true">Login</sl-button>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <section>
+        <h1>Welcome to Creative Studio</h1>
+        <p>Your gateway to innovative design tools and components. Discover our products and unleash your creativity.</p>
+        <a href="products.html"><sl-button variant="primary" size="large">Explore Products</sl-button></a>
+      </section>
+      <section>
+        <h2>Why Choose Us?</h2>
+        <div class="grid">
+          <article class="card">
+            <header>
+              <h3>Innovation</h3>
+            </header>
+            <p>Cutting-edge tools for modern designers.</p>
+          </article>
+          <article class="card">
+            <header>
+              <h3>Ease of Use</h3>
+            </header>
+            <p>Intuitive interfaces that save time.</p>
+          </article>
+          <article class="card">
+            <header>
+              <h3>Community</h3>
+            </header>
+            <p>Join a vibrant community of creators.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <!-- Simple Login Modal -->
+    <sl-dialog label="Login to Design Studio" x-show="showLogin" @sl-hide="showLogin = false">
+      <form>
+        <sl-input label="Username" name="username" required></sl-input>
+        <sl-input label="Password" name="password" type="password" required></sl-input>
+        <sl-button type="submit" variant="primary" @click="alert('Login successful!')">Login</sl-button>
+      </form>
+    </sl-dialog>
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("app", () => ({
+          showLogin: false,
+        }));
+      });
+    </script>
+  </body>
+</html>

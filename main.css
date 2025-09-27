@@ -1,11 +1,2 @@
-@import "packages/styles/vars.css";
-@import "packages/styles/main.css";
-@import "packages/styles/theme.css";
-@import "packages/styles/ui.css";
-@import "packages/styles/shoelace.css";
-@import "packages/styles/layout/layout.css";
-@import "packages/styles/layout/dashboard.css";
-@import "packages/styles/layout/app.css";
-@import "packages/styles/layout/admin.css";
-@import "packages/styles/layout/views.css";
-@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "/design-studio/assets/css/main.css";
+@import "/design-studio/index.css";
