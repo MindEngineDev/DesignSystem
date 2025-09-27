@@ -18,7 +18,7 @@ export default {
           format: 'css/variables',
           options: {
             selector: ':root[data-theme="dark"]',
-            outputReferences: true
+            outputReferences: false
           },
           filter(token) {
             return token.path.includes('modes') ? token.path.includes('dark') : false;

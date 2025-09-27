@@ -1,6 +1,9 @@
 /* styles/main.css */
 /* Pull in generated variables from Style Dictionary (tokens.css) */
 @import "./tokens.css";
+@import "./tokens.dark.css";
+@import "./themes.css";
+@import "./shoelace.css";
 
 /* Base: use your semantic tokens */
 :root {
