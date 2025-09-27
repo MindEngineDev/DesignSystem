@@ -50,7 +50,10 @@ async function scaffoldComponent(name) {
     `/* components/shoelace/${name}/${name}.css */\n.sl-${name} {\n  font-family: var(--font-base, Inter, system-ui, sans-serif);\n  color: var(--text, #1f2937);\n}\n`
   );
 
-  await fs.writeFile(indexPath, `import './${name}.css';\nexport * from './${name}.js';\n`);
+    await fs.writeFile(
+      indexPath,
+      `import '@shoelace-style/shoelace/dist/components/${name}/${name}.js';\nimport './${name}.css';\nexport * from './${name}.js';\n`
+    );
 
   console.log(`✅ Generated components/shoelace/${name}`);
 }

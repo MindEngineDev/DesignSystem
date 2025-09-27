@@ -88,6 +88,10 @@ body {
     box-shadow var(--dur-base) var(--ease-standard);
 }
 
+.clickable-joke {
+  cursor: pointer;
+}
+
 /* Headings with tokenized typography */
 h1,
 h2,

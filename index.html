@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mind Engine – Design System</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>Design System</h1>
+      <p class="muted">Vite + Alpine + HTMX + Shoelace + Pico</p>
+    </header>
+
+    <main class="container" x-data="{ count: 0 }">
+      <section class="card">
+        <h2>Alpine State</h2>
+        <p>Count: <strong x-text="count"></strong></p>
+        <sl-button variant="primary" @click="count++">Increment</sl-button>
+        <sl-button variant="neutral" @click="count = 0">Reset</sl-button>
+      </section>
+
+      <section class="card">
+        <h2>HTMX Demo</h2>
+        <p
+          id="joke"
+          class="clickable-joke"
+          hx-get="https://icanhazdadjoke.com/"
+          hx-headers='{"Accept":"text/plain"}'
+          hx-trigger="click"
+          hx-target="#joke"
+          hx-swap="outerHTML"
+        >
+          Click to fetch a joke (client-side request).
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Shoelace Component</h2>
+        <sl-alert variant="success" open>
+          <sl-icon slot="icon" name="check2-circle"></sl-icon>
+          Your setup is running correctly.
+        </sl-alert>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

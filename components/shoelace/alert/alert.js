@@ -4,7 +4,7 @@ export function AlertComponent(initialProps = {}) {
     props: initialProps,
     el: null,
     init() {
-      this.el = this.$el.querySelector('sl-alert');
+      this.el = this.$el.querySelector("sl-alert");
       this.apply(this.props);
     },
     update(newProps = {}) {
@@ -21,15 +21,15 @@ export function AlertComponent(initialProps = {}) {
           this.el.setAttribute(key, value);
         }
       });
-    }
+    },
   };
 }
 
-if (typeof window !== 'undefined' && window.Alpine) {
-  window.Alpine.data('alertComponent', AlertComponent);
+if (typeof window !== "undefined" && window.Alpine) {
+  window.Alpine.data("alertComponent", AlertComponent);
 }
 
-if (typeof window !== 'undefined' && window.htmx) {
+if (typeof window !== "undefined" && window.htmx) {
   window.htmx.onLoad((el) => {
     const host = el.closest('[data-component="shoelace-alert"]');
     if (!host) return;
