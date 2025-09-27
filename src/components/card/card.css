@@ -1,9 +1,0 @@
-.card {
-  /* Use design tokens for styling */
-  background: var(--semantic-surface);
-  color: var(--semantic-text);
-  border: 1px solid var(--semantic-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
-  box-shadow: var(--shadow-sm);
-}
