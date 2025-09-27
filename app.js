@@ -515,6 +515,7 @@ if (typeof window !== 'undefined') {
 		return {
 			components: componentLibrary,
 			activeId: componentLibrary[0]?.id ?? null,
+			showDashboard: true,
 			controlValues: {},
 			init() {
 				this.components.forEach((component) => {
@@ -523,6 +524,9 @@ if (typeof window !== 'undefined') {
 						return acc;
 					}, {});
 				});
+			},
+			toggleDashboard() {
+				this.showDashboard = !this.showDashboard;
 			},
 			setActive(id) {
 				this.activeId = id;

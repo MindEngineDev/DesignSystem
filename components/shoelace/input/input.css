@@ -1,5 +1,20 @@
 /* components/shoelace/input/input.css */
 .sl-input {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  font-family: var(--sl-input-font-family, var(--sl-font-sans, Inter, system-ui, sans-serif));
+  font-size: var(--sl-input-font-size-medium, var(--text-base));
+  color: var(--sl-input-color, var(--body-text));
+  background: var(--sl-input-background-color, var(--control-surface));
+  border-radius: var(--sl-input-border-radius-medium, var(--panel-radius));
+  border: var(--sl-input-border-width, 1px) solid var(--sl-input-border-color, var(--control-border));
+  padding: var(--sl-input-spacing-small, 0.5rem) var(--sl-input-spacing-medium, 1rem);
+  box-sizing: border-box;
 }
+
+/* Filled variant (sl-input has filled mode in Shoelace; provide a host class helper) */
+.sl-input--filled {
+  background: var(--sl-input-filled-background-color, rgba(18,23,25,0.85));
+  color: var(--sl-input-filled-color, var(--body-text));
+}
+
+.sl-input--small { font-size: var(--sl-input-font-size-small); height: var(--sl-input-height-small); }
+.sl-input:disabled, .sl-input--disabled { opacity: 0.6; }

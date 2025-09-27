@@ -1,5 +1,23 @@
 /* components/shoelace/alert/alert.css */
 .sl-alert {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  /* Use Shoelace / design system tokens from styles/theme.css */
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  color: var(--sl-color-neutral-900, var(--body-text, #111827));
+  background: var(--sl-panel-background-color, transparent);
+  border: var(--sl-panel-border-width, 1px) solid var(--sl-panel-border-color, transparent);
+  border-radius: var(--sl-border-radius-medium, 4px);
+  padding: var(--sl-spacing-small, 0.75rem);
+  box-sizing: border-box;
 }
+
+/* Small variant helper */
+.sl-alert--small {
+  padding: var(--sl-spacing-2x-small, 0.25rem) var(--sl-spacing-x-small, 0.5rem);
+  font-size: var(--sl-font-size-small, 0.875rem);
+}
+
+/* Intent variants (authors can add these on the host to get colored alerts) */
+.sl-alert--info { color: var(--sl-color-info-700); background: var(--sl-color-info-100); }
+.sl-alert--success { color: var(--sl-color-success-700); background: var(--sl-color-success-100); }
+.sl-alert--warning { color: var(--sl-color-warning-700); background: var(--sl-color-warning-100); }
+.sl-alert--danger { color: var(--sl-color-danger-700); background: var(--sl-color-danger-100); }

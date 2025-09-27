@@ -1,5 +1,30 @@
 /* components/shoelace/button/button.css */
 .sl-button {
-  font-family: var(--font-base, Inter, system-ui, sans-serif);
-  color: var(--text, #1f2937);
+  /* Base mapping to design tokens */
+  font-family: var(--sl-font-sans, Inter, system-ui, sans-serif);
+  font-size: var(--sl-button-font-size-medium, 1rem);
+  font-weight: var(--sl-font-weight-medium, 500);
+  color: var(--sl-color-neutral-900, var(--body-text));
+  background: var(--sl-color-primary-500, var(--primary-500));
+  border-radius: var(--sl-border-radius-medium, 4px);
+  border: none;
+  padding: calc(var(--sl-spacing-2x-small, 0.25rem) + 0.125rem) var(--sl-spacing-medium, 1rem);
+  cursor: pointer;
+  transition: box-shadow var(--sl-transition-fast, 150ms) ease, transform var(--sl-transition-fast, 150ms) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
+
+/* Intent variants */
+.sl-button--primary { background: var(--sl-color-primary-500); color: var(--sl-color-neutral-900); }
+.sl-button--secondary { background: var(--sl-color-neutral-400); color: var(--sl-color-neutral-900); }
+.sl-button--ghost { background: transparent; border: 1px solid var(--sl-panel-border-color); color: var(--sl-color-neutral-900); }
+
+/* Size variants */
+.sl-button--small { font-size: var(--sl-button-font-size-small); padding: var(--sl-spacing-2x-small) var(--sl-spacing-x-small); }
+.sl-button--large { font-size: var(--sl-button-font-size-large); padding: var(--sl-spacing-small) var(--sl-spacing-large); }
+
+.sl-button:focus { outline: var(--sl-focus-ring); outline-offset: var(--sl-focus-ring-offset, 1px); }
+.sl-button:disabled { opacity: 0.6; cursor: not-allowed; }

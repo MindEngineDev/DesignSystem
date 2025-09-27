@@ -103,7 +103,7 @@
   --panel-shadow: 0 28px 60px rgba(14, 18, 20, 0.65);
   --stage-surface: rgba(22, 29, 31, 0.78);
 
-  --body-bg: var(--dark-900);
+  --body-bg: url('/assets/images/handshake.svg'), var(--dark-900);
   --body-text: var(--light-100);
   --body-muted: rgba(246, 231, 219, 0.7);
 
