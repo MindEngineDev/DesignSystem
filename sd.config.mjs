@@ -1,5 +1,8 @@
 export default {
-  source: ['packages/tokens/global.json'],
+  source: [
+    'packages/tokens/tokens.json',
+    'packages/tokens/$themes.json'
+  ],
   platforms: {
     css: {
       transformGroup: 'css',

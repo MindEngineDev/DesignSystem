@@ -4,7 +4,7 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "tokens:build": "style-dictionary build --config tools/style-dictionary.config.cjs",
+    "tokens:build": "style-dictionary build --config sd.config.mjs",
     "css:build": "postcss packages/css/base.css -o packages/css/base.min.css",
     "build": "npm run tokens:build && npm run css:build"
   },
@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.16.0",
+    "@picocss/pico": "^2.0.6",
     "alpinejs": "^3.14.7",
-    "htmx.org": "^1.9.12",
-    "pico-css": "^2.0.6"
+    "htmx.org": "^1.9.12"
   }
 }
