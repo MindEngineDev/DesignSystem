@@ -18,7 +18,7 @@ if (document.readyState === "loading") {
   init();
 }
 export { init };
-export { setupPagination, setupFilter, setupTabs } from "../scripts/layout/views/views.js";
+export { setupPagination, setupFilter, setupTabs } from "./views.js";
 
 document.addEventListener("alpine:init", () => {
   Alpine.data("landing", () => ({
