@@ -1,58 +1,14 @@
-@import url("tokens.css");
-@import url("shoelace.css");
-@import url("theme.css");
-@import url("dashboard.css");
+/* styles/index.css — canonical entry (centralized) */
+@import url('tokens.css');       /* your tokens (or switch to tokens.css if you prefer) */
+@import url('shoelace.css');   /* Shoelace base */
+@import url('theme.css');      /* your theme mappings (neutral/semantic) */
+@import url('layout.css');     /* global layout & shell utilities */
 
-html,
-body {
-  height: 100%;
-}
+/* Base resets */
+html, body { height: 100%; }
 body {
   margin: 0;
   background: var(--sl-color-neutral-0);
   color: var(--sl-color-neutral-900);
-  font:
-    14px/1.55 system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    Ubuntu,
-    Cantarell,
-    Arial;
-}
-
-/* Common grids and card sugar */
-.grid-4 {
-  display: grid;
-  gap: var(--gap);
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-@media (max-width: 1200px) {
-  .grid-4 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media (max-width: 720px) {
-  .grid-4 {
-    grid-template-columns: 1fr;
-  }
-}
-
-sl-card.kpi::part(base) {
-  border-radius: var(--sl-border-radius-large);
-  box-shadow: var(--sl-shadow-medium);
-}
-.stat {
-  font-size: 1.6rem;
-  font-weight: 700;
-  margin: 0.25rem 0 0.125rem;
-}
-.muted {
-  color: var(--sl-color-neutral-700);
-}
-.pos {
-  color: var(--sl-color-success-500);
-}
-.neg {
-  color: var(--sl-color-danger-500);
+  font: 14px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, Arial;
 }
