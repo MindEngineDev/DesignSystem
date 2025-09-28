@@ -1,28 +1,78 @@
 /* css/dashboard.css */
+/* Dashboard layout + background from assets with gradient overlay. */
+
 :root{
-  --shell-bg: radial-gradient(1200px 600px at 20% -10%, hsla(350,80%,40%,.18), transparent 60%),
-              radial-gradient(1200px 600px at 80% 110%, hsla(350,80%,40%,.15), transparent 60%),
-              linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),
-              var(--sl-color-neutral-0);
+  /* Change this to point to your asset (png/jpg/webp/avif). */
+  --shell-bg-image: url('../assets/bg.jpg');
+
+  /* Overlay gradient on top of the image to match your dark style. */
+  --shell-bg-overlay:
+    radial-gradient(1200px 600px at 20% -10%, hsla(350,80%,40%,.18), transparent 60%),
+    radial-gradient(1200px 600px at 80% 110%, hsla(350,80%,40%,.15), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%);
+
   --shell-radius: 18px;
   --sidebar-w: 280px;
 }
+
+/* Page shell with background image + overlay */
 .shell{
+  position: relative;
   min-height: 100dvh;
-  display: grid; grid-template-columns: var(--sidebar-w) 1fr;
-  background: var(--shell-bg);
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  background: none; /* handled by ::before */
+  overflow: clip;
 }
-.main{ padding: 16px 18px 24px 12px; display:grid; grid-template-rows:auto 1fr; gap:14px }
+
+/* Background layer (image + overlay), stays fixed behind content */
+.shell::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    var(--shell-bg-overlay),
+    var(--shell-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(.95) brightness(.9);
+}
+
+/* Main area */
+.main{
+  padding: 16px 18px 24px 12px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 14px;
+}
+
+/* Canvas */
 .canvas{
-  position: relative; border-radius: var(--shell-radius);
-  background: rgba(0,0,0,.35); min-height: 520px;
+  position: relative;
+  border-radius: var(--shell-radius);
+  background: rgba(0,0,0,.35);
+  min-height: 520px;
 }
+
 .outline{
-  position: absolute; inset: 8px;
+  position: absolute;
+  inset: 8px;
   border-radius: calc(var(--shell-radius) - 6px);
   border: 3px dashed rgba(255,255,255,.25);
 }
+
 .wip{
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  color: hsl(353 83% 64%); opacity:.9;
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  color: hsl(353 83% 64%);
+  opacity: .9;
+}
+
+/* Responsive collapse */
+@media (max-width: 960px){
+  :root{ --sidebar-w: 88px }
 }
