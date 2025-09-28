@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile — CV</title>
+
+    <!-- canonical stylesheet -->
+    <link rel="stylesheet" href="../../../main.css" />
+    <link rel="stylesheet" href="../assets/css/profile.css" />
+
+    <!-- Shoelace for UI components -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <a class="brand" href="../../index.html">Design Studio</a>
+      <div class="spacer"></div>
+      <a class="btn" href="../../index.html">Terug</a>
+    </header>
+
+    <main class="page container">
+      <!-- HERO -->
+      <section class="card profile-hero">
+        <div class="cover" aria-hidden="true"></div>
+        <div class="hero-body">
+          <sl-avatar class="avatar" image="../../../design-studio/assets/images/volker.png" label="Rachel" shape="circle"></sl-avatar>
+          <div class="hero-content">
+            <div class="hero-row">
+              <div class="profile-name">Rachel Dingemans</div>
+              <sl-rating value="4" max="5" readonly></sl-rating>
+            </div>
+            <div class="profile-headline" id="headline">Senior Product Designer · UX & UI</div>
+            <div class="profile-actions">
+              <sl-button variant="primary" size="small" id="likeBtn_main">Like</sl-button>
+              <sl-button variant="default" size="small" id="dislikeBtn_main">Dislike</sl-button>
+              <sl-button variant="text" size="small" id="downloadCv_main">Download CV</sl-button>
+            </div>
+            <div class="profile-tags">
+              <div class="badges-row">
+                <sl-badge>Product Design</sl-badge>
+                <sl-badge>Design Systems</sl-badge>
+                <sl-badge>Figma</sl-badge>
+              </div>
+            </div>
+          </div>
+          <div>
+            <sl-icon-button name="gear" label="Settings" circle></sl-icon-button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTENT -->
+      <section class="grid-2 gap-lg mt-md">
+        <aside>
+          <sl-card>
+            <h3 slot="header">Media</h3>
+            <div class="media-column">
+              <img id="previewImage" src="../../../design-studio/assets/images/volker.png" alt="Preview image" class="media-preview" />
+              <video id="previewVideo" controls class="media-preview hidden"><source id="previewVideoSource" src="" type="video/mp4" /></video>
+
+              <div class="thumbs">
+                <sl-button class="thumb" data-type="image" data-src="../../../design-studio/assets/images/volker.png" pill>
+                  <img src="../../../design-studio/assets/images/volker.png" alt="t1" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px" />
+                </sl-button>
+                <sl-button class="thumb" data-type="image" data-src="../../../design-studio/assets/images/jason.jpg" pill>
+                  <img src="../../../design-studio/assets/images/jason.jpg" alt="t2" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px" />
+                </sl-button>
+                <sl-button class="thumb" data-type="image" data-src="../../../design-studio/assets/images/team-bart.svg" pill>
+                  <img src="../../../design-studio/assets/images/team-bart.svg" alt="t3" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px" />
+                </sl-button>
+                <sl-button class="thumb" data-type="video" data-src="../../../design-studio/assets/images/web-hero.mp4" pill>
+                  <img src="../../../design-studio/assets/images/hero-phone.png" alt="video thumb" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px" />
+                </sl-button>
+              </div>
+
+              <div class="media-upload-row">
+                <label for="mediaInput" class="muted">Upload</label>
+                <input id="mediaInput" type="file" accept="image/*,video/*" aria-label="Upload image or video" />
+              </div>
+            </div>
+          </sl-card>
+        </aside>
+
+        <main>
+          <sl-tab-group>
+            <sl-tab slot="nav" panel="overview">Intro</sl-tab>
+            <sl-tab slot="nav" panel="experience">Experience</sl-tab>
+            <sl-tab slot="nav" panel="education">Education</sl-tab>
+            <sl-tab slot="nav" panel="skills">Skills</sl-tab>
+            <sl-tab slot="nav" panel="contact">Contact</sl-tab>
+
+            <section slot="panel" id="overview">
+              <sl-card>
+                <h3 slot="header">Summary</h3>
+                <div style="padding: 0.5rem 0">
+                  <p id="summary">Product designer with deep experience in research, prototyping and design systems. Passionate about accessibility and beautiful interfaces.</p>
+                </div>
+
+                <dl class="kv">
+                  <dt>Naam</dt>
+                  <dd id="cvName">Rachel Dingemans</dd>
+                  <dt>Geboorte</dt>
+                  <dd>12 September 1985</dd>
+                  <dt>Locatie</dt>
+                  <dd>Rotterdam, Netherlands</dd>
+                  <dt>Email</dt>
+                  <dd><a href="mailto:rachel@example.com">rachel@example.com</a></dd>
+                  <dt>Telefoon</dt>
+                  <dd>+31 6 1234 5678</dd>
+                </dl>
+              </sl-card>
+            </section>
+
+            <section slot="panel" id="experience">
+              <sl-card>
+                <h3 slot="header">Experience</h3>
+                <ul class="timeline">
+                  <li>
+                    <strong>Senior Product Designer — Acme</strong>
+                    <div class="muted">2020 — present</div>
+                    <p>Led cross-functional design and built the design system used across the product suite.</p>
+                  </li>
+                  <li>
+                    <strong>Product Designer — Globex</strong>
+                    <div class="muted">2016 — 2020</div>
+                    <p>Worked on onboarding and analytics features.</p>
+                  </li>
+                </ul>
+              </sl-card>
+            </section>
+
+            <section slot="panel" id="education">
+              <sl-card>
+                <h3 slot="header">Education</h3>
+                <p>B.A. Interaction Design — Arnhem (2010)</p>
+                <p>
+                  <strong>Certifications</strong>
+                  : NN/g UX, Accessibility Specialist
+                </p>
+              </sl-card>
+            </section>
+
+            <section slot="panel" id="skills">
+              <sl-card>
+                <h3 slot="header">Skills</h3>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+                  <sl-badge>UX Research</sl-badge>
+                  <sl-badge>Prototyping</sl-badge>
+                  <sl-badge>Figma</sl-badge>
+                  <sl-badge>Design Systems</sl-badge>
+                  <sl-badge>Accessibility</sl-badge>
+                </div>
+              </sl-card>
+            </section>
+
+            <section slot="panel" id="contact">
+              <sl-card>
+                <h3 slot="header">Contact & Links</h3>
+                <ul>
+                  <li><a href="#">Portfolio</a></li>
+                  <li><a href="#">LinkedIn</a></li>
+                  <li><a href="#">GitHub</a></li>
+                </ul>
+              </sl-card>
+            </section>
+          </sl-tab-group>
+        </main>
+      </section>
+    </main>
+
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        const thumbs = Array.from(document.querySelectorAll(".thumb"));
+        const previewImage = document.getElementById("previewImage");
+        const previewVideo = document.getElementById("previewVideo");
+        const previewVideoSource = document.getElementById("previewVideoSource");
+        const mediaInput = document.getElementById("mediaInput");
+        const downloadCv = document.getElementById("downloadCv_main");
+
+        function showImage(src) {
+          if (previewVideo) {
+            previewVideo.pause();
+            previewVideo.style.display = "none";
+          }
+          if (previewImage) {
+            previewImage.src = src;
+            previewImage.style.display = "";
+          }
+        }
+        function showVideo(src) {
+          if (previewImage) previewImage.style.display = "none";
+          if (previewVideoSource) {
+            previewVideoSource.src = src;
+            previewVideo.load();
+            previewVideo.style.display = "";
+          }
+        }
+
+        thumbs.forEach((btn) =>
+          btn.addEventListener("click", () => {
+            const type = btn.dataset.type;
+            const src = btn.dataset.src;
+            if (type === "video") showVideo(src);
+            else showImage(src);
+          })
+        );
+
+        mediaInput &&
+          mediaInput.addEventListener("change", (e) => {
+            const f = e.target.files && e.target.files[0];
+            if (!f) return;
+            const url = URL.createObjectURL(f);
+            if (f.type.startsWith("video/")) showVideo(url);
+            else showImage(url);
+          });
+
+        downloadCv &&
+          downloadCv.addEventListener("click", () => {
+            const profile = { name: document.getElementById("cvName")?.textContent?.trim() || "Profile", summary: document.getElementById("summary")?.textContent?.trim() || "" };
+            const blob = new Blob([`Name: ${profile.name}\n\nSummary:\n${profile.summary}`], { type: "text/plain" });
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = `${profile.name.replace(/\s+/g, "_")}_CV.txt`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+          });
+      });
+    </script>
+
+    <footer class="footer">
+      <div class="container"><small>© Mind Engine • Playground</small></div>
+    </footer>
+  </body>
+</html>

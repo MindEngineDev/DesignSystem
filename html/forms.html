@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/main.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <title>Forms</title>
+  <link rel="stylesheet" href="assets/css/./site.css">
+  <link rel="stylesheet" href="assets/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">Forms</div>
+      <div class="spacer"></div>
+      <a href="./index.html">Terug</a>
+    </header>
+    <main class="container grid-2">
+      <section class="card">
+        <header class="card__header"><h3>Profiel</h3></header>
+        <form class="form">
+          <div class="form__row">
+            <div>
+              <label>Voornaam</label>
+              <sl-input placeholder="Ada" required></sl-input>
+            </div>
+            <div>
+              <label>Achternaam</label>
+              <sl-input placeholder="Lovelace" required></sl-input>
+            </div>
+          </div>
+          <div class="form__row">
+            <div>
+              <label>Email</label>
+              <sl-input type="email" placeholder="ada@example.com" required></sl-input>
+              <div class="help">We delen je email nooit.</div>
+            </div>
+            <div>
+              <label>Telefoon</label>
+              <sl-input type="tel" placeholder="+31 6 1234 5678"></sl-input>
+            </div>
+          </div>
+          <div>
+            <label>Over</label>
+            <sl-textarea rows="4" resize="auto" placeholder="Korte bio…"></sl-textarea>
+          </div>
+          <div class="card__header">
+            <sl-button variant="primary">Opslaan</sl-button>
+            <sl-button variant="default">Annuleren</sl-button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <header class="card__header"><h3>Wizard</h3></header>
+        <div id="wizard" class="form">
+          <div>
+            <label>Bedrijfsnaam</label>
+            <sl-input placeholder="Acme BV"></sl-input>
+          </div>
+          <div>
+            <label>Branche</label>
+            <sl-select> <sl-option>Tech</sl-option><sl-option>Retail</sl-option><sl-option>SaaS</sl-option> </sl-select>
+          </div>
+          <div class="card__header">
+            <sl-button variant="primary" id="nextStep">Volgende</sl-button>
+            <span class="muted" id="stepInfo">Stap 1/3</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="../scripts/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let step = 1;
+        const info = document.querySelector("#stepInfo");
+        const btn = document.querySelector("#nextStep");
+        if (!btn || !info) return;
+        btn.addEventListener("click", () => {
+          step = Math.min(3, step + 1);
+          info.textContent = `Stap ${step}/3`;
+        });
+      });
+    </script>
+  </body>
+</html>
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+(() => {
+  const p = location.pathname.replace(/\/+$/,'').toLowerCase();
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    try {
+      const u = new URL(a.href, location.href);
+      if (p.endsWith(u.pathname.replace(/\/+$/,'').toLowerCase())) a.classList.add('active');
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->
