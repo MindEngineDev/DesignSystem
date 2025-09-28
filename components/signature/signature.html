@@ -1,0 +1,70 @@
+<!doctype html>
+<html
+  lang="nl"
+  data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+    <title>Signature Capture</title>
+
+    <link
+      rel="stylesheet"
+      href="../../../styles/index.css" />
+  </head>
+  <body>
+    <section
+      class="signature-card"
+      x-data="signaturePadComponent({ initialSignature: $el.dataset.initial || '' })"
+      x-init="init()"
+      x-on:signature-request-save.window="submitSignature()"
+      data-initial="">
+      <header class="signature-header">
+        <h2 class="signature-title">Ondertekenen</h2>
+        <p class="signature-subtitle">Gebruik je vinger of stylus om hieronder te tekenen.</p>
+      </header>
+
+      <div
+        class="signature-field"
+        x-ref="field">
+        <canvas
+          class="signature-canvas"
+          x-ref="canvas"></canvas>
+
+        <span
+          class="signature-hint"
+          x-show="isEmpty"
+          x-transition.opacity>
+          Zet hier met je vinger je handtekening
+        </span>
+
+        <div
+          class="signature-actions"
+          x-show="!isEmpty"
+          x-transition.opacity>
+          <sl-button
+            size="small"
+            variant="default"
+            @click="submitSignature"
+            >Opslaan</sl-button
+          >
+          <sl-icon-button
+            name="x-circle"
+            label="Handtekening wissen"
+            @click="clearSignature"></sl-icon-button>
+        </div>
+      </div>
+
+      <input
+        type="hidden"
+        name="signature"
+        x-model="base64Image" />
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"
+      defer></script>
+    <script type="module"></script>
+  </body>
+</html>

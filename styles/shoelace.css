@@ -1,6 +1,0 @@
-/* styles/shoelace.css
-   Local bridge for Shoelace base styles so Vite can bundle them.
-   Imports both the core library styles and the default dark theme.
-*/
-@import url('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.css');
-@import url('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css');

@@ -14,7 +14,7 @@
 @import url('tokens.css');
 
 /* 3) Shoelace component base */
-@import url('shoelace.css');
+@import url('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.css');
 
 /* 4) Your theme mappings (neutral/semantic) */
 @import url('theme.css');

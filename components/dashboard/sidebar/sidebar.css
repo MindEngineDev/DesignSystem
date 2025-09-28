@@ -1,9 +1,9 @@
 /* components/sidebar/sidebar.css */
 :root {
-  --sidebar-w: 280px;
+  --sidebar-w: 240px;
   --accent: hsl(353 83% 64%);
   --accent-weak: hsl(353 83% 64% / 0.18);
-  --radius-xl: 24px;
+  --radius-xl: var(--radius-md);
 }
 
 .sidebar {
