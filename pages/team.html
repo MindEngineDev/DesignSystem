@@ -1,111 +1,172 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
-    <!-- external theme CSS removed; main.css supplies the required styles -->
-    <title>Team - Creative Studio</title>
-    <link rel="icon" href="/favicon.ico" type="image/png" />
-    <link rel="stylesheet" href="./site.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="stylesheet" href="./site.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
-  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
+    <title>Team | Design System Demo</title>
+
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/layout/app-layout.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/dark.css"
+    />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
   </head>
   <body>
-    <header class="container">
-      <nav class="topbar">
-        <span class="brand">Creative Studio</span>
-        <div class="topbar__actions">
-          <a href="index.html"><sl-button size="small" variant="default">Home</sl-button></a>
-          <a href="home.html"><sl-button size="small" variant="default">About</sl-button></a>
-          <a href="products.html"><sl-button size="small" variant="default">Products</sl-button></a>
-          <a href="pricing.html"><sl-button size="small" variant="default">Pricing</sl-button></a>
-          <sl-button size="small" variant="primary" href="/design-studio/index.html" target="_blank" rel="noreferrer">Design Studio</sl-button>
+  <div class="app-layout">
+      <aside class="app-sidebar" aria-label="Primary">
+        <div class="app-brand">
+          <sl-avatar image="../assets/images/avatar.jpg" shape="circle"></sl-avatar>
+          <div class="app-brand__meta">
+            <span class="app-brand__name">DesignOps</span>
+            <span class="app-brand__team">People</span>
+          </div>
         </div>
-      </nav>
-    </header>
 
-    <main class="container">
-      <section>
-        <h1>Meet the Creative Studio Crew</h1>
-        <p>We are designers, engineers, strategists, and storytellers dedicated to delivering delightful digital experiences.</p>
-      </section>
+        <nav class="app-nav" aria-label="Main navigation">
+          <a class="app-nav__link" href="./app.html">
+            <sl-icon name="speedometer"></sl-icon>
+            <span>Overview</span>
+          </a>
+          <a class="app-nav__link" href="./dashboard/dashboard.html">
+            <sl-icon name="bar-chart"></sl-icon>
+            <span>Dashboard</span>
+          </a>
+          <a class="app-nav__link" href="./pricing.html">
+            <sl-icon name="cash"></sl-icon>
+            <span>Pricing</span>
+          </a>
+          <a class="app-nav__link" href="./team.html">
+            <sl-icon name="people"></sl-icon>
+            <span>Team</span>
+          </a>
+          <a class="app-nav__link" href="./settings.html">
+            <sl-icon name="gear"></sl-icon>
+            <span>Settings</span>
+          </a>
+        </nav>
 
-      <section>
-        <h2>Leadership</h2>
-        <div class="grid">
-          <article class="card">
-            <header>
-              <sl-avatar slot="icon" initials="JV"></sl-avatar>
-              <h3>Jason Vega</h3>
-              <p class="muted">Founder &amp; Creative Director</p>
-            </header>
-            <p>Jason leads the studio with a passion for inclusive, accessible interfaces and empowers the team to experiment.</p>
-          </article>
-          <article class="card">
-            <header>
-              <sl-avatar slot="icon" initials="BT"></sl-avatar>
-              <h3>Bart Turner</h3>
-              <p class="muted">Head of Engineering</p>
-            </header>
-            <p>Bart architects the component system and ensures every release is reliable, performant, and well documented.</p>
-          </article>
-          <article class="card">
-            <header>
-              <sl-avatar slot="icon" initials="VM"></sl-avatar>
-              <h3>Volker Meyer</h3>
-              <p class="muted">Lead Product Designer</p>
-            </header>
-            <p>Volker balances strategy, research, and craft—translating user insights into polished, production-ready designs.</p>
-          </article>
+        <div class="app-sidebar__footer">
+          <sl-button size="small" variant="default" href="./builder.html">Open Builder</sl-button>
         </div>
-      </section>
+      </aside>
 
-      <section>
-        <h2>How we work</h2>
-        <div class="grid">
-          <article class="card">
-            <header><h3>Remote-first</h3></header>
-            <p>Our team collaborates from across the globe, pairing live sessions with asynchronous design critiques.</p>
-          </article>
-          <article class="card">
-            <header><h3>Open tooling</h3></header>
-            <p>We build on open standards like Shoelace and Alpine.js to keep the workflow flexible and future-proof.</p>
-          </article>
-          <article class="card">
-            <header><h3>Iterative delivery</h3></header>
-            <p>Every component is versioned, tested, and documented so product teams can ship confidently.</p>
-          </article>
-        </div>
-      </section>
+      <div class="app-shell">
+        <header class="app-header">
+          <sl-icon-button
+            class="app-header__toggle"
+            name="list"
+            label="Toggle navigation"
+            data-toggle="sidebar"
+          ></sl-icon-button>
 
-      <section>
-        <h2>Join our community</h2>
-        <p>Want to contribute patterns or request new templates? Reach out and we’ll connect you with the right squad.</p>
-        <sl-button variant="primary" href="mailto:hello@creativestudio.io">Email the team</sl-button>
-      </section>
-    </main>
+          <div class="app-header__meta">
+            <h1>Meet the team</h1>
+            <p class="muted">Designers, engineers, and storytellers building the product experience.</p>
+          </div>
+
+          <div class="app-header__actions">
+            <sl-button pill variant="default">Download org chart</sl-button>
+            <sl-button pill variant="primary" href="mailto:hello@creativestudio.io">
+              <sl-icon name="envelope"></sl-icon>
+              Email the team
+            </sl-button>
+          </div>
+        </header>
+
+        <main class="app-main" id="main-content">
+          <section class="app-section app-section--hero">
+            <sl-card>
+              <strong>We’re a remote-first collective focused on inclusive, fast shipping workflows.</strong>
+              <p>
+                From strategy to implementation, we translate insights into accessible, production-ready interfaces powered by our
+                design system.
+              </p>
+            </sl-card>
+          </section>
+
+          <section class="app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Jason Vega</h2>
+                <sl-tag pill variant="primary">Founder</sl-tag>
+              </header>
+              <p class="muted">Jason leads with a passion for inclusive, accessible interfaces and empowers the team to experiment.</p>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Bart Turner</h2>
+                <sl-tag pill variant="success">Engineering lead</sl-tag>
+              </header>
+              <p class="muted">Bart architects the component system ensuring reliability, performance, and documentation.</p>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Volker Meyer</h2>
+                <sl-tag pill variant="info">Product design</sl-tag>
+              </header>
+              <p class="muted">Volker balances research and craft, translating user insight into polished experiences.</p>
+            </sl-card>
+          </section>
+
+          <section class="app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Remote-first</h2>
+                <sl-badge pill variant="neutral">Global</sl-badge>
+              </header>
+              <p>Distributed collaboration, async critiques, and focus time across time zones.</p>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Open tooling</h2>
+                <sl-badge pill variant="primary">Standards</sl-badge>
+              </header>
+              <p>We lean on Shoelace, Alpine.js, and htmx to stay flexible and future-proof.</p>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Iterative delivery</h2>
+                <sl-badge pill variant="success">Reliable</sl-badge>
+              </header>
+              <p>Every component ships versioned, tested, and documented so teams can move fast.</p>
+            </sl-card>
+          </section>
+
+          <section class="app-section">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Join our community</h2>
+                <sl-tag pill variant="primary">Open</sl-tag>
+              </header>
+              <p>Want to contribute patterns or request new templates? Reach out and we’ll connect you with the right squad.</p>
+              <sl-button variant="primary" pill href="mailto:hello@creativestudio.io">Email the team</sl-button>
+            </sl-card>
+          </section>
+        </main>
+
+        <footer class="app-footer">
+          <span>&copy; 2025 Mind Engine • Team</span>
+          <sl-button variant="text" href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</sl-button>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon/icon.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon-button/icon-button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu/menu.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu-item/menu-item.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/tag/tag.js"></script>
+    <script type="module" src="../scripts/app-shell.js"></script>
   </body>
 </html>
-<!-- SIDEBAR-ACTIVE-HILITE -->
-<script>
-  (() => {
-    const p = location.pathname.replace(/\/+$/, "").toLowerCase();
-    document.querySelectorAll(".sidebar a").forEach((a) => {
-      try {
-        const u = new URL(a.href, location.href);
-        if (p.endsWith(u.pathname.replace(/\/+$/, "").toLowerCase())) a.classList.add("active");
-      } catch (_) {}
-    });
-  })();
-</script>
-<!-- SITE-FOOTER START -->
-<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
-<!-- SITE-FOOTER END -->
