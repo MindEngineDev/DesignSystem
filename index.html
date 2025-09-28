@@ -1,18 +1,217 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Workforce App</title>
-    <link rel="stylesheet" href="/src/index.css" />
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script>
-      window.__shoelace_base_url = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";
-    </script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Creative Studio helps you build polished product experiences quickly with reusable Shoelace components."
+    />
+    <title>Mind Engine Studio</title>
+
+    <link rel="icon" href="/favicon.ico" type="image/png" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/layout/app-layout.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/dark.css"
+    />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div class="app-layout">
+      <aside class="app-sidebar" aria-label="Primary">
+        <div class="app-brand">
+          <sl-avatar image="./assets/images/jason.jpg" shape="circle"></sl-avatar>
+          <div class="app-brand__meta">
+            <span class="app-brand__name">Mind Engine</span>
+            <span class="app-brand__team">Creative Studio</span>
+          </div>
+        </div>
+
+        <nav class="app-nav" aria-label="Main navigation">
+          <a class="app-nav__link" href="./index.html">
+            <sl-icon name="house"></sl-icon>
+            <span>Home</span>
+          </a>
+          <a class="app-nav__link" href="./pages/app.html">
+            <sl-icon name="grid"></sl-icon>
+            <span>Product overview</span>
+          </a>
+          <a class="app-nav__link" href="./pages/dashboard/dashboard.html">
+            <sl-icon name="bar-chart"></sl-icon>
+            <span>Executive dashboard</span>
+          </a>
+          <a class="app-nav__link" href="./pages/website/old_platform.html">
+            <sl-icon name="clock-history"></sl-icon>
+            <span>Legacy platform</span>
+          </a>
+          <a class="app-nav__link" href="./pages/pricing.html">
+            <sl-icon name="cash"></sl-icon>
+            <span>Pricing</span>
+          </a>
+          <a class="app-nav__link" href="./pages/team.html">
+            <sl-icon name="people"></sl-icon>
+            <span>Team</span>
+          </a>
+          <a class="app-nav__link" href="./pages/settings.html">
+            <sl-icon name="gear"></sl-icon>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="app-sidebar__footer">
+          <sl-button size="small" variant="default" href="./studio/index.html">Open studio</sl-button>
+        </div>
+      </aside>
+
+      <div class="app-shell">
+        <header class="app-header">
+          <sl-icon-button
+            class="app-header__toggle"
+            name="list"
+            label="Toggle navigation"
+            data-toggle="sidebar"
+          ></sl-icon-button>
+
+          <div class="app-header__meta">
+            <h1>Mind Engine Studio</h1>
+            <p class="muted">Launch beautiful product demos and dashboards in minutes.</p>
+          </div>
+
+          <div class="app-header__actions">
+            <sl-button pill variant="default" href="./pages/app.html">View product app</sl-button>
+            <sl-button pill variant="default" href="./pages/website/home.html">Visit marketing site</sl-button>
+            <sl-button pill variant="primary" href="./studio/index.html">Enter studio</sl-button>
+          </div>
+        </header>
+
+        <main class="app-main" id="main-content">
+          <section class="app-section app-section--hero">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Design faster</h2>
+                <sl-badge variant="success" pill>Live</sl-badge>
+              </header>
+              <p>
+                Explore ready-made demos, launch pages for your products, and jump into the Creative Studio to craft new
+                experiences in minutes.
+              </p>
+              <div class="app-actions">
+                <sl-button pill variant="primary" href="./pages/website/home.html">Discover the platform</sl-button>
+                <sl-button pill variant="default" href="./studio/index.html">Start designing</sl-button>
+              </div>
+            </sl-card>
+          </section>
+
+          <section class="app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Total users</h2>
+                <sl-badge variant="success" pill>+5.4%</sl-badge>
+              </header>
+              <p class="kpi-value">1,452</p>
+              <p class="muted">Active monthly accounts</p>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Revenue</h2>
+                <sl-badge variant="warning" pill>€18,240</sl-badge>
+              </header>
+              <p class="kpi-value">€18,240</p>
+              <p class="muted">Trailing 30 day intake</p>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Signups</h2>
+                <sl-badge variant="primary" pill>221</sl-badge>
+              </header>
+              <p class="kpi-value">221</p>
+              <p class="muted">New teams onboarded</p>
+            </sl-card>
+          </section>
+
+          <section class="app-section app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Experience the site</h2>
+              </header>
+              <p>Visit the welcome page and see the Creative Studio vibe in action.</p>
+              <sl-button variant="primary" href="./pages/website/home.html">Open home</sl-button>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Review pricing</h2>
+              </header>
+              <p>Check flexible plans for individuals, teams, and enterprise setups.</p>
+              <sl-button variant="default" href="./pages/pricing.html">View pricing</sl-button>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Explore components</h2>
+              </header>
+              <p>See product UI built with Shoelace-powered elements.</p>
+              <sl-button variant="default" href="./pages/website/components.html">Browse components</sl-button>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Meet the team</h2>
+              </header>
+              <p>Learn about the crew behind the Creative Studio toolkit.</p>
+              <sl-button variant="default" href="./pages/team.html">Meet the team</sl-button>
+            </sl-card>
+          </section>
+
+          <section class="app-section">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Playground quick links</h2>
+                <sl-badge variant="neutral" pill>Studio</sl-badge>
+              </header>
+              <div class="app-actions">
+                <sl-button variant="default" href="./studio/test-dashboard.html">Dashboard preview</sl-button>
+                <sl-button variant="default" href="./studio/test-forms.html">Form elements</sl-button>
+                <sl-button variant="default" href="./studio/test-table.html">Table layout</sl-button>
+                <sl-button variant="default" href="./studio/test-components.html">Component gallery</sl-button>
+                <sl-button variant="primary" href="./pages/website/old_platform.html">Legacy platform tour</sl-button>
+              </div>
+            </sl-card>
+          </section>
+
+          <section class="app-section">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Ready to build?</h2>
+                <sl-badge variant="info" pill>No access needed</sl-badge>
+              </header>
+              <p>Jump straight into the studio. Pick a layout and start prototyping—no password required.</p>
+              <div class="app-actions">
+                <sl-button pill variant="primary" href="./studio/index.html">Enter the studio</sl-button>
+                <sl-button pill variant="default" href="./pages/app.html">View starter dashboard</sl-button>
+              </div>
+            </sl-card>
+          </section>
+        </main>
+
+        <footer class="app-footer">
+          <span>&copy; 2025 Mind Engine • Creative Studio</span>
+          <sl-button variant="text" href="mailto:studio@mindengine.dev">Contact</sl-button>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon/icon.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon-button/icon-button.js"></script>
+    <script type="module" src="./scripts/app-shell.js"></script>
   </body>
 </html>
