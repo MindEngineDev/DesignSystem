@@ -1,124 +1,25 @@
-  <!doctype html>
-  <html lang="en" data-theme="dark">
-    <head>
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <script type="module" src="../node_modules/@shoelace-style/shoelace/dist/shoelace.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <div id="mount-sidebar"></div>
+      <main class="main">
+        <div id="mount-topbar"></div>
+        <section class="canvas">
+          <div class="outline"></div>
+          <em class="wip">Work in progress</em>
+        </section>
+      </main>
+    </div>
 
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-      <meta description="Creative Studio is a design and prototyping platform that helps you build beautiful, responsive web experiences quickly and easily.">
-
-      <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
-
-      <title>Mind Engine Studio</title>
-
-      <link rel="icon" href="/favicon.ico" type="image/png" />    
-
-    <link rel="stylesheet" href="../styles/index.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-      <link rel="stylesheet" href="../css/index.css" />
-</head>
-
-  <body x-data="landing()">
-
-  <!-- SIDEBAR -->
-
-  <script>document.body.classList.add('has-sidebar');</script>
-  <aside class="sidebar" x-data><div class="brand"><span class="dot"></span><span>Design Studio</span></div>
-  <div class="group">
-
-    <h6>Playground</h6>
-      <a href="./index.html"><i class="fa-solid fa-house"></i>Home</a>
-      <a href="./design-studio/playground/test-dashboard.html"><i class="fa-solid fa-gauge"></i>Dashboard</a>
-      <a href="./design-studio/playground/test-forms.html"><i class="fa-solid fa-sliders"></i>Forms</a>
-      <a href="./design-studio/playground/test-table.html"><i class="fa-solid fa-table"></i>Table</a>
-      <a href="./design-studio/playground/test-components.html"><i class="fa-solid fa-cubes"></i>Components</a></div>
-    <div class="group"><h6>Views</h6><a href="./design-studio/playground/test-dashboard.html#phone"><i class="fa-solid fa-mobile-screen"></i> Phone Preview</a></div>
-    <div class="footer">© Mind Engine</div>
-  </aside>
-    <div class="main-wrap" x-data="{ m:false }">
-      <button class="icon-btn sidebar-toggle" @click="document.body.classList.toggle('sidebar-open')" aria-label="Toggle sidebar">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
-  <!-- SIDEBAR END -->
-
-  <!-- BACKDROP FOR SIDEBAR ON MOBILE -->
-  <div class="sb-backdrop" onclick="document.body.classList.remove(0)"></div>
-  <header class="container">
-    <nav class="topbar">
-      <span class="brand">Creative Studio</span>
-        <div class="topbar__actions">
-          <a href="public/home.html"><sl-button size="small" variant="default">About</sl-button></a>
-          <a href="public/products.html"><sl-button size="small" variant="default">Products</sl-button></a>
-          <a href="public/pricing.html"><sl-button size="small" variant="default">Pricing</sl-button></a>
-          <a href="public/team.html"><sl-button size="small" variant="default">Team</sl-button></a>
-          <sl-button size="small" variant="primary" @click="showLogin = true">Enter Design Studio</sl-button>
-        </div>
-    </nav>  
-  </header>
-
-  <!-- MAIN CONTENT --> 
-
-  <main class="container" data-pad-applied>
-  
-  <section class="hero">
-  
-  <h1>Design better, faster.</h1>
-  <p>Explore ready-made demos, launch pages for your products, and jump into the Design Studio to craft new experiences in minutes.</p>
-  
-  <div class="grid">
-  <a href="public/home.html" class="contrast"><sl-button variant="primary" size="large">Discover the platform</sl-button></a>
-  <sl-button variant="default" size="large" @click="showLogin = true">Start designing</sl-button></div></section>
-
-  <section class="section-preview"></div><h2>Preview what’s included</h2><div class="grid">
-  
-    <article class="card">
-      <header><h3>Experience the site</h3></header>
-       <p>Visit the live welcome page and see the Creative Studio vibe in action.</p>
-        <a href="public/home.html">
-      <sl-button variant="primary">Open Home</sl-button></a>
-    </article>
-  
-  <article class="card">
-  <header><h3>Review pricing</h3></header>
-  <p>Check flexible plans for individuals, teams, and enterprise setups.</p>
-  <a href="public/pricing.html">
-  <sl-button variant="default">View Pricing</sl-button></a>
-  </article>
-  
-  <article class="card">
-  <header><h3>Explore components</h3></header>
-  <p>See how products are showcased with Shoelace-powered UI elements.</p>
-  <a href="public/products.html">
-  <sl-button variant="default">Browse Products</sl-button></a>
-  </article>
-  
-  <article class="card">
-    <header><h3>Meet the team</h3></header>
-      <p>Learn about the crew behind the Creative Studio toolkit.</p>
-    <a href="public/team.html"><sl-button variant="default">Meet the Team</sl-button></a>
-  </article>
-  </div>
-</section>
-
-<section>
-    <h2>Ready to build?</h2>
-     <p>Jump straight into the Design Studio. No password required—just confirm and we’ll open the workspace for you.</p>
-    <sl-button variant="primary" size="large" @click="showLogin = true">Enter the studio</sl-button>
-  </section>
-</main>
-  
-  <sl-dialog label="Enter the Design Studio" x-bind:open="showLogin" @sl-after-hide="showLogin = false">
-    <p class="muted">Provide a name so we can label your session. You can leave it blank if you like.</p>
-    <sl-input label="Display name" placeholder="Creative Explorer"></sl-input>
-    <sl-button slot="footer" variant="primary" @click="enterStudio">Enter Studio</sl-button>
-  </sl-dialog>
-
-  <footer class="footer"><div class="container"><small>© Mind Engine • Design Studio</small></div></footer>
-    <script type="module" src="../scripts/main.js"></script>
-    <script type="module">import { ensureTheme } from "../scripts/theme-boot.js"; ensureTheme();</script>
-</body>
-  </html>
+    <script type="module" src="../js/dashboard.app.js"></script>
+  </body>
+</html>
