@@ -3,10 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <link rel="stylesheet" href="../assets/css/../../main.css" />
+    <!-- external theme CSS removed; main.css is the single stylesheet -->
     <title>Tables</title>
+    <link rel="stylesheet" href="../assets/css/./site.css" />
+    <link rel="stylesheet" href="../assets/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/./site.css">
+  <link rel="stylesheet" href="../assets/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
   </head>
   <body>
     <header class="header">
@@ -14,7 +23,7 @@
       <div class="spacer"></div>
       <a href="./index.html">Terug</a>
     </header>
-    <main>
+    <main class="container">
       <section class="card">
         <header class="card__header">
           <h3>Data table</h3>
@@ -323,7 +332,11 @@
             </tfoot>
           </table>
         </div>
-        <footer class="card__header" id="pager"><button class="prev">Vorige</button><span class="info muted"></span><button class="next">Volgende</button></footer>
+        <footer class="card__header" id="pager">
+          <button class="prev">Vorige</button>
+          <span class="info muted"></span>
+          <button class="next">Volgende</button>
+        </footer>
       </section>
     </main>
     <script type="module">
@@ -335,3 +348,18 @@
     </script>
   </body>
 </html>
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+  (() => {
+    const p = location.pathname.replace(/\/+$/, "").toLowerCase();
+    document.querySelectorAll(".sidebar a").forEach((a) => {
+      try {
+        const u = new URL(a.href, location.href);
+        if (p.endsWith(u.pathname.replace(/\/+$/, "").toLowerCase())) a.classList.add("active");
+      } catch (_) {}
+    });
+  })();
+</script>
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->

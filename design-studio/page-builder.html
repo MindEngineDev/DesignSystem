@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Design Studio — Page Builder</title>
+    <link rel="stylesheet" href="../public/css/home.css" />
+    <link rel="stylesheet" href="css/builder.css" />
+    <link rel="stylesheet" href="../../main.css" />
+  </head>
+  <body>
+    <div class="builder-app">
+      <aside class="palette">
+        <h3>Components</h3>
+        <div class="components-list" id="components-list">
+          <button draggable="true" data-type="hero" class="palette-item">Hero</button>
+          <button draggable="true" data-type="feature-card" class="palette-item">Feature Card</button>
+          <button draggable="true" data-type="cta-button" class="palette-item">CTA Button</button>
+        </div>
+        <hr />
+        <h4>Theme</h4>
+        <div>
+          <label>
+            <input type="radio" name="theme" value="default" checked />
+            Default
+          </label>
+          <label>
+            <input type="radio" name="theme" value="dark" />
+            Dark
+          </label>
+        </div>
+        <hr />
+        <button id="export-btn" class="btn btn-primary">Export page</button>
+      </aside>
+
+      <main class="canvas-area">
+        <header class="canvas-header">
+          <h2>Page Canvas</h2>
+        </header>
+        <section id="canvas" class="canvas" contenteditable="false">
+          <!-- drop components here -->
+          <div class="canvas-hint">Drag components here to build your page</div>
+        </section>
+      </main>
+
+      <aside class="inspector" id="inspector">
+        <h3>Inspector</h3>
+        <div id="inspector-content">Select a component to edit</div>
+      </aside>
+    </div>
+
+    <script type="module" src="scripts/page-builder.js"></script>
+  </body>
+</html>

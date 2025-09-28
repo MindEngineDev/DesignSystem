@@ -56,3 +56,6 @@ export * from "./tooltip";
 export * from "./tree";
 export * from "./tree-item";
 export * from "./visually-hidden";
+export * from "./hero";
+export * from "./feature-card";
+export * from "./cta-button";

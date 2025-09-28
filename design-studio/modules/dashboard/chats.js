@@ -1,5 +1,14 @@
 // Simple chats module for dashboard testing
 // Exposes init(containerId) to wire a minimal chat UI for preview pages.
+//
+// Quick testing notes:
+// 1) Open `design-studio/layouts/dashboard.html` (or the dashboard preview) in a browser.
+// 2) Ensure the page includes this module (it should call `initChats('chatsWidget')` on DOMContentLoaded
+//    or you can call it manually from the browser console:
+//      window.initChats && window.initChats('chatsWidget')
+// 3) Type a message and press Send — the widget appends your message and responds with an "Echo" reply.
+// 4) This module is intentionally minimal and has no network calls. It's meant for visual and
+//    integration testing of the dashboard layout only.
 
 export function initChats(containerId = "chatsWidget") {
   const container = document.getElementById(containerId);
@@ -52,3 +61,5 @@ export function initChats(containerId = "chatsWidget") {
 if (typeof window !== "undefined") {
   window.initChats = initChats;
 }
+
+// End of chats module - no side-effects besides attaching `window.initChats`.

@@ -1,19 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="main.css" />
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+  <!-- external theme CSS and icon fonts removed; main.css is the single stylesheet -->
     <title>Creative Studio</title>
     <link rel="icon" href="/favicon.ico" type="image/png" />
+    <!-- Removed duplicate theme and icon imports; site relies on main.css -->
+  <link rel="stylesheet" href="./site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
   </head>
   <body x-data="landing()">
-    <header class="container">
+<!-- SIDEBAR START -->
+<script>document.body.classList.add('has-sidebar');</script>
+<aside class="sidebar" x-data>
+  <div class="brand"><span class="dot"></span><span>Design Studio</span></div>
+  <div class="group">
+    <h6>Playground</h6>
+    <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="./design-studio/playground/test-dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+    <a href="./design-studio/playground/test-forms.html"><i class="fa-solid fa-sliders"></i> Forms</a>
+    <a href="./design-studio/playground/test-table.html"><i class="fa-solid fa-table"></i> Table</a>
+    <a href="./design-studio/playground/test-components.html"><i class="fa-solid fa-cubes"></i> Components</a>
+  </div>
+  <div class="group">
+    <h6>Views</h6>
+    <a href="./design-studio/playground/test-dashboard.html#phone"><i class="fa-solid fa-mobile-screen"></i> Phone Preview</a>
+  </div>
+  <div class="footer">© Mind Engine</div>
+</aside>
+<div class="main-wrap" x-data="{ m:false }">
+  <button class="icon-btn" @click="document.body.classList.toggle('sidebar-open')" aria-label="Toggle sidebar" style="position:fixed;left:.75rem;bottom:.75rem;z-index:95">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+<!-- SIDEBAR END -->
+<div class="sb-backdrop" onclick="document.body.classList.remove(0)"></div>
+<header class="container">
       <nav class="topbar">
         <span class="brand">Creative Studio</span>
         <div class="topbar__actions">
@@ -26,7 +55,8 @@
       </nav>
     </header>
 
-    <main class="container">
+    <main class="container" data-pad-applied>
+  <div style="padding: 1rem 0 2rem;"></div>
       <section class="hero">
         <h1>Design better, faster.</h1>
         <p>Explore ready-made demos, launch pages for your products, and jump into the Design Studio to craft new experiences in minutes.</p>
@@ -99,3 +129,23 @@
     </script>
   </body>
 </html>
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->
+<!-- MAIN-WRAP END -->
+</div><!-- .main-wrap -->
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+(() => {
+  const p = location.pathname.replace(/\/+$/,'').toLowerCase();
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    try {
+      const u = new URL(a.href, location.href);
+      if (p.endsWith(u.pathname.replace(/\/+$/,'').toLowerCase())) a.classList.add('active');
+    } catch (_) {}
+  });
+})();
+</script>

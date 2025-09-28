@@ -1,17 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>AG Grid Demo — DesignSystem</title>
     <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="../../main.css" />
     <!-- Pico.css for baseline styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1.*/css/pico.min.css" />
     <!-- Shoelace dark theme to preview components styling alongside grid -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2/dist/themes/dark.css" />
-    <!-- AG Grid Community styles -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@28/dist/styles/ag-grid.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@28/dist/styles/ag-theme-alpine.css" />
+    <!-- AG Grid Community styles (pin to a single, modern version) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.3/styles/ag-grid.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.3/styles/ag-theme-alpine.min.css" />
     <style>
       body {
         padding: 1rem;
@@ -42,10 +43,32 @@
         font-size: 0.9rem;
         color: #999;
       }
+      .grid-loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+        color: var(--muted);
+      }
+      .grid-error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 0;
+        color: var(--danger, #c33);
+      }
     </style>
+    <link rel="stylesheet" href="./site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css" />
+    <script>
+      window.__shoelace_base_url = "https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";
+    </script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
   </head>
   <body>
-    <main class="page">
+    <main class="container page">
       <header>
         <h1>AG Grid demo</h1>
         <nav>
@@ -57,21 +80,22 @@
 
       <section x-data="agGridDemo()" x-init="init()">
         <div class="controls">
-          <label>Filter: <input x-model="quickFilter" @input="onQuickFilter()" placeholder="quick filter..." /></label>
+          <label>
+            Filter:
+            <input x-model="quickFilter" @input="onQuickFilter()" placeholder="quick filter..." />
+          </label>
           <button @click="shuffle()">Shuffle rows</button>
           <button @click="addRow()">Add row</button>
         </div>
 
-        <div id="myGrid" class="ag-theme-alpine"></div>
+        <div id="myGrid" class="ag-theme-alpine"><div class="grid-loading">Loading…</div></div>
       </section>
 
       <p class="muted">This preview uses AG Grid Community via CDN and initializes the grid through Alpine.js. No local npm install required.</p>
     </main>
 
-    <!-- Alpine.js CDN (deferred) -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- AG Grid Community UMD bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@28/dist/ag-grid-community.noStyle.js"></script>
+    <!-- AG Grid Community UMD bundle (pinned) -->
+    <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@31.3.3/dist/ag-grid-community.min.noStyle.js"></script>
     <script>
       function agGridDemo() {
         return {
@@ -80,6 +104,8 @@
           quickFilter: "",
           rowData: [],
           columnDefs: [{ field: "id", headerName: "ID", width: 90 }, { field: "make" }, { field: "model" }, { field: "price", headerClass: "numeric", valueFormatter: (params) => `$${params.value}` }],
+          // Provide stable ids so AG Grid can perform delta updates efficiently
+          getRowId: (params) => params.data.id,
           sampleRows() {
             return [
               { id: 1, make: "Toyota", model: "Celica", price: 35000 },
@@ -93,33 +119,120 @@
             const gridOptions = {
               columnDefs: this.columnDefs,
               rowData: this.sampleRows(),
+              // enable delta row updates so we can use transactions for incremental changes
+              deltaRowDataMode: true,
+              getRowId: this.getRowId,
               onGridReady: (params) => {
                 this.gridApi = params.api;
                 this.gridColumnApi = params.columnApi;
               },
               defaultColDef: { sortable: true, filter: true, resizable: true },
             };
+
             const eGridDiv = document.querySelector("#myGrid");
-            new agGrid.Grid(eGridDiv, gridOptions);
+
+            // Lazy-init the grid only when the element becomes visible to reduce initial CPU/work
+            let _gridInitialized = false;
+            const debounce = (fn, wait = 250) => {
+              let t;
+              return (...args) => {
+                clearTimeout(t);
+                t = setTimeout(() => fn(...args), wait);
+              };
+            };
+            const showGridError = (el, msg = "Grid failed to load") => {
+              try {
+                const loader = el.querySelector(".grid-loading");
+                if (loader) loader.remove();
+                const err = document.createElement("div");
+                err.className = "grid-error";
+                err.textContent = msg;
+                el.appendChild(err);
+              } catch (e) {
+                /* ignore */
+              }
+            };
+            const initGrid = () => {
+              if (_gridInitialized) return;
+              if (!eGridDiv) return;
+              try {
+                new agGrid.Grid(eGridDiv, gridOptions);
+                // remove loader
+                const loader = eGridDiv.querySelector(".grid-loading");
+                if (loader) loader.remove();
+                _gridInitialized = true;
+                // attach debounced quick-filter if present inside same section
+                try {
+                  const section = eGridDiv.closest("section");
+                  const q = section && section.querySelector('input[type="search"], input[placeholder]');
+                  if (q && gridOptions && gridOptions.api) {
+                    const deb = debounce(() => gridOptions.api.setQuickFilter(q.value || ""), 250);
+                    q.addEventListener("input", deb);
+                  }
+                } catch (e) {
+                  /* ignore */
+                }
+              } catch (err) {
+                showGridError(eGridDiv, String(err?.message || "Grid initialization error"));
+              }
+            };
+
+            if ("IntersectionObserver" in window && eGridDiv) {
+              const obs = new IntersectionObserver(
+                (entries, o) => {
+                  entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                      initGrid();
+                      o.disconnect();
+                    }
+                  });
+                },
+                { root: null, threshold: 0.05 }
+              );
+              obs.observe(eGridDiv);
+              // Fallback in case the observer doesn't fire in some embed contexts
+              setTimeout(() => {
+                if (!_gridInitialized) initGrid();
+              }, 300);
+            } else {
+              // immediate fallback
+              initGrid();
+            }
           },
           onQuickFilter() {
             if (this.gridApi) this.gridApi.setQuickFilter(this.quickFilter);
           },
           shuffle() {
             if (!this.gridApi) return;
+            // For demo, resetting full rowData is ok; for large datasets prefer applyTransaction
             const rows = this.sampleRows().sort(() => Math.random() - 0.5);
             this.gridApi.setRowData(rows);
           },
           addRow() {
             if (!this.gridApi) return;
             const next = { id: Date.now() % 100000, make: "New", model: "Model", price: Math.floor(Math.random() * 90000) };
-            const nodes = [];
-            this.gridApi.forEachNode((n) => nodes.push(n.data));
-            nodes.push(next);
-            this.gridApi.setRowData(nodes);
+            // Use a transaction so AG Grid can update only the changed rows when deltaRowDataMode is enabled
+            this.gridApi.applyTransaction({ add: [next] });
           },
         };
       }
     </script>
   </body>
 </html>
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+  (() => {
+    const p = location.pathname.replace(/\/+$/, "").toLowerCase();
+    document.querySelectorAll(".sidebar a").forEach((a) => {
+      try {
+        const u = new URL(a.href, location.href);
+        if (p.endsWith(u.pathname.replace(/\/+$/, "").toLowerCase())) a.classList.add("active");
+      } catch (_) {}
+    });
+  })();
+</script>
+<!-- SITE-FOOTER START -->
+<footer class="footer">
+  <div class="container"><small>© Mind Engine • Playground</small></div>
+</footer>
+<!-- SITE-FOOTER END -->

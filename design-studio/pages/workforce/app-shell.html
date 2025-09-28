@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
 
     <title>App Shell (Header + Footer Nav)</title>
+  <link rel="stylesheet" href="./site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
   </head>
   <body>
     <header class="app-header">
@@ -31,7 +37,7 @@
         </nav>
       </aside>
 
-      <main class="app-main">
+      <main class="container app-main">
         <section class="grid-3">
           <article class="card"><header class="card__header"><h3>KPI 1</h3><span class="badge">+12%</span></header><div class="muted">Korte toelichting…</div></article>
           <article class="card"><header class="card__header"><h3>KPI 2</h3><span class="badge">−2%</span></header><div class="muted">Korte toelichting…</div></article>
@@ -71,3 +77,18 @@
     </nav>
   </body>
 </html>
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+(() => {
+  const p = location.pathname.replace(/\/+$/,'').toLowerCase();
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    try {
+      const u = new URL(a.href, location.href);
+      if (p.endsWith(u.pathname.replace(/\/+$/,'').toLowerCase())) a.classList.add('active');
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->

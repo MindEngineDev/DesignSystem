@@ -1,33 +1,175 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Test • Components</title>
-  <link rel="stylesheet" href="../vars.css"><link rel="stylesheet" href="../theme.css"><link rel="stylesheet" href="../ui.css"><link rel="stylesheet" href="../views.css">
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Test  Components</title>
+    <link rel="stylesheet" href="../../main.css" />
+  <!-- removed local view styles and external themes; use ../../main.css only -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/./site.css">
+  <link rel="stylesheet" href="../assets/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
+  </head>
+  <body>
+<!-- SIDEBAR START -->
+<script>document.body.classList.add('has-sidebar');</script>
+<aside class="sidebar" x-data>
+  <div class="brand"><span class="dot"></span><span>Design Studio</span></div>
+  <div class="group">
+    <h6>Playground</h6>
+    <a href="../../index.html"><i class="fa-solid fa-house"></i> Home</a>
+    <a href="./test-dashboard.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+    <a href="./test-forms.html"><i class="fa-solid fa-sliders"></i> Forms</a>
+    <a href="./test-table.html"><i class="fa-solid fa-table"></i> Table</a>
+    <a href="./test-components.html"><i class="fa-solid fa-cubes"></i> Components</a>
+  </div>
+  <div class="group">
+    <h6>Views</h6>
+    <a href="./test-dashboard.html#phone"><i class="fa-solid fa-mobile-screen"></i> Phone Preview</a>
+  </div>
+  <div class="footer">© Mind Engine</div>
+</aside>
+<div class="main-wrap" x-data="{ m:false }">
+  <button class="icon-btn" @click="document.body.classList.toggle('sidebar-open')" aria-label="Toggle sidebar" style="position:fixed;left:.75rem;bottom:.75rem;z-index:95">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+<!-- SIDEBAR END -->
+<div class="sb-backdrop" onclick="document.body.classList.remove(0)"></div>
 <!-- Site Nav -->
-  <nav class="site-nav" x-data="{open:false,dark:true}" style="position:sticky;top:0;z-index:100;display:flex;gap:.75rem;align-items:center;padding:.6rem 1rem;border-bottom:1px solid #20262b;background:#0f1315;color:#e5e7eb;">
-    <div style="display:flex;gap:.5rem;align-items:center;font-weight:700;"><span style="width:.6rem;height:.6rem;border-radius:50%;background:#56c4c6;display:inline-block"></span><span>Design System</span></div>
-    <div style="margin-left:auto;display:flex;gap:.75rem;flex-wrap:wrap">
-      <a href="../../index.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-house"></i> Home</a>
-      <a href="./test-dashboard.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-      <a href="./test-forms.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-sliders"></i> Forms</a>
-      <a href="./test-table.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-table"></i> Table</a>
-      <a href="./test-components.html" style="color:inherit;text-decoration:none;opacity:.95"><i class="fa-solid fa-cubes"></i> Components</a>
+    <!-- Header -->
+    <header class="header">
+      <strong class="brand">
+        <i class="fa-solid fa-cubes"></i>
+        Components
+      </strong>
+      <span class="spacer"></span>
+      <nav>
+        <a href="./test-dashboard.html" class="contrast">Dashboard</a>
+        ·
+        <a href="./test-forms.html" class="contrast">Forms</a>
+        ·
+        <a href="./test-table.html" class="contrast">Table</a>
+      </nav>
+    </header>
+    <!-- Main -->
+    <main class="container" data-pad-applied>
+  <div style="padding: 1rem 0 2rem;"></div>
+<!-- COMPONENTS-DEMO -->
+<section class="grid">
+  <article class="card">
+    <h3>Buttons</h3>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <sl-button>Default</sl-button>
+      <sl-button variant="primary">Primary</sl-button>
+      <sl-button variant="success">Success</sl-button>
+      <sl-button variant="warning">Warning</sl-button>
+      <sl-button disabled>Disabled</sl-button>
     </div>
-    <div style="margin-left:.75rem;display:flex;align-items:center;gap:.5rem"><sl-switch @sl-change="dark=$event.target.checked;document.documentElement.setAttribute('data-theme',dark?'dark':'light')" checked>Dark</sl-switch></div>
-  </nav>
-  <!-- Header -->
-  <header class="header"><strong class="brand"><i class="fa-solid fa-cubes"></i> Components</strong><span class="spacer"></span>
-    <nav><a href="./test-dashboard.html" class="contrast">Dashboard</a> · <a href="./test-forms.html" class="contrast">Forms</a> · <a href="./test-table.html" class="contrast">Table</a></nav>
-  </header>
-  <!-- Main -->
-  <main class="container">
-    <section class="card"><header class="card__header"><h3>Badges</h3></header><div><span class="badge badge--success">Success</span><span class="badge badge--warn">Warning</span><span class="badge badge--info">Info</span></div></section>
-    <section class="card"><header class="card__header"><h3>Buttons</h3></header><div><button class="sl-button">Default</button><button class="sl-button primary">Primary</button><button class="sl-button" disabled>Disabled</button></div></section>
-    <section class="card"><header class="card__header"><h3>Inputs</h3></header><div><input type="text" placeholder="Text"><input type="number" placeholder="Number"><select><option>Option A</option><option>Option B</option></select></div></section>
-  </main>
-</body>
+  </article>
+
+  <article class="card">
+    <h3>Badges & Pills</h3>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <span class="badge badge--ok"><i class="fa-solid fa-check"></i> stable</span>
+      <span class="pill">beta</span>
+      <span class="pill">new</span>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Tabs</h3>
+    <sl-tab-group>
+      <sl-tab slot="nav" panel="a">One</sl-tab>
+      <sl-tab slot="nav" panel="b">Two</sl-tab>
+      <sl-tab slot="nav" panel="c">Three</sl-tab>
+      <sl-tab-panel name="a">Panel A content</sl-tab-panel>
+      <sl-tab-panel name="b">Panel B content</sl-tab-panel>
+      <sl-tab-panel name="c">Panel C content</sl-tab-panel>
+    </sl-tab-group>
+  </article>
+
+  <article class="card">
+    <h3>Dialog</h3>
+    <div style="display:flex;gap:.5rem">
+      <sl-button id="openDialog" variant="primary"><i class="fa-solid fa-bolt"></i> Open</sl-button>
+      <sl-dialog label="Quick demo" class="dialog-overview">
+        Hello from Shoelace dialog.
+        <sl-button slot="footer" variant="primary">Continue</sl-button>
+      </sl-dialog>
+    </div>
+  </article>
+
+  <article class="card">
+    <h3>Inputs</h3>
+    <div class="grid">
+      <sl-input label="Search" placeholder="Type to search…" clearable></sl-input>
+      <sl-select label="Status" value="active">
+        <sl-option value="active">Active</sl-option>
+        <sl-option value="pending">Pending</sl-option>
+        <sl-option value="inactive">Inactive</sl-option>
+      </sl-select>
+      <sl-textarea label="Notes" rows="3"></sl-textarea>
+    </div>
+  </article>
+</section>
+      <section class="card">
+        <header class="card__header"><h3>Badges</h3></header>
+        <div>
+          <span class="badge badge--success">Success</span>
+          <span class="badge badge--warn">Warning</span>
+          <span class="badge badge--info">Info</span>
+        </div>
+      </section>
+      <section class="card">
+        <header class="card__header"><h3>Buttons</h3></header>
+        <div>
+          <button class="sl-button">Default</button>
+          <button class="sl-button primary">Primary</button>
+          <button class="sl-button" disabled>Disabled</button>
+        </div>
+      </section>
+      <section class="card">
+        <header class="card__header"><h3>Inputs</h3></header>
+        <div>
+          <input type="text" placeholder="Text" />
+          <input type="number" placeholder="Number" />
+          <select>
+            <option>Option A</option>
+            <option>Option B</option>
+          </select>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->
+<!-- COMPONENTS-JS -->
+<script>
+(() => {
+  const btn = document.getElementById("openDialog");
+  const dlg = document.querySelector("sl-dialog.dialog-overview");
+  btn && dlg && btn.addEventListener("click", () => dlg.show());
+})();
+</script>
+<!-- MAIN-WRAP END -->
+</div><!-- .main-wrap -->
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+(() => {
+  const p = location.pathname.replace(/\/+$/,'').toLowerCase();
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    try {
+      const u = new URL(a.href, location.href);
+      if (p.endsWith(u.pathname.replace(/\/+$/,'').toLowerCase())) a.classList.add('active');
+    } catch (_) {}
+  });
+})();
+</script>

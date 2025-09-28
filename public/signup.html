@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Start a free workspace for your team with Creative Studio — component-driven UI, tokens, and prototyping tools." />
+    <meta property="og:title" content="Sign up - Creative Studio" />
+    <meta property="og:description" content="Start a free workspace for your team with Creative Studio." />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <title>Sign up - Creative Studio</title>
+  </head>
+  <body>
+    <header class="container">
+      <nav class="topbar">
+        <span class="brand">Creative Studio</span>
+        <div class="topbar__actions">
+          <a href="home.html" class="">Home</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="products.html">Products</a>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <section class="container" style="padding-top: 2.5rem; padding-bottom: 2.5rem">
+        <div style="max-width: 640px; margin: 0 auto">
+          <h1>Start your free workspace</h1>
+          <p class="muted">No credit card required. Try the platform and invite your team.</p>
+          <form class="signup-form" style="display: flex; flex-direction: column; gap: 0.75rem">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" required placeholder="you@company.com" />
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" required placeholder="Your name" />
+            <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap">
+              <a href="#" class="btn btn-primary">Create workspace</a>
+              <a href="pricing.html" class="btn btn-outline">Contact sales</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

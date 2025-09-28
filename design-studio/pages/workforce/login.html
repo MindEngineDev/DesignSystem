@@ -10,9 +10,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
 
     <title>Login</title>
+  <link rel="stylesheet" href="./site.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
   </head>
   <body>
-    <main class="app-main" style="display:grid; place-items:center; min-height:100dvh;">
+    <main class="container app-main" style="display:grid; place-items:center; min-height:100dvh;">
       <section class="card" style="width:min(420px, 92vw)">
         <header class="card__header"><h3>Aanmelden</h3></header>
         <form class="list" style="gap:.75rem">
@@ -25,3 +31,18 @@
     </main>
   </body>
 </html>
+<!-- SIDEBAR-ACTIVE-HILITE -->
+<script>
+(() => {
+  const p = location.pathname.replace(/\/+$/,'').toLowerCase();
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    try {
+      const u = new URL(a.href, location.href);
+      if (p.endsWith(u.pathname.replace(/\/+$/,'').toLowerCase())) a.classList.add('active');
+    } catch (_) {}
+  });
+})();
+</script>
+<!-- SITE-FOOTER START -->
+<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
+<!-- SITE-FOOTER END -->

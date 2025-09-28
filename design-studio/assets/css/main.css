@@ -1,9 +1,123 @@
-@import "app.css";
-@import "components.css";
-@import "dashboard.css";
-@import "layout.css";
-@import "shoelace.css";
-@import "theme.css";
-@import "ui.css";
-@import "vars.css";
-@import "views.css";
+@import "./shoelace.css";
+@import "./theme.css";
+@import "./vars.css";
+@import "./forms.css";
+@import "./profile.css";
+@import "./chats.css";
+@import "./site.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--body-bg);
+  color: var(--body-text);
+  font-family: var(--font-body);
+}
+
+/* Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--panel-border);
+}
+.brand {
+  font-weight: 700;
+}
+
+/* Layout helpers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.page {
+  padding: 1rem 0;
+}
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Utilities */
+.muted {
+  color: var(--body-muted);
+}
+.hidden {
+  display: none;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1rem;
+}
+@media (max-width: 720px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer spacing */
+.footer {
+  margin-top: 1.5rem;
+}
+
+/* Chats */
+.chats__header {
+  background: var(--muted-bg, #f7fafb);
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+}
+.chats__messages {
+  padding: 0.5rem;
+  min-height: 80px;
+  max-height: 200px;
+  overflow: auto;
+  background: var(--chat-bg, #fff);
+}
+.chats__msg {
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+  max-width: 85%;
+}
+.chats__msg--you {
+  background: #0ea5a4;
+  color: #fff;
+  margin-left: auto;
+}
+.chats__msg--bot {
+  background: #eef2ff;
+  color: #0f172a;
+  margin-right: auto;
+}
+.chats__form {
+  gap: 0.5rem;
+  border-top: 1px solid var(--panel-border, #e6eef2);
+}
+.chats__form input {
+  flex: 1;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid #d1d5db;
+}
+.chats__form button {
+  padding: 0.45rem 0.75rem;
+  border: none;
+  background: var(--primary, #0ea5a4);
+}
+
+/* End of cleaned main.css */
