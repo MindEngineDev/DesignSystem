@@ -11,8 +11,8 @@ setBasePath("https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/dist")
 import "./components/shoelace/index.js";
 
 // Project-specific plugins
-import registerAlpinePlugins from "./scripts/alpine.js";
-import "./scripts/htmx-extension.js";
+import registerAlpinePlugins from "./scripts/vendors/alpine.js";
+import "./scripts/vendors/htmx-extension.js";
 
 const DEFAULT_THEME = "dark";
 
