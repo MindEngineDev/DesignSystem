@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Mind Engine Creative Studio - Build polished product experiences with ready-to-use layouts and Shoelace components."
+    />
+    <title>Creative Studio | Mind Engine</title>
+
+    <link rel="stylesheet" href="../../styles/index.css" />
+    <link rel="stylesheet" href="../../styles/layout/app-layout.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/dark.css"
+    />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
+  </head>
+  <body>
+    <main class="app-main">
+      <section class="app-section app-section--hero">
+        <sl-card>
+          <header class="app-card__header">
+            <h1>Creative Studio</h1>
+            <sl-badge variant="success" pill>Live platform</sl-badge>
+          </header>
+          <p>
+            Build polished product experiences with ready-to-use layouts, design tokens, and Shoelace components. 
+            From prototypes to production-ready dashboards in minutes.
+          </p>
+          <div class="app-actions">
+            <sl-button pill variant="primary" href="../../studio/index.html">Launch studio</sl-button>
+            <sl-button pill variant="default" href="../../pages/app.html">View demo app</sl-button>
+          </div>
+        </sl-card>
+      </section>
+
+      <section class="app-grid">
+        <sl-card>
+          <header class="app-card__header">
+            <h2>Design faster</h2>
+            <sl-badge variant="primary" pill>No-code</sl-badge>
+          </header>
+          <p>Visual builder with drag-and-drop components, instant previews, and export to clean HTML/CSS.</p>
+        </sl-card>
+
+        <sl-card>
+          <header class="app-card__header">
+            <h2>Ship quicker</h2>
+            <sl-badge variant="success" pill>Production-ready</sl-badge>
+          </header>
+          <p>Pre-built layouts for dashboards, forms, and marketing pages that work across all devices.</p>
+        </sl-card>
+
+        <sl-card>
+          <header class="app-card__header">
+            <h2>Stay consistent</h2>
+            <sl-badge variant="warning" pill>Design system</sl-badge>
+          </header>
+          <p>Unified tokens, components, and patterns that scale from prototypes to full product suites.</p>
+        </sl-card>
+      </section>
+
+      <section class="app-section">
+        <sl-card>
+          <header class="app-card__header">
+            <h2>Ready to explore?</h2>
+            <sl-badge variant="info" pill>Free access</sl-badge>
+          </header>
+          <p>Jump into the studio or browse our component gallery to see what's possible.</p>
+          <div class="app-actions">
+            <sl-button pill variant="primary" href="../../studio/index.html">Enter studio</sl-button>
+            <sl-button pill variant="default" href="./components.html">Browse components</sl-button>
+            <sl-button pill variant="default" href="../../index.html">View overview</sl-button>
+          </div>
+        </sl-card>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>&copy; 2025 Mind Engine • Creative Studio</span>
+      <sl-button variant="text" href="mailto:hello@mindengine.dev">Contact</sl-button>
+    </footer>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+  </body>
+</html>

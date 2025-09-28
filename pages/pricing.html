@@ -1,110 +1,164 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pricing - Creative Studio</title>
-    <link rel="icon" href="/favicon.ico" type="image/png" />
+    <title>Pricing | Design System Demo</title>
 
-    <!-- Design system -->
     <link rel="stylesheet" href="../styles/index.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css" />
-    
-    <!-- Scripts -->
-    <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="../styles/layout/app-layout.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/dark.css"
+    />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
   </head>
-  <body x-data="app">
-    <header class="container">
-      <nav class="topbar">
-        <span class="brand">Creative Studio</span>
-        <div class="topbar__actions">
-          <a href="index.html"><sl-button size="small" variant="default">Home</sl-button></a>
-          <a href="home.html"><sl-button size="small" variant="default">About</sl-button></a>
-          <a href="products.html"><sl-button size="small" variant="default">Products</sl-button></a>
-          <a href="pricing.html"><sl-button size="small" variant="default">Pricing</sl-button></a>
-          <a href="team.html"><sl-button size="small" variant="default">Team</sl-button></a>
-          <sl-button size="small" variant="primary" @click="showLogin = true">Login</sl-button>
+  <body>
+  <div class="app-layout">
+      <aside class="app-sidebar" aria-label="Primary">
+        <div class="app-brand">
+          <sl-avatar image="../assets/images/avatar.jpg" shape="circle"></sl-avatar>
+          <div class="app-brand__meta">
+            <span class="app-brand__name">DesignOps</span>
+            <span class="app-brand__team">Growth</span>
+          </div>
         </div>
-      </nav>
-    </header>
-    <main class="container">
-      <section>
-        <h1>Pricing Plans</h1>
-        <p>Choose the perfect plan for your creative needs.</p>
-        <div class="grid">
-          <article class="card">
-            <header>
-              <h3>Free</h3>
-              <p class="price">$0/month</p>
-            </header>
-            <ul>
-              <li>Basic tools</li>
-              <li>5 projects</li>
-              <li>Community support</li>
-            </ul>
-            <sl-button variant="primary">Get Started</sl-button>
-          </article>
-          <article class="card">
-            <header>
-              <h3>Pro</h3>
-              <p class="price">$19/month</p>
-            </header>
-            <ul>
-              <li>Advanced tools</li>
-              <li>Unlimited projects</li>
-              <li>Priority support</li>
-              <li>Collaboration features</li>
-            </ul>
-            <sl-button variant="primary">Upgrade Now</sl-button>
-          </article>
-          <article class="card">
-            <header>
-              <h3>Enterprise</h3>
-              <p class="price">Contact Us</p>
-            </header>
-            <ul>
-              <li>All Pro features</li>
-              <li>Custom integrations</li>
-              <li>Dedicated account manager</li>
-              <li>On-premise deployment</li>
-            </ul>
-            <sl-button variant="primary">Contact Sales</sl-button>
-          </article>
+
+        <nav class="app-nav" aria-label="Main navigation">
+          <a class="app-nav__link" href="./app.html">
+            <sl-icon name="speedometer"></sl-icon>
+            <span>Overview</span>
+          </a>
+          <a class="app-nav__link" href="./dashboard/dashboard.html">
+            <sl-icon name="bar-chart"></sl-icon>
+            <span>Dashboard</span>
+          </a>
+          <a class="app-nav__link" href="./pricing.html">
+            <sl-icon name="cash"></sl-icon>
+            <span>Pricing</span>
+          </a>
+          <a class="app-nav__link" href="./team.html">
+            <sl-icon name="people"></sl-icon>
+            <span>Team</span>
+          </a>
+          <a class="app-nav__link" href="./settings.html">
+            <sl-icon name="gear"></sl-icon>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="app-sidebar__footer">
+          <sl-button size="small" variant="default" href="./builder.html">Open Builder</sl-button>
         </div>
-      </section>
-    </main>
-    <!-- Simple Login Modal -->
-    <sl-dialog label="Login to Design Studio" x-show="showLogin" @sl-hide="showLogin = false">
-      <form>
-        <sl-input label="Username" name="username" required></sl-input>
-        <sl-input label="Password" name="password" type="password" required></sl-input>
-        <sl-button type="submit" variant="primary" @click="alert('Login successful!')">Login</sl-button>
+      </aside>
+
+      <div class="app-shell">
+        <header class="app-header">
+          <sl-icon-button
+            class="app-header__toggle"
+            name="list"
+            label="Toggle navigation"
+            data-toggle="sidebar"
+          ></sl-icon-button>
+
+          <div class="app-header__meta">
+            <h1>Pricing plans</h1>
+            <p class="muted">Choose the plan that matches your rollout strategy and audience size.</p>
+          </div>
+
+          <div class="app-header__actions">
+            <sl-button pill variant="default">Compare tiers</sl-button>
+            <sl-button pill variant="primary" data-action="open-login">
+              <sl-icon name="box-arrow-in-right"></sl-icon>
+              Login
+            </sl-button>
+          </div>
+        </header>
+
+        <main class="app-main" id="main-content">
+          <section class="app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Starter</h2>
+                <sl-badge variant="neutral" pill>$0 / month</sl-badge>
+              </header>
+              <sl-menu>
+                <sl-menu-item>Basic tools</sl-menu-item>
+                <sl-menu-item>Up to 5 projects</sl-menu-item>
+                <sl-menu-item>Community support</sl-menu-item>
+              </sl-menu>
+              <sl-button variant="primary" pill>Get started</sl-button>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Pro</h2>
+                <sl-badge variant="primary" pill>$19 / month</sl-badge>
+              </header>
+              <sl-menu>
+                <sl-menu-item>Advanced tools</sl-menu-item>
+                <sl-menu-item>Unlimited projects</sl-menu-item>
+                <sl-menu-item>Priority support</sl-menu-item>
+                <sl-menu-item>Collaboration suite</sl-menu-item>
+              </sl-menu>
+              <sl-button variant="primary" pill>Upgrade now</sl-button>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Enterprise</h2>
+                <sl-badge variant="warning" pill>Contact us</sl-badge>
+              </header>
+              <sl-menu>
+                <sl-menu-item>All Pro features</sl-menu-item>
+                <sl-menu-item>Custom integrations</sl-menu-item>
+                <sl-menu-item>Dedicated manager</sl-menu-item>
+                <sl-menu-item>On-prem deployment</sl-menu-item>
+              </sl-menu>
+              <sl-button variant="primary" pill>Contact sales</sl-button>
+            </sl-card>
+          </section>
+        </main>
+
+        <footer class="app-footer">
+          <span>&copy; 2025 Mind Engine • Pricing</span>
+          <sl-button variant="text" href="mailto:sales@example.com">Talk to sales</sl-button>
+        </footer>
+      </div>
+    </div>
+
+    <sl-dialog label="Login to DesignOps" class="app-dialog" id="pricing-login">
+      <form class="app-form">
+        <sl-input label="Email" type="email" required autofocus></sl-input>
+        <sl-input label="Password" type="password" required toggle-password></sl-input>
+        <sl-button type="submit" variant="primary" pill>Login</sl-button>
       </form>
     </sl-dialog>
-    <script>
-      document.addEventListener("alpine:init", () => {
-        Alpine.data("app", () => ({
-          showLogin: false,
-        }));
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/dialog/dialog.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/dropdown/dropdown.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon/icon.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon-button/icon-button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/input/input.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu/menu.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu-item/menu-item.js"></script>
+    <script type="module" src="../scripts/app-shell.js"></script>
+    <script type="module">
+      const dialog = document.getElementById('pricing-login');
+      const openButton = document.querySelector('[data-action="open-login"]');
+
+      openButton?.addEventListener('click', () => {
+        dialog?.show();
+      });
+
+      dialog?.addEventListener('sl-hide', () => {
+        dialog.querySelector('form')?.reset();
       });
     </script>
   </body>
 </html>
-<!-- SIDEBAR-ACTIVE-HILITE -->
-<script>
-  (() => {
-    const p = location.pathname.replace(/\/+$/, "").toLowerCase();
-    document.querySelectorAll(".sidebar a").forEach((a) => {
-      try {
-        const u = new URL(a.href, location.href);
-        if (p.endsWith(u.pathname.replace(/\/+$/, "").toLowerCase())) a.classList.add("active");
-      } catch (_) {}
-    });
-  })();
-</script>
-<!-- SITE-FOOTER START -->
-<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
-<!-- SITE-FOOTER END -->

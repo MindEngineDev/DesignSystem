@@ -1,68 +1,144 @@
 <!doctype html>
-<html lang="nl" data-theme="dark">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/main.css" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
-    <link rel="stylesheet" href="assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
-    <title>Settings</title>
-  <link rel="stylesheet" href="assets/css/./site.css">
-  <link rel="stylesheet" href="assets/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link rel="stylesheet" href="assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
-  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
+    <title>Settings | Design System Demo</title>
+
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/layout/app-layout.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/dark.css"
+    />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
   </head>
   <body>
-    <header class="header">
-      <div class="brand">Settings</div>
-      <div class="spacer"></div>
-      <a href="./index.html">Terug</a>
-    </header>
-    <main class="container grid-2">
-      <section class="card">
-        <header class="card__header"><h3>Voorkeuren</h3></header>
-        <form class="form">
-          <div>
-            <label>Taal</label>
-            <sl-select value="nl"><sl-option value="nl">Nederlands</sl-option><sl-option value="en">English</sl-option></sl-select>
+  <div class="app-layout">
+      <aside class="app-sidebar" aria-label="Primary">
+        <div class="app-brand">
+          <sl-avatar image="../assets/images/avatar.jpg" shape="circle"></sl-avatar>
+          <div class="app-brand__meta">
+            <span class="app-brand__name">DesignOps</span>
+            <span class="app-brand__team">Account</span>
           </div>
-          <div>
-            <label>Notificaties</label>
-            <sl-switch checked>Pushmeldingen</sl-switch>
-          </div>
-          <div>
-            <label>Datumformaat</label>
-            <sl-select value="nl-NL"><sl-option value="nl-NL">nl-NL</sl-option><sl-option value="en-GB">en-GB</sl-option></sl-select>
-          </div>
-          <div class="card__header">
-            <sl-button variant="primary">Opslaan</sl-button>
-          </div>
-        </form>
-      </section>
+        </div>
 
-      <section class="card">
-        <header class="card__header"><h3>Danger zone</h3></header>
-        <p class="muted">Acties hieronder zijn permanent.</p>
-        <sl-button variant="danger">Verwijder account</sl-button>
-      </section>
-    </main>
-    <script type="module" src="../scripts/main.js"></script>
+        <nav class="app-nav" aria-label="Main navigation">
+          <a class="app-nav__link" href="./app.html">
+            <sl-icon name="speedometer"></sl-icon>
+            <span>Overview</span>
+          </a>
+          <a class="app-nav__link" href="./dashboard/dashboard.html">
+            <sl-icon name="bar-chart"></sl-icon>
+            <span>Dashboard</span>
+          </a>
+          <a class="app-nav__link" href="./pricing.html">
+            <sl-icon name="cash"></sl-icon>
+            <span>Pricing</span>
+          </a>
+          <a class="app-nav__link" href="./team.html">
+            <sl-icon name="people"></sl-icon>
+            <span>Team</span>
+          </a>
+          <a class="app-nav__link" href="./settings.html">
+            <sl-icon name="gear"></sl-icon>
+            <span>Settings</span>
+          </a>
+        </nav>
+
+        <div class="app-sidebar__footer">
+          <sl-button size="small" variant="default" href="./builder.html">Open Builder</sl-button>
+        </div>
+      </aside>
+
+      <div class="app-shell">
+        <header class="app-header">
+          <sl-icon-button
+            class="app-header__toggle"
+            name="list"
+            label="Toggle navigation"
+            data-toggle="sidebar"
+          ></sl-icon-button>
+
+          <div class="app-header__meta">
+            <h1>Workspace settings</h1>
+            <p class="muted">Manage preferences, notifications, and data policies for your team.</p>
+          </div>
+
+          <div class="app-header__actions">
+            <sl-button pill variant="default">View audit log</sl-button>
+            <sl-button pill variant="primary">
+              <sl-icon name="check-lg"></sl-icon>
+              Save changes
+            </sl-button>
+          </div>
+        </header>
+
+        <main class="app-main" id="main-content">
+          <section class="app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Preferences</h2>
+                <sl-badge variant="neutral" pill>Workspace</sl-badge>
+              </header>
+              <form class="app-form">
+                <sl-select label="Language" value="en">
+                  <sl-option value="en">English</sl-option>
+                  <sl-option value="nl">Nederlands</sl-option>
+                  <sl-option value="de">Deutsch</sl-option>
+                </sl-select>
+                <sl-select label="Date format" value="en-GB">
+                  <sl-option value="en-GB">DD/MM/YYYY</sl-option>
+                  <sl-option value="en-US">MM/DD/YYYY</sl-option>
+                  <sl-option value="nl-NL">DD-MM-YYYY</sl-option>
+                </sl-select>
+                <sl-switch checked>Enable beta components</sl-switch>
+              </form>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Notifications</h2>
+                <sl-badge variant="primary" pill>Live</sl-badge>
+              </header>
+              <sl-checkbox checked>Weekly insights digest</sl-checkbox>
+              <sl-checkbox>Release approvals</sl-checkbox>
+              <sl-checkbox checked>Incident alerts</sl-checkbox>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Danger zone</h2>
+                <sl-tag pill variant="danger">Permanent</sl-tag>
+              </header>
+              <p class="muted">These actions cannot be undone. Proceed with caution.</p>
+              <sl-button variant="danger" pill>Delete workspace</sl-button>
+            </sl-card>
+          </section>
+        </main>
+
+        <footer class="app-footer">
+          <span>&copy; 2025 Mind Engine • Settings Module</span>
+          <sl-button variant="text" href="mailto:support@example.com">Need help?</sl-button>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/checkbox/checkbox.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon/icon.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon-button/icon-button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu/menu.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu-item/menu-item.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/option/option.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/select/select.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/switch/switch.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/tag/tag.js"></script>
+    <script type="module" src="../scripts/app-shell.js"></script>
   </body>
 </html>
-<!-- SIDEBAR-ACTIVE-HILITE -->
-<script>
-(() => {
-  const p = location.pathname.replace(/\/+$/,'').toLowerCase();
-  document.querySelectorAll('.sidebar a').forEach(a => {
-    try {
-      const u = new URL(a.href, location.href);
-      if (p.endsWith(u.pathname.replace(/\/+$/,'').toLowerCase())) a.classList.add('active');
-    } catch (_) {}
-  });
-})();
-</script>
-<!-- SITE-FOOTER START -->
-<footer class="footer"><div class="container"><small>© Mind Engine • Playground</small></div></footer>
-<!-- SITE-FOOTER END -->

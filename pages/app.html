@@ -17,7 +17,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
   </head>
   <body>
-    <div class="app-layout" data-state="sidebar-open">
+  <div class="app-layout">
       <aside class="app-sidebar" aria-label="Primary">
         <div class="app-brand">
           <sl-avatar image="../assets/images/avatar.jpg" shape="circle"></sl-avatar>
@@ -174,27 +174,6 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu/menu.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu-item/menu-item.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/tag/tag.js"></script>
-
-    <script>
-      const sidebar = document.querySelector('.app-sidebar');
-      const shell = document.querySelector('.app-layout');
-      const toggle = document.querySelector('[data-toggle="sidebar"]');
-
-      toggle?.addEventListener('click', () => {
-        shell?.toggleAttribute('data-state');
-        sidebar?.classList.toggle('is-open');
-      });
-
-      const currentPath = location.pathname.replace(/\\/g, '/');
-      document.querySelectorAll('.app-nav__link').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (!href) return;
-        const linkPath = new URL(href, location.href).pathname;
-        if (currentPath.endsWith(linkPath)) {
-          link.classList.add('is-active');
-          link.setAttribute('aria-current', 'page');
-        }
-      });
-    </script>
+    <script type="module" src="../scripts/app-shell.js"></script>
   </body>
 </html>
