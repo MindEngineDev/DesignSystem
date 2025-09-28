@@ -108,7 +108,8 @@
   border-radius: 6px;
 }
 .hidden {
-  display: none !important;
+  /* avoid !important to cooperate with page-level specificity; prefer utility class usage */
+  display: none;
 }
 .hero-row {
   display: flex;

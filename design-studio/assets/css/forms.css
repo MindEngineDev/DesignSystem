@@ -1,42 +1,39 @@
 /* Forms module styles for the design-studio playground */
 .forms__demo {
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  flex-wrap: wrap;
+margin-top: 0.75rem;
+display: flex;
+gap: 1rem;
+align-items: flex-start;
+flex-wrap: wrap;
 }
 .forms__controls {
-  gap: 0.5rem;
-  align-items: center;
-  .forms__preview {
-    background: var(--surface-2, #0f1724);
-    color: var(--muted, #9aa4b2);
-    padding: 1rem;
-    border-radius: 6px;
-    min-width: 220px;
-    max-width: 60%;
-    overflow: auto;
-    .forms__result.alert {
-      margin-top: 0.5rem;
-
-      .forms__controls button {
-        white-space: nowrap;
-        .forms__filepreview img {
-          box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
-          /* small responsive tweaks */
-          @media (max-width: 700px) {
-            .forms__preview {
-              max-width: 100%;
-            }
-            .forms__demo {
-              flex-direction: column;
-
-              /* auto-fix: closing 7 missing brace(s) */
-            }
-          }
-        }
-      }
-    }
-  }
+gap: 0.5rem;
+align-items: center;
+}
+.forms__preview {
+background: var(--surface-2, #0f1724);
+color: var(--muted, #9aa4b2);
+padding: 1rem;
+border-radius: 6px;
+min-width: 220px;
+max-width: 60%;
+overflow: auto;
+}
+.forms__result.alert {
+margin-top: 0.5rem;
+}
+.forms__controls button {
+white-space: nowrap;
+}
+.forms__filepreview img {
+box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+}
+/* small responsive tweaks */
+@media (max-width: 700px) {
+.forms__preview {
+max-width: 100%;
+}
+.forms__demo {
+flex-direction: column;
+}
 }

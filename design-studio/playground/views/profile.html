@@ -21,7 +21,7 @@
 
     <main class="page container">
       <!-- HERO -->
-      <section class="card profile-hero">
+  <section class="card profile-hero">
         <div class="cover" aria-hidden="true"></div>
         <div class="hero-body">
           <sl-avatar class="avatar" image="../../../design-studio/assets/images/volker.png" label="Rachel" shape="circle"></sl-avatar>
@@ -51,15 +51,15 @@
       </section>
 
       <!-- CONTENT -->
-      <section class="grid-2" style="gap: 1rem; margin-top: 1rem">
+  <section class="grid-2 gap-lg mt-md">
         <aside>
-          <sl-card>
+            <sl-card>
             <h3 slot="header">Media</h3>
-            <div style="display: flex; flex-direction: column; gap: 0.5rem">
-              <img id="previewImage" src="../../../design-studio/assets/images/volker.png" alt="Preview image" style="width: 100%; border-radius: 8px" />
-              <video id="previewVideo" controls style="width: 100%; display: none; border-radius: 8px"><source id="previewVideoSource" src="" type="video/mp4" /></video>
+            <div class="media-column">
+              <img id="previewImage" src="../../../design-studio/assets/images/volker.png" alt="Preview image" class="media-preview" />
+              <video id="previewVideo" controls class="media-preview hidden"><source id="previewVideoSource" src="" type="video/mp4" /></video>
 
-              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem">
+              <div class="thumbs">
                 <sl-button class="thumb" data-type="image" data-src="../../../design-studio/assets/images/volker.png" pill>
                   <img src="../../../design-studio/assets/images/volker.png" alt="t1" style="width: 48px; height: 48px; object-fit: cover; border-radius: 6px" />
                 </sl-button>
@@ -74,7 +74,7 @@
                 </sl-button>
               </div>
 
-              <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.5rem">
+              <div class="media-upload-row">
                 <label for="mediaInput" class="muted">Upload</label>
                 <input id="mediaInput" type="file" accept="image/*,video/*" aria-label="Upload image or video" />
               </div>

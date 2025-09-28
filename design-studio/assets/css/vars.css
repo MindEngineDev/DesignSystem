@@ -125,98 +125,87 @@
   --code-surface: var(--light-300);
   --code-text-color: var(--dark-300);
   --code-border: rgba(24, 30, 33, 0.2);
-}
-/* ADDITIONAL SHOELACE / UI TOKENS PROVIDED BY THE USER (appended)            */
-  /* =========================
-/* TYPOGRAPHY TOKENS */
-/* ========================= */ */
-  /* Font families */
-  /* Font sizes (rem @ 16px base) */
-  --sl-font-size-2x-small: 0.625rem; /* 10px */
-  --sl-font-size-x-small: 0.75rem; /* 12px */
-  --sl-font-size-small: 0.875rem; /* 14px */
-  --sl-font-size-medium: 1rem; /* 16px */
-  --sl-font-size-large: 1.25rem; /* 20px */
-  --sl-font-size-x-large: 1.5rem; /* 24px */
-  --sl-font-size-2x-large: 2.25rem; /* 36px */
-  --sl-font-size-3x-large: 3rem; /* 48px */
-  --sl-font-size-4x-large: 4.5rem; /* 72px */
-  /* Font weights */
+
+  /* Shoelace / UI tokens (additional) */
+  --sl-font-size-2x-small: 0.625rem;
+  --sl-font-size-x-small: 0.75rem;
+  --sl-font-size-small: 0.875rem;
+  --sl-font-size-medium: 1rem;
+  --sl-font-size-large: 1.25rem;
+  --sl-font-size-x-large: 1.5rem;
+  --sl-font-size-2x-large: 2.25rem;
+  --sl-font-size-3x-large: 3rem;
+  --sl-font-size-4x-large: 4.5rem;
   --sl-font-weight-light: 300;
   --sl-font-weight-normal: 400;
   --sl-font-weight-semibold: 500;
   --sl-font-weight-bold: 700;
-  /* Letter spacing */
   --sl-letter-spacing-denser: 0.5px;
-  --sl-letter-spacing-dense:  1px;
+  --sl-letter-spacing-dense: 1px;
   --sl-letter-spacing-normal: 1.5px;
   --sl-letter-spacing-loose: 2.5px;
   --sl-letter-spacing-looser: 5px;
-  /* Line-height */
   --sl-line-height-denser: 1;
   --sl-line-height-dense: 1.4;
   --sl-line-height-normal: 1.8;
   --sl-line-height-loose: 2.2;
   --sl-line-height-looser: 2.6;
-/* SPACING TOKENS (rem) */
-  --sl-spacing-3x-small: 0.125rem; /* 2px */
-  --sl-spacing-2x-small: 0.25rem; /* 4px */
-  --sl-spacing-x-small: 0.5rem; /* 8px */
-  --sl-spacing-small: 0.75rem; /* 12px */
-  --sl-spacing-medium: 1rem; /* 16px */
-  --sl-spacing-large: 1.25rem; /* 20px */
-  --sl-spacing-x-large: 1.75rem; /* 28px */
-  --sl-spacing-2x-large: 2.25rem; /* 36px */
-  --sl-spacing-3x-large: 3rem; /* 48px */
-  --sl-spacing-4x-large: 4.5rem; /* 72px */
-/* BORDER RADIUS TOKENS */
-  /* Prefer mapping to the core radius tokens so there is a single
-    source of truth for radius values. Theme layer (styles/theme.css)
-    may override if desired. */
+  /* Spacing tokens */
+  --sl-spacing-3x-small: 0.125rem;
+  --sl-spacing-2x-small: 0.25rem;
+  --sl-spacing-x-small: 0.5rem;
+  --sl-spacing-small: 0.75rem;
+  --sl-spacing-medium: 1rem;
+  --sl-spacing-large: 1.25rem;
+  --sl-spacing-x-large: 1.75rem;
+  --sl-spacing-2x-large: 2.25rem;
+  --sl-spacing-3x-large: 3rem;
+  --sl-spacing-4x-large: 4.5rem;
+  /* Border radius tokens */
   --sl-border-radius-small: var(--radius-hard, 1px);
   --sl-border-radius-medium: var(--radius-base, 4px);
   --sl-border-radius-large: var(--radius-soft, 8px);
   --sl-border-radius-x-large: var(--radius-rounded, 16px);
   --sl-border-radius-circle: 50%;
   --sl-border-radius-pill: var(--radius-round, 9999px);
-/* TRANSITION TOKENS */
+  /* Transitions */
   --sl-transition-x-slow: 1000ms;
   --sl-transition-slow: 500ms;
   --sl-transition-medium: 250ms;
   --sl-transition-fast: 150ms;
   --sl-transition-x-fast: 50ms;
-/* Z-INDEX TOKENS */
+  /* Z-index */
   --sl-z-index-drawer: 700;
   --sl-z-index-dialog: 800;
   --sl-z-index-dropdown: 900;
   --sl-z-index-toast: 950;
   --sl-z-index-tooltip: 1000;
-/* FOCUS RING TOKENS */
-  --sl-focus-ring-color: var(--sl-color-primary-600);
+  /* Focus ring */
+  --sl-focus-ring-color: var(--sl-color-primary-600, #db636f);
   --sl-focus-ring-style: solid;
   --sl-focus-ring-width: 3px;
   --sl-focus-ring: var(--sl-focus-ring-style) var(--sl-focus-ring-width) var(--sl-focus-ring-color);
   --sl-focus-ring-offset: 1px;
-  /* Button / form tokens (some map to our control tokens) */
+  /* Input / button tokens mapping */
   --sl-input-background-color: var(--control-surface);
   --sl-input-border-color: var(--control-border);
   --sl-panel-background-color: var(--panel-bg);
   --sl-panel-border-color: var(--panel-border);
   --sl-panel-border-width: 1px;
-  /* Overlay */
   --sl-overlay-background-color: hsl(240 3.8% 46.1% / 33%);
-  /* Radius */
+  /* Radii aliases */
   --radius-hard: 1px;
   --radius-sharp: 3px;
   --radius-base: 5px;
   --radius-soft: 12px;
   --radius-rounded: 20px;
   --radius-round: 9999px;
-  /* Shadows */
-  --elevation-2xs: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  --elevation-xs: 2px 2px 6px rgba(0, 0, 0, 0.543);
-  --elevation-sm: 4px 4px 12px rgba(0, 0, 0, 0.633);
-  --elevation-md: 8px 8px 24px rgba(0, 0, 0, 0.581);
-  --elevation-lg: 12px 12px 36px rgba(0, 0, 0, 0.528);
-  --elevation-xl: 35px 35px 65px rgba(0, 0, 0, 0.556);
-  --elevation-2xl: 50px 50px 100px rgba(0, 0, 0, 0.6);
+  /* Elevation */
+  --elevation-2xs: 0px 1px 3px rgba(0,0,0,0.2);
+  --elevation-xs: 2px 2px 6px rgba(0,0,0,0.12);
+  --elevation-sm: 4px 4px 12px rgba(0,0,0,0.12);
+  --elevation-md: 8px 8px 24px rgba(0,0,0,0.16);
+  --elevation-lg: 12px 12px 36px rgba(0,0,0,0.2);
+  --elevation-xl: 35px 35px 65px rgba(0,0,0,0.24);
+  --elevation-2xl: 50px 50px 100px rgba(0,0,0,0.28);
+}
