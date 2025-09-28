@@ -1,0 +1,51 @@
+[
+  {
+    "id": "color-mode 1",
+    "name": "Mode 1",
+    "group": "color",
+    "selectedTokenSets": {
+      "color/Mode 1": "enabled"
+    },
+    "$figmaStyleReferences": {},
+    "$figmaVariableReferences": {
+      "primary.100": "82c20c6b610afcf4a1a295624504f2082e8194b6",
+      "primary.200": "b5fe4e36219c124d10c07e10687b404f0b274432",
+      "primary.300": "9fb2ff8f3e437caeb56998bcb9d3c2bcd5a5cd45",
+      "primary.400": "0d5f6d5805b7769af94f1f311aab1422fff541bb",
+      "primary.500": "1b39add817da7445ba36696b653ba421398375b1",
+      "primary.600": "8eb1da6a620033521e6881595ef396b68bd78ed0",
+      "primary.700": "bd53ec694090f86d13efdbdee27eb8ef26cd8764",
+      "primary.800": "10a889457687a95b88c4ed75b72839fc73de371e",
+      "primary.900": "23ab8ce5ad3f591e0037a95408b5cdbce92b2d1f",
+      "secondary.100": "e42ed5f83bd3696a8f7549b1818ab1bd5b623f7c",
+      "secondary.200": "5c878672bd6afe5b3e615e6ebdfbc8135fce6201",
+      "secondary.300": "4a0a84af3a8cea244437ab8cd1e0b441f9bba272",
+      "secondary.400": "1cfc15a51a689dfd260b90d2221f5451667e52d7",
+      "secondary.500": "08aadf8005d1bf1d867341d3e642ac6f2fb08155",
+      "secondary.600": "b78b01c7debc9042fc3ec64c9c33e1bc0b4b2386",
+      "secondary.700": "5c665ba854403a6ec0379f074dce71bc38512f89",
+      "secondary.800": "f30c61fc28d7bc2abdf9b99003b2365e6b7aac0a",
+      "secondary.900": "c0671897c7ff938ec7895b8f697bd3d8057a0f5e",
+      "light.100": "043f0e76cfaaa505fce2a7797a82aa710448262b",
+      "light.200": "fff6f562a4d67a505f78412c00dd39fe1b405557",
+      "light.300": "702ce621238d70dc0f903224dc510c808e4030d6",
+      "light.400": "646fcb3286b1e6026b38e1f6ae70b47c04c3cb22",
+      "light.500": "4eeecc293191ccbe76c4a301d962dd57e8afe544",
+      "light.600": "e0874ebe048dda011b1286e7986c3228913e5d45",
+      "light.700": "7417e630ded5dcaac41646e41d3a94d77bd0e96c",
+      "light.800": "b374c38bc846c833f9ff9ea8762c41e0f07ceea3",
+      "light.900": "d466be0c0147316709a4eabff062fd9796eb1cb8",
+      "dark.100": "81f069456ac324cf0e0467797f2bfb33afcc0a4d",
+      "dark.200": "22535c15e6b3d663cce73c1e94359e7634258667",
+      "dark.300": "17b1a0d669f588da7962fb684ecdd45eda7ad5ee",
+      "dark.400": "90ea29245a839fc168487797d5535bc31bb01e86",
+      "dark.500": "af0e4462485ae3132d30effd4cc516061cee2956",
+      "dark.600": "08ad424d1f6053f1460bbe2ced1b3a576454e39f",
+      "dark.700": "0a61eb838cf4c50732dd86203b94e2e225e0f1a2",
+      "dark.800": "97c23b7b5ae3812a84fb353444d0225386aaaf69",
+      "dark.900": "a0981cdeacf2aba5868beebb3e18d00c8c6ee59b"
+    },
+    "$figmaModeId": "290:0",
+    "$figmaCollectionId": "VariableCollectionId:290:71"
+  }
+]

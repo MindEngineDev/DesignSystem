@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard | Design System Demo</title>
+  <link rel="stylesheet" href="../../styles/index.css
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <sl-avatar label="Jouw Naam" image="assets/images/avatar.jpg" shape="circle" style="margin-bottom:1.5rem"></sl-avatar>
+      <nav>
+        <sl-button variant="default" pill size="medium">Dashboard</sl-button>
+        <sl-button variant="default" pill size="medium">Analytics</sl-button>
+        <sl-button variant="default" pill size="medium">Team</sl-button>
+        <sl-button variant="default" pill size="medium">Settings</sl-button>
+      </nav>
+    </aside>
+    <main class="main">
+      <header class="flex-between mb-lg">
+        <h2>Welcome back, Jane!</h2>
+        <sl-button variant="primary" pill>+ Add Widget</sl-button>
+      </header>
+      <section class="grid-3 gp-lg">
+        <sl-card>
+          <strong>Total Users</strong>
+          <p style="font-size:2rem;margin:0;">1,452</p>
+        </sl-card>
+        <sl-card>
+          <strong>Revenue</strong>
+          <p style="font-size:2rem;margin:0;">€18,240</p>
+        </sl-card>
+        <sl-card>
+          <strong>Signups</strong>
+          <p style="font-size:2rem;margin:0;">221</p>
+        </sl-card>
+      </section>
+      <section class="section mt-lg">
+        <sl-alert open variant="info">
+          <sl-icon name="info"></sl-icon>
+          New: Your dashboard is now fully token-based!
+        </sl-alert>
+      </section>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container flex-between">
+      <span>&copy; 2025 – Your Company</span>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+  <!-- Shoelace components JS (nodig voor icon, card, avatar, alert, etc) -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon/icon.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/alert/alert.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+</body>
+</html>

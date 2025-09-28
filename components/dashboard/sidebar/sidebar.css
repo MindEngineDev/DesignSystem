@@ -1,0 +1,116 @@
+/* components/sidebar/sidebar.css */
+:root {
+  --sidebar-w: 240px;
+  --accent: hsl(353 83% 64%);
+  --accent-weak: hsl(353 83% 64% / 0.18);
+  --radius-xl: var(--radius-md);
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  padding: 18px 14px;
+  border-radius: var(--radius-xl);
+  margin: 0;
+  background-image: url("/assets/images/bg-sidebar.svg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+  background-color: var(--sl-color-neutral-9);
+  background-repeat: no-repeat;
+  backdrop-filter: blur(10px);
+  width: var(--sidebar-w);
+}
+.brand {
+  display: grid;
+  gap: 2px;
+  margin: 6px 6px 16px 6px;
+}
+.brand .word {
+  letter-spacing: 0.14em;
+}
+.brand .sub {
+  opacity: 0.65;
+  font-size: 0.75rem;
+}
+.nav {
+  display: grid;
+  gap: 6px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--sl-color-neutral-900);
+  border: 1px solid transparent;
+}
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-item.is-active {
+  background: var(--accent-weak);
+  border-color: hsl(353 83% 64% / 0.35);
+}
+.nav-ico {
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  opacity: 0.95;
+}
+.nav-label {
+  font-weight: 700;
+}
+.nav-spacer {
+  flex: 1;
+}
+.dot-plus {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 8px;
+  background: var(--accent-weak);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.profile {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--sl-color-neutral-200);
+}
+.profile .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile .who {
+  display: grid;
+  line-height: 1.2;
+}
+.profile .who small {
+  opacity: 0.75;
+}
+@media (max-width: 960px) {
+  :root {
+    --sidebar-w: 88px;
+  }
+  .nav-label,
+  .brand .sub,
+  .profile .who {
+    display: none;
+  }
+}

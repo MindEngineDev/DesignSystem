@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Component Builder</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+    <script type="module" src="../node_modules/@shoelace-style/shoelace/dist/shoelace.js"></script>
+    <style>
+      /* Minimal layout sugar for the builder page */
+      .builder { display: grid; grid-template-columns: 300px 1fr 320px; gap: var(--gap); height: calc(100dvh - 2rem); padding: 1rem; }
+      .panel { border: 1px solid var(--sl-color-neutral-200); border-radius: 12px; overflow: auto; background: var(--sl-color-neutral-0); }
+      .panel h2 { font-size: 1rem; margin: .75rem 1rem; }
+      .palette-list { padding: .5rem 1rem 1rem; display: grid; gap: .5rem; }
+      .palette-item { display: flex; align-items: center; justify-content: space-between; border: 1px dashed var(--sl-color-neutral-300); border-radius: 10px; padding: .5rem .75rem; }
+      .canvas { padding: 1rem; }
+      #dropzone { min-height: 480px; border: 2px dashed var(--sl-color-neutral-300); border-radius: 12px; display: grid; place-items: center; background: repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 12px, rgba(255,255,255,.04) 12px 24px); }
+      #dropzone.has-content { place-items: initial; background: none; border-style: solid; }
+      .hint { color: var(--sl-color-neutral-700); }
+      .node-selected { outline: 2px solid var(--sl-color-primary-500); outline-offset: 2px; border-radius: 6px; }
+      form.inspector { padding: 0 1rem 1rem; display: grid; gap: .5rem; }
+      form.inspector sl-input::part(base), form.inspector sl-select::part(combobox) { min-width: 0; }
+      .toolbar { display: flex; gap: .5rem; padding: .75rem; border-top: 1px solid var(--sl-color-neutral-200); }
+    </style>
+    <script type="module" src="../scripts/alpine-init.js"></script>
+</head>
+  <body>
+    <div class="builder">
+      <aside class="panel" id="palette">
+        <h2>Palette</h2>
+        <div class="palette-list" id="paletteList"></div>
+      </aside>
+
+      <main class="panel canvas">
+        <div id="dropzone" aria-label="Canvas dropzone">
+          <div class="hint">Drag items from Palette or click “Add”</div>
+        </div>
+        <div class="toolbar">
+          <sl-button id="btnClear" variant="neutral" outline size="small">Clear</sl-button>
+          <sl-button id="btnSave" variant="primary" size="small">Save</sl-button>
+          <sl-button id="btnLoad" variant="neutral" size="small">Load</sl-button>
+          <sl-button id="btnExport" variant="success" size="small">Export</sl-button>
+        </div>
+      </main>
+
+      <aside class="panel" id="inspector">
+        <h2>Inspector</h2>
+        <form class="inspector" id="inspectorForm"></form>
+      </aside>
+    </div>
+
+    <!-- Export dialog -->
+    <sl-dialog label="Export Markup" id="exportDialog" style="--width: 840px">
+      <sl-tab-group>
+        <sl-tab slot="nav" panel="tab-html">HTML</sl-tab>
+        <sl-tab slot="nav" panel="tab-js">JS</sl-tab>
+        <sl-tab-panel name="tab-html"><sl-textarea id="exportHtml" resize="auto" rows="14"></sl-textarea></sl-tab-panel>
+        <sl-tab-panel name="tab-js"><sl-textarea id="exportJs" resize="auto" rows="14"></sl-textarea></sl-tab-panel>
+      </sl-tab-group>
+      <sl-button slot="footer" id="btnCopyHtml" variant="neutral" outline>Copy HTML</sl-button>
+      <sl-button slot="footer" id="btnCopyJs" variant="neutral" outline>Copy JS</sl-button>
+      <sl-button slot="footer" variant="primary" onclick="document.getElementById('exportDialog').hide()">Close</sl-button>
+    </sl-dialog>
+
+    <script type="module" src="../scripts/builder-app.js"></script>
+  </body>
+</html>

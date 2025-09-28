@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App | Design System Demo</title>
+
+    <!-- Design system entry -->
+    <link rel="stylesheet" href="../styles/index.css" />
+    <link rel="stylesheet" href="../styles/layout/app-layout.css" />
+
+    <!-- Shoelace base -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/dark.css"
+    />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
+  </head>
+  <body>
+    <div class="app-layout" data-state="sidebar-open">
+      <aside class="app-sidebar" aria-label="Primary">
+        <div class="app-brand">
+          <sl-avatar image="../assets/images/avatar.jpg" shape="circle"></sl-avatar>
+          <div class="app-brand__meta">
+            <span class="app-brand__name">DesignOps</span>
+            <span class="app-brand__team">Product Suite</span>
+          </div>
+        </div>
+
+        <nav class="app-nav" aria-label="Main navigation">
+          <a class="app-nav__link" href="./dashboard.html">
+            <sl-icon name="speedometer"></sl-icon>
+            <span>Dashboard</span>
+          </a>
+          <a class="app-nav__link" href="./settings.html">
+            <sl-icon name="gear"></sl-icon>
+            <span>Settings</span>
+          </a>
+          <a class="app-nav__link" href="./pricing.html">
+            <sl-icon name="cash"></sl-icon>
+            <span>Pricing</span>
+          </a>
+          <a class="app-nav__link" href="./team.html">
+            <sl-icon name="people"></sl-icon>
+            <span>Team</span>
+          </a>
+          <a class="app-nav__link" href="../index.html" target="_blank" rel="noreferrer">
+            <sl-icon name="grid"></sl-icon>
+            <span>Components</span>
+          </a>
+        </nav>
+
+        <div class="app-sidebar__footer">
+          <sl-button size="small" variant="default" href="../builder.html">Open Builder</sl-button>
+        </div>
+      </aside>
+
+      <div class="app-shell">
+        <header class="app-header">
+          <sl-icon-button
+            class="app-header__toggle"
+            name="list"
+            label="Toggle navigation"
+            data-toggle="sidebar"
+          ></sl-icon-button>
+
+          <div class="app-header__meta">
+            <h1>Product Overview</h1>
+            <p class="muted">Monitor adoption, release velocity, and outstanding tasks.</p>
+          </div>
+
+          <div class="app-header__actions">
+            <sl-button pill variant="default">Invite teammate</sl-button>
+            <sl-dropdown>
+              <sl-button slot="trigger" caret pill variant="default">
+                <sl-icon name="funnel"></sl-icon>
+                Filters
+              </sl-button>
+              <sl-menu>
+                <sl-menu-item>Active releases</sl-menu-item>
+                <sl-menu-item>Beta cohorts</sl-menu-item>
+                <sl-menu-item>Archived</sl-menu-item>
+              </sl-menu>
+            </sl-dropdown>
+            <sl-dropdown placement="bottom-end">
+              <sl-button slot="trigger" pill variant="primary">
+                <sl-icon name="plus-lg"></sl-icon>
+                New
+              </sl-button>
+              <sl-menu>
+                <sl-menu-item>Feature brief</sl-menu-item>
+                <sl-menu-item>Roadmap item</sl-menu-item>
+                <sl-menu-item>Changelog entry</sl-menu-item>
+              </sl-menu>
+            </sl-dropdown>
+          </div>
+        </header>
+
+        <main class="app-main" id="main-content">
+          <section class="app-section app-section--hero">
+            <sl-card>
+              <strong>Welcome to the product suite workspace</strong>
+              <p>
+                Track initiatives across teams, surface blockers, and share progress updates. All Shoelace components and
+                system tokens are ready for you.
+              </p>
+            </sl-card>
+          </section>
+
+          <section class="app-section app-grid">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Launch checklist</h2>
+                <sl-badge variant="primary" pill>3 due</sl-badge>
+              </header>
+              <sl-menu>
+                <sl-menu-item checked>Status page update</sl-menu-item>
+                <sl-menu-item checked>Comms brief</sl-menu-item>
+                <sl-menu-item>Finalize pricing tiers</sl-menu-item>
+              </sl-menu>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Team focus</h2>
+                <sl-tag pill variant="success">On track</sl-tag>
+              </header>
+              <p class="muted">5 squads shipping, 18 active experiments, 2 pending approvals.</p>
+              <sl-button variant="text">View status board</sl-button>
+            </sl-card>
+
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Quick actions</h2>
+              </header>
+              <div class="app-actions">
+                <sl-button variant="default" pill>Schedule sync</sl-button>
+                <sl-button variant="default" pill>Share update</sl-button>
+                <sl-button variant="default" pill>Export report</sl-button>
+              </div>
+            </sl-card>
+          </section>
+
+          <section class="app-section">
+            <sl-card>
+              <header class="app-card__header">
+                <h2>Login</h2>
+                <p class="muted">Authenticate to continue working in the DesignOps workspace.</p>
+              </header>
+              <form class="app-form">
+                <sl-input label="Username" placeholder="Enter username" required clearable></sl-input>
+                <sl-input type="password" label="Password" placeholder="•••••••" required toggle-password></sl-input>
+                <sl-button variant="primary" pill type="submit">Sign in</sl-button>
+              </form>
+            </sl-card>
+          </section>
+        </main>
+
+        <footer class="app-footer">
+          <span>&copy; 2025 Mind Engine — Powered by Shoelace &amp; system tokens</span>
+          <sl-button variant="text" href="mailto:design@example.com">Contact design</sl-button>
+        </footer>
+      </div>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/dropdown/dropdown.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon/icon.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/icon-button/icon-button.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/input/input.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu/menu.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/menu-item/menu-item.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/tag/tag.js"></script>
+
+    <script>
+      const sidebar = document.querySelector('.app-sidebar');
+      const shell = document.querySelector('.app-layout');
+      const toggle = document.querySelector('[data-toggle="sidebar"]');
+
+      toggle?.addEventListener('click', () => {
+        shell?.toggleAttribute('data-state');
+        sidebar?.classList.toggle('is-open');
+      });
+
+      const currentPath = location.pathname.replace(/\\/g, '/');
+      document.querySelectorAll('.app-nav__link').forEach((link) => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        const linkPath = new URL(href, location.href).pathname;
+        if (currentPath.endsWith(linkPath)) {
+          link.classList.add('is-active');
+          link.setAttribute('aria-current', 'page');
+        }
+      });
+    </script>
+  </body>
+</html>

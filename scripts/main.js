@@ -18,7 +18,7 @@ if (document.readyState === "loading") {
   init();
 }
 export { init };
-export { setupPagination, setupFilter, setupTabs } from "../scripts/layout/views/views.js";
+export { setupPagination, setupFilter, setupTabs } from "./views.js";
 
 document.addEventListener("alpine:init", () => {
   Alpine.data("landing", () => ({
@@ -29,4 +29,21 @@ document.addEventListener("alpine:init", () => {
       window.open(target, "_blank", "noopener");
     },
   }));
+});
+
+
+Registry.set("Drawer", {
+  tag: "sl-drawer",
+  preview: () => {
+    const d = document.createElement("div");
+    d.textContent = "Drawer";
+    return d;
+  },
+  factory: (attrs = {}) => {
+    const x = document.createElement("sl-drawer");
+    x.setAttribute("label", "My Drawer");
+    x.innerHTML = "<p>Content</p>";
+    return x;
+  },
+  props: { label: { type: "text", attr: "label" }, class: { type: "text", attr: "class" } },
 });

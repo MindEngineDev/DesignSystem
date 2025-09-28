@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="nl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/main.css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace.js"></script>
+    <link rel="stylesheet" href="assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" />
+    <title>Settings</title>
+  <link rel="stylesheet" href="/styles/index.css
+  <link rel="stylesheet" href="assets/css/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="assets/css/https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/themes/dark.css">
+  <script>window.__shoelace_base_url="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/";</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace/dist/shoelace.js"></script>
+  </head>
+
+<section x-data="signaturePadComponent({ initial: '' })" x-init="init($refs.canvas)">
+  <canvas x-ref="canvas"></canvas>
+  <button x-show="!isEmpty" @click="clear()">Reset</button>
+</section>
+    <form method="POST" action="/login" @submit.prevent="submit">
+      <sl-input type="password" name="password" placeholder="Enter password" required></sl-input>
+      <sl-button type="submit" variant="primary">Enter Studio</sl-button>
+    </form>
+  </sl-dialog>
+  
+  </body>
+</html>

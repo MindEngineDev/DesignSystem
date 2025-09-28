@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shoelace Components Demo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/shoelace.js"></script>
+  <style>
+    .gallery { max-width: 800px; margin: 0 auto; padding: var(--space-lg); }
+    .gallery section { margin-bottom: var(--space-xl); }
+    .gallery h3 { margin-bottom: var(--space-md); }
+    .gallery .gp-sm { gap: var(--space-sm); }
+  </style>
+</head>
+<body>
+  <main class="gallery">
+    <h2>Shoelace Component Gallery</h2>
+    <section>
+      <h3>Buttons</h3>
+      <div class="gp-sm d-flex">
+        <sl-button variant="primary">Primary</sl-button>
+        <sl-button variant="secondary">Secondary</sl-button>
+        <sl-button variant="success">Success</sl-button>
+        <sl-button variant="danger">Danger</sl-button>
+        <sl-button variant="warning">Warning</sl-button>
+      </div>
+    </section>
+    <section>
+      <h3>Badges</h3>
+      <div class="gp-sm d-flex">
+        <sl-badge variant="primary">Primary</sl-badge>
+        <sl-badge variant="success">Success</sl-badge>
+        <sl-badge variant="danger">Danger</sl-badge>
+        <sl-badge variant="warning">Warning</sl-badge>
+        <sl-badge pill variant="secondary">Secondary pill</sl-badge>
+      </div>
+    </section>
+    <section>
+      <h3>Alerts</h3>
+      <sl-alert variant="primary" open>Primary alert!</sl-alert>
+      <sl-alert variant="success" open>Success alert!</sl-alert>
+      <sl-alert variant="danger" open>Danger alert!</sl-alert>
+      <sl-alert variant="warning" open>Warning alert!</sl-alert>
+    </section>
+    <section>
+      <h3>Inputs & Forms</h3>
+      <sl-input label="Email" placeholder="mail@domain.com"></sl-input>
+      <sl-textarea label="Message" placeholder="Type your message"></sl-textarea>
+      <sl-select label="Select an option">
+        <sl-option value="one">One</sl-option>
+        <sl-option value="two">Two</sl-option>
+      </sl-select>
+      <sl-checkbox>Remember me</sl-checkbox>
+      <sl-switch>Enable feature</sl-switch>
+    </section>
+    <section>
+      <h3>Cards, Avatars & Progress</h3>
+      <sl-card>
+        <strong>Card</strong>
+        <p>This is a Shoelace card component.</p>
+      </sl-card>
+      <sl-avatar label="Shoelace" image="assets/images/avatar.jpg"></sl-avatar>
+      <sl-progress-bar value="70"></sl-progress-bar>
+    </section>
+  </main>
+  <!-- Shoelace component imports -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/button/button.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/badge/badge.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/alert/alert.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/input/input.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/textarea/textarea.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/select/select.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/option/option.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/checkbox/checkbox.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/switch/switch.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/card/card.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/avatar/avatar.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/dist/components/progress-bar/progress-bar.js"></script>
+</body>
+</html>
