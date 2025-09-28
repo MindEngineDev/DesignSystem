@@ -2,6 +2,8 @@
 // Mounts Sidebar + Topbar into the dashboard layout.
 // Tip: add ?builder=1 to the URL to embed the Component Builder inside the canvas.
 
+import './alpine-init.js';
+
 import '../components/sidebar/index.js';
 import { createSidebar } from '../components/sidebar/sidebar.js';
 import '../components/topbar/index.js';

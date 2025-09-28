@@ -1,10 +1,28 @@
-/* styles/index.css — canonical entry (centralized) */
-@import url('tokens.css');       /* your tokens (or switch to tokens.css if you prefer) */
-@import url('shoelace.css');   /* Shoelace base */
-@import url('theme.css');      /* your theme mappings (neutral/semantic) */
-@import url('layout.css');     /* global layout & shell utilities */
+/* styles/index.css — canonical entry (centralized + Pico + your stack)
+   Order:
+   1) Pico base (classless) → reset & typography
+   2) Your tokens (vars or tokens)
+   3) Shoelace base
+   4) Your theme mappings
+   5) Global layout utilities
+*/
 
-/* Base resets */
+/* 1) Pico base (classless = semantic HTML styled, minimal classes) */
+@import url('../node_modules/@picocss/pico/css/pico.classless.min.css');
+
+/* 2) Your tokens: switch to tokens.css if you use that filename */
+@import url('tokens.css');
+
+/* 3) Shoelace component base */
+@import url('shoelace.css');
+
+/* 4) Your theme mappings (neutral/semantic) */
+@import url('theme.css');
+
+/* 5) Global layout & shell utilities (shared by pages) */
+@import url('layout.css');
+
+/* Base resets (kept minimal; no layout here) */
 html, body { height: 100%; }
 body {
   margin: 0;
