@@ -1,3 +1,8 @@
+/* styles/index.css — canonical entry */
+@import url('vars.css');
+@import url('shoelace.css');
+@import url('theme.css');
+
 /* css/index.css
    Canonical stylesheet entry for all pages.
    Order: core variables -> Shoelace base -> theme overrides -> minimal app sugar.
