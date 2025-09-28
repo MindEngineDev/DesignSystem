@@ -1,4 +1,37 @@
+/* css/index.css
+   Canonical stylesheet entry for all pages.
+   Order: core variables -> Shoelace base -> theme overrides -> minimal app sugar.
+*/
+
+/* 1) Core design tokens (CSS custom properties) */
 @import url('vars.css');
+
+/* 2) Shoelace component base styles */
 @import url('shoelace.css');
+
+/* 3) Theme mappings and brand palette (overrides of --sl-* etc.) */
 @import url('theme.css');
 
+/* 4) App sugar (keep minimal) */
+:root { --gap: 1rem; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--sl-color-neutral-0);
+  color: var(--sl-color-neutral-900);
+  font: 14px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, Arial;
+}
+
+/* Common grids and card sugar */
+.grid-4 { display: grid; gap: var(--gap); grid-template-columns: repeat(4, minmax(0,1fr)); }
+@media (max-width: 1200px){ .grid-4 { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 720px){ .grid-4 { grid-template-columns: 1fr; } }
+
+sl-card.kpi::part(base){
+  border-radius: var(--sl-border-radius-large);
+  box-shadow: var(--sl-shadow-medium);
+}
+.stat { font-size: 1.6rem; font-weight: 700; margin: .25rem 0 .125rem; }
+.muted{ color: var(--sl-color-neutral-700); }
+.pos{ color: var(--sl-color-success-500); }
+.neg{ color: var(--sl-color-danger-500); }
