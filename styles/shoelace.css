@@ -9,26 +9,31 @@
   --sl-font-size-2x-large: 2.25rem; /* 36px */
   --sl-font-size-3x-large: 3rem; /* 48px */
   --sl-font-size-4x-large: 4.5rem; /* 72px */
+  
   /* Font weights */
   --sl-font-weight-light: 300;
   --sl-font-weight-normal: 400;
   --sl-font-weight-semibold: 500;
   --sl-font-weight-bold: 700;
+  
   /* Letter spacing */
   --sl-letter-spacing-denser: -0.03em;
   --sl-letter-spacing-dense: -0.015em;
   --sl-letter-spacing-normal: normal;
   --sl-letter-spacing-loose: 0.075em;
   --sl-letter-spacing-looser: 0.15em;
+  
   /* Line-height */
   --sl-line-height-denser: 1;
   --sl-line-height-dense: 1.4;
   --sl-line-height-normal: 1.8;
   --sl-line-height-loose: 2.2;
   --sl-line-height-looser: 2.6;
+  
 /* ========================= */
 /* SPACING TOKENS (rem)     */
 /* ========================= */
+
   --sl-spacing-3x-small: 0.125rem; /* 2px */
   --sl-spacing-2x-small: 0.25rem; /* 4px */
   --sl-spacing-x-small: 0.5rem; /* 8px */
@@ -149,3 +154,5 @@
   --sl-tooltip-arrow-size: 6px;
   --sl-tooltip-max-width: 200px;
 }
+
+

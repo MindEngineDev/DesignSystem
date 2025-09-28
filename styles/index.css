@@ -1,30 +1,8 @@
-/* styles/index.css — canonical entry */
-@import url('vars.css');
-@import url('shoelace.css');
-@import url('theme.css');
-
-/* styles/index.css — canonical entry */
-
-/* styles/index.css — canonical entry */
-
-/* css/index.css
-   Canonical stylesheet entry for all pages.
-   Order: core variables -> Shoelace base -> theme overrides -> minimal app sugar.
-*/
-
-/* 1) Core design tokens (CSS custom properties) */
 @import url("vars.css");
-
-/* 2) Shoelace component base styles */
 @import url("shoelace.css");
-
-/* 3) Theme mappings and brand palette (overrides of --sl-* etc.) */
 @import url("theme.css");
+@import url("dashboard.css");
 
-/* 4) App sugar (keep minimal) */
-:root {
-  --gap: 1rem;
-}
 html,
 body {
   height: 100%;

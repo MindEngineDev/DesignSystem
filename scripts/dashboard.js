@@ -1,6 +1,6 @@
 // scripts/dashboard.js
 // Mounts Sidebar + Topbar into the dashboard layout.
-// Bonus: append ?builder=1 to the URL to embed the Component Builder inside the canvas.
+// Tip: add ?builder=1 to the URL to embed the Component Builder inside the canvas.
 
 import '../components/sidebar/index.js';
 import { createSidebar } from '../components/sidebar/sidebar.js';
@@ -18,7 +18,6 @@ const params = new URLSearchParams(location.search);
 const useBuilder = params.get('builder') === '1';
 
 if (useBuilder && canvas) {
-  // Replace canvas content with an embedded builder
   canvas.innerHTML = '';
   const frame = document.createElement('iframe');
   frame.src = './builder.html';
@@ -28,7 +27,6 @@ if (useBuilder && canvas) {
   frame.setAttribute('title', 'Component Builder');
   canvas.append(frame);
 
-  // Hide the dashed outline when builder is active
   const outline = document.querySelector('.outline');
   if (outline) outline.remove();
 }
