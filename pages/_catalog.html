@@ -4,39 +4,60 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Pages Catalog</title>
+
+    <!-- Central pipeline -->
     <link rel="stylesheet" href="../styles/index.css" />
     <script type="module" src="../node_modules/@shoelace-style/shoelace/dist/shoelace.js"></script>
-    <style>
-      .wrap { max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
-      ul { list-style: none; padding: 0; margin: 0; }
-      li { display: flex; align-items: center; justify-content: space-between; padding: .5rem .75rem; border: 1px solid var(--sl-color-neutral-200); border-radius: 12px; margin-bottom: .5rem; }
-      .muted { opacity: .75; }
-      .grp { margin: 1.25rem 0 .5rem; font-weight: 700; }
-    </style>
+    <script type="module" src="../scripts/alpine-init.js"></script>
   </head>
   <body>
-    <main class="wrap">
+    <main class="container">
       <h1>Pages Catalog</h1>
-      <p class="muted">Quick links to legacy pages after cleanup.</p>
+      <p>A clean index of your demo & legacy pages. Uses central styles (Pico + Shoelace + your theme).</p>
 
-      <div class="grp">Playgrounds & Shells</div>
+      <hgroup>
+        <h2>App</h2>
+      </hgroup>
       <ul>
-        <li><span>App Shell</span><a href="./app-shell.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>Component Builder</span><a href="./builder.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>AG Grid Demo</span><a href="./ag-grid.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
+        <li><a href="./dashboard.html">Dashboard</a></li>
+        <li><a href="./app-shell.html">App Shell</a></li>
+        <li><a href="./builder.html">Component Builder</a></li>
+        <li><a href="./page-builder.html">Page Builder</a></li>
+        <li><a href="./components.html">Components</a></li>
       </ul>
 
-      <div class="grp">UI Demos</div>
+      <hgroup>
+        <h2>UI Demos</h2>
+      </hgroup>
       <ul>
-        <li><span>Forms</span><a href="./forms.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>Kanban</span><a href="./kanban.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>Calendar</span><a href="./calendar.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>Components</span><a href="./components.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>Home</span><a href="./home.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
-        <li><span>Home (alt)</span><a href="./home-2.html" target="_blank" rel="noreferrer"><sl-button size="small">Open</sl-button></a></li>
+        <li><a href="./forms.html">Forms</a></li>
+        <li><a href="./tables.html">Tables</a></li>
+        <li><a href="./kanban.html">Kanban</a></li>
+        <li><a href="./calendar.html">Calendar</a></li>
+        <li><a href="./ag-grid.html">AG Grid</a></li>
+      </ul>
+
+      <hgroup>
+        <h2>Marketing / Misc</h2>
+      </hgroup>
+      <ul>
+        <li><a href="./home.html">Home</a></li>
+        <li><a href="./home-2.html">Home (alt)</a></li>
+        <li><a href="./pricing.html">Pricing</a></li>
+        <li><a href="./lists.html">Lists</a></li>
+        <li><a href="./mobile.html">Mobile</a></li>
+      </ul>
+
+      <hgroup>
+        <h2>Product</h2>
+      </hgroup>
+      <ul>
+        <li><a href="./products.html">Products</a></li>
+        <li><a href="./profile.html">Profile</a></li>
+        <li><a href="./settings.html">Settings</a></li>
+        <li><a href="./signup.html">Signup</a></li>
+        <li><a href="./team.html">Team</a></li>
       </ul>
     </main>
-    <script type="module" src="../scripts/main.js"></script>
   </body>
 </html>
-4
