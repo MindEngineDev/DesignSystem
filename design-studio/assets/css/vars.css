@@ -201,11 +201,11 @@
   --radius-rounded: 20px;
   --radius-round: 9999px;
   /* Elevation */
-  --elevation-2xs: 0px 1px 3px rgba(0,0,0,0.2);
-  --elevation-xs: 2px 2px 6px rgba(0,0,0,0.12);
-  --elevation-sm: 4px 4px 12px rgba(0,0,0,0.12);
-  --elevation-md: 8px 8px 24px rgba(0,0,0,0.16);
-  --elevation-lg: 12px 12px 36px rgba(0,0,0,0.2);
-  --elevation-xl: 35px 35px 65px rgba(0,0,0,0.24);
-  --elevation-2xl: 50px 50px 100px rgba(0,0,0,0.28);
+  --elevation-2xs: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  --elevation-xs: 2px 2px 6px rgba(0, 0, 0, 0.12);
+  --elevation-sm: 4px 4px 12px rgba(0, 0, 0, 0.12);
+  --elevation-md: 8px 8px 24px rgba(0, 0, 0, 0.16);
+  --elevation-lg: 12px 12px 36px rgba(0, 0, 0, 0.2);
+  --elevation-xl: 35px 35px 65px rgba(0, 0, 0, 0.24);
+  --elevation-2xl: 50px 50px 100px rgba(0, 0, 0, 0.28);
 }

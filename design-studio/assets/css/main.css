@@ -1,10 +1,4 @@
-@import "./shoelace.css";
-@import "./theme.css";
-@import "./vars.css";
-@import "./forms.css";
-@import "./profile.css";
-@import "./chats.css";
-@import "./site.css";
+/* CSS imports have been moved to HTML link tags for parallel loading */
 
 *,
 *::before,
