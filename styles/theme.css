@@ -46,24 +46,24 @@
 
   /* Neutral palette sourced from project light/dark scales */
   /* Background → text ramp (inverse of dark) */
-  --sl-color-neutral-0:    #ffffff;
-  --sl-color-neutral-50:   var(--light-100);
-  --sl-color-neutral-100:  var(--light-200);
-  --sl-color-neutral-200:  var(--light-300);
-  --sl-color-neutral-300:  var(--light-400);
-  --sl-color-neutral-400:  var(--light-500);
-  --sl-color-neutral-500:  var(--light-600);
-  --sl-color-neutral-600:  var(--light-700);
-  --sl-color-neutral-700:  var(--light-800);
-  --sl-color-neutral-800:  var(--dark-200);
-  --sl-color-neutral-900:  var(--dark-300);
+  --sl-color-neutral-0: #ffffff;
+  --sl-color-neutral-50: var(--light-100);
+  --sl-color-neutral-100: var(--light-200);
+  --sl-color-neutral-200: var(--light-300);
+  --sl-color-neutral-300: var(--light-400);
+  --sl-color-neutral-400: var(--light-500);
+  --sl-color-neutral-500: var(--light-600);
+  --sl-color-neutral-600: var(--light-700);
+  --sl-color-neutral-700: var(--light-800);
+  --sl-color-neutral-800: var(--dark-200);
+  --sl-color-neutral-900: var(--dark-300);
   --sl-color-neutral-1000: var(--dark-900);
 
   --sl-panel-background-color: var(--sl-color-neutral-0);
-  --sl-panel-border-color:     var(--sl-color-neutral-200);
+  --sl-panel-border-color: var(--sl-color-neutral-200);
   --sl-input-background-color: var(--sl-color-neutral-0);
-  --sl-input-border-color:     var(--sl-color-neutral-300);
-  --sl-input-color:            var(--sl-color-neutral-900);
+  --sl-input-border-color: var(--sl-color-neutral-300);
+  --sl-input-color: var(--sl-color-neutral-900);
 
   /* Border radius & spacing */
   --sl-border-radius-small: var(--radius-hard, 1px);
@@ -73,16 +73,6 @@
   --sl-border-radius-circle: 50%;
   --sl-border-radius-pill: var(--radius-round, 9999px);
 
-  --sl-spacing-3x-small: 0.125rem;
-  --sl-spacing-2x-small: 0.25rem;
-  --sl-spacing-x-small: 0.5rem;
-  --sl-spacing-small: 0.75rem;
-  --sl-spacing-medium: 1rem;
-  --sl-spacing-large: 1.25rem;
-  --sl-spacing-x-large: 1.75rem;
-  --sl-spacing-2x-large: 2.25rem;
-  --sl-spacing-3x-large: 3rem;
-  --sl-spacing-4x-large: 4.5rem;
 
   /* Shadows */
   --sl-shadow-x-small: 0 1px 2px rgba(0, 0, 0, 0.18);
@@ -133,6 +123,19 @@
   --sl-z-index-toast: 950;
   --sl-z-index-tooltip: 1000;
 }
+
+:root {
+  /* Background image & overlay (can be overridden per page if needed) */
+  --shell-bg-image: url("../assets/images/bg-body.svg");
+  --shell-bg-overlay: radial-gradient(1200px 600px at 20% -10%, hsla(350, 80%, 40%, 0.18), transparent 60%), radial-gradient(1200px 600px at 80% 110%, hsla(350, 80%, 40%, 0.15), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%);
+  --shell-bg-repeat: repeat; /* 'repeat' for patterns (SVG), 'no-repeat' for photos */
+  --shell-bg-size: auto; /* 'auto' for tiled SVG, 'cover' for full-bleed */
+  --shell-bg-attachment: fixed;
+  --shell-radius: 18px;
+  --sidebar-w: 280px;
+  --gap: 1rem;
+}
+
 /* Component tweaks */
 sl-button::part(base) {
   font-family: var(--font-body);
@@ -171,4 +174,3 @@ sl-card::part(base) {
   border-color: var(--panel-border);
   border-radius: var(--panel-radius);
 }
-

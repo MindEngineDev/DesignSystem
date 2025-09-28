@@ -26,7 +26,7 @@
 html, body { height: 100%; }
 body {
   margin: 0;
-  background: var(--sl-color-neutral-0);
+  background-image: url('/assets/images/bg-wave.svg');
   color: var(--sl-color-neutral-900);
   font: 14px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, Arial;
 }
